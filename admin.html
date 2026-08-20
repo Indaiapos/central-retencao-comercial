@@ -39,6 +39,17 @@
   .admin-row-actions { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
   .admin-new-cat { border: 2px dashed var(--border); border-radius: var(--radius-lg); padding: 20px 22px; text-align: center; }
   .admin-footer-actions { position: sticky; bottom: 0; background: var(--bg); padding: 16px 0; border-top: 1px solid var(--border); display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 20px; }
+  .admin-tabs { display: flex; gap: 6px; margin-bottom: 18px; }
+  .admin-tabs button { flex: 1; padding: 9px; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--surface-2); font-size: .82rem; font-weight: 700; color: var(--ink-soft); }
+  .admin-tabs button.active { background: var(--gold-soft); border-color: var(--gold); color: var(--gold-strong); }
+  .admin-gate-msg { font-size: .84rem; padding: 10px 14px; border-radius: var(--radius-md); margin-bottom: 14px; display: none; }
+  .admin-gate-msg.show { display: block; }
+  .admin-gate-msg.err { background: var(--danger-soft); color: var(--danger); }
+  .admin-gate-msg.ok { background: var(--success-soft); color: var(--success); }
+  .admin-gate-msg.info { background: var(--info-soft); color: var(--info); }
+  .pw-strength { font-size: .74rem; margin: -6px 0 12px; }
+  .pw-strength.weak { color: var(--danger); }
+  .pw-strength.ok { color: var(--success); }
 </style>
 </head>
 <body>
@@ -50,17 +61,40 @@
   </div>
 </header>
 
-<!-- PORTÃO: pede o token antes de mostrar qualquer coisa -->
+<!-- PORTÃO: senha (login) ou configuração inicial -->
 <div class="admin-gate" id="gate">
   <div class="card">
-    <h2>Entrar no admin</h2>
-    <p>Esta página edita <code>precos.json</code> direto no GitHub. Você precisa de um token pessoal (PAT) com acesso de escrita só a este repositório.</p>
-    <label for="patInput">Token de acesso do GitHub</label>
-    <input id="patInput" type="password" placeholder="github_pat_..." autocomplete="off" />
-    <button id="gateBtn" class="btn">Entrar</button>
-    <div class="admin-security-note">
-      <strong>Como gerar (uma vez só):</strong> GitHub → Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token. Em "Repository access" escolha <em>Only select repositories</em> → <code>Indaiapos/central-retencao-comercial</code>. Em "Permissions" → <em>Contents</em> → <em>Read and write</em>. Nenhuma outra permissão é necessária.<br><br>
-      O token fica salvo só neste navegador (não é enviado para nenhum lugar além do próprio GitHub). Para sair, use "Esquecer token" no topo depois de entrar.
+    <div class="admin-tabs" id="gateTabs">
+      <button type="button" class="active" data-tab="login">Entrar</button>
+      <button type="button" data-tab="setup">Primeira vez / trocar senha</button>
+    </div>
+    <div class="admin-gate-msg" id="gateMsg"></div>
+
+    <!-- LOGIN: só senha -->
+    <div id="tabLogin">
+      <h2>Entrar</h2>
+      <p>Digite a senha para acessar o painel de Valores Praticados.</p>
+      <label for="loginPassword">Senha</label>
+      <input id="loginPassword" type="password" autocomplete="current-password" />
+      <button id="loginBtn" class="btn">Entrar</button>
+    </div>
+
+    <!-- SETUP: token do GitHub + escolher senha (só roda uma vez, ou para trocar a senha depois) -->
+    <div id="tabSetup" hidden>
+      <h2>Configurar acesso</h2>
+      <p>Isso guarda um token do GitHub <strong>criptografado com a senha que você escolher</strong> num arquivo público do repositório (<code>admin-key.json</code>) — sem a senha, esse arquivo não serve para nada. A partir de agora, só a senha será necessária para entrar.</p>
+      <label for="setupToken">Token do GitHub (só usado agora, para configurar)</label>
+      <input id="setupToken" type="password" placeholder="github_pat_..." autocomplete="off" />
+      <label for="setupPassword">Nova senha</label>
+      <input id="setupPassword" type="password" autocomplete="new-password" />
+      <div class="pw-strength" id="pwStrength"></div>
+      <label for="setupPasswordConfirm">Confirmar senha</label>
+      <input id="setupPasswordConfirm" type="password" autocomplete="new-password" />
+      <button id="setupBtn" class="btn">Salvar configuração</button>
+      <div class="admin-security-note">
+        <strong>Como gerar o token (uma vez só):</strong> GitHub → Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token. Em "Repository access" escolha <em>Only select repositories</em> → <code>Indaiapos/central-retencao-comercial</code>. Em "Permissions" → <em>Contents</em> → <em>Read and write</em>. Nenhuma outra permissão é necessária.<br><br>
+        Use uma senha longa e única (16+ caracteres) — o arquivo criptografado é público, então a força da senha é a única proteção. Ninguém, incluindo quem configurou o site, consegue recuperar o token sem essa senha.
+      </div>
     </div>
   </div>
 </div>
@@ -71,7 +105,7 @@
     <h1 style="margin:0">Valores Praticados</h1>
     <div style="display:flex; gap:10px;">
       <button class="btn btn-secondary btn-sm" id="reloadBtn">↻ Recarregar do GitHub</button>
-      <button class="btn btn-secondary btn-sm" id="forgetBtn">Esquecer token</button>
+      <button class="btn btn-secondary btn-sm" id="logoutBtn">Sair</button>
     </div>
   </div>
 
@@ -94,21 +128,18 @@
 const OWNER = 'Indaiapos';
 const REPO = 'central-retencao-comercial';
 const FILE_PATH = 'precos.json';
+const KEY_PATH = 'admin-key.json';
 const BRANCH = 'master';
-const TOKEN_KEY = 'indaia_admin_pat';
+const PBKDF2_ITERATIONS = 300000;
 
+let sessionToken = null; // só em memória, nunca salvo — some ao recarregar a página
 let currentSha = null;
 let precos = null; // { atualizadoEm, categorias: [...] }
 
-function getToken() { return localStorage.getItem(TOKEN_KEY) || ''; }
-function setToken(t) { localStorage.setItem(TOKEN_KEY, t); }
-function clearToken() { localStorage.removeItem(TOKEN_KEY); }
-
-function ghHeaders() {
-  return {
-    'Authorization': 'token ' + getToken(),
-    'Accept': 'application/vnd.github+json'
-  };
+function ghHeaders(extra) {
+  const h = { 'Accept': 'application/vnd.github+json' };
+  if (sessionToken) h['Authorization'] = 'token ' + sessionToken;
+  return Object.assign(h, extra || {});
 }
 
 function utf8ToB64(str) {
@@ -121,6 +152,65 @@ function b64ToUtf8(b64) {
   const binary = atob(b64.replace(/\n/g, ''));
   const bytes = Uint8Array.from(binary, c => c.charCodeAt(0));
   return new TextDecoder('utf-8').decode(bytes);
+}
+function bytesToB64(bytes) {
+  let binary = '';
+  bytes.forEach(b => binary += String.fromCharCode(b));
+  return btoa(binary);
+}
+function b64ToBytes(b64) {
+  const binary = atob(b64);
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+  return bytes;
+}
+
+/* ---------- Criptografia do token (Web Crypto: PBKDF2 + AES-GCM) ---------- */
+async function deriveAesKey(password, saltBytes, iterations) {
+  const enc = new TextEncoder();
+  const baseKey = await crypto.subtle.importKey('raw', enc.encode(password), 'PBKDF2', false, ['deriveKey']);
+  return crypto.subtle.deriveKey(
+    { name: 'PBKDF2', salt: saltBytes, iterations, hash: 'SHA-256' },
+    baseKey,
+    { name: 'AES-GCM', length: 256 },
+    false,
+    ['encrypt', 'decrypt']
+  );
+}
+
+async function encryptToken(token, password) {
+  const salt = crypto.getRandomValues(new Uint8Array(16));
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const key = await deriveAesKey(password, salt, PBKDF2_ITERATIONS);
+  const ciphertext = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, new TextEncoder().encode(token));
+  return {
+    v: 1,
+    salt: bytesToB64(salt),
+    iv: bytesToB64(iv),
+    iterations: PBKDF2_ITERATIONS,
+    ciphertext: bytesToB64(new Uint8Array(ciphertext)),
+    createdAt: new Date().toISOString().slice(0, 10)
+  };
+}
+
+async function decryptToken(blob, password) {
+  const salt = b64ToBytes(blob.salt);
+  const iv = b64ToBytes(blob.iv);
+  const key = await deriveAesKey(password, salt, blob.iterations || PBKDF2_ITERATIONS);
+  const ciphertext = b64ToBytes(blob.ciphertext);
+  const plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv }, key, ciphertext);
+  return new TextDecoder().decode(plain);
+}
+
+/* Leitura pública (sem token) — usada para checar/ler admin-key.json antes do login */
+async function fetchPublicJson(path) {
+  const res = await fetch('https://api.github.com/repos/' + OWNER + '/' + REPO + '/contents/' + path + '?ref=' + BRANCH + '&_=' + Date.now(), {
+    headers: { 'Accept': 'application/vnd.github+json' }
+  });
+  if (res.status === 404) return { notFound: true };
+  if (!res.ok) throw new Error('Erro ao buscar ' + path + ': HTTP ' + res.status);
+  const data = await res.json();
+  return { sha: data.sha, json: JSON.parse(b64ToUtf8(data.content)) };
 }
 
 function showStatus(msg, type) {
@@ -334,16 +424,110 @@ document.getElementById('reloadBtn').addEventListener('click', async () => {
   }
 });
 
-document.getElementById('forgetBtn').addEventListener('click', () => {
-  clearToken();
+document.getElementById('logoutBtn').addEventListener('click', () => {
+  sessionToken = null;
   location.reload();
 });
 
-document.getElementById('gateBtn').addEventListener('click', async () => {
-  const val = document.getElementById('patInput').value.trim();
-  if (!val) return;
-  setToken(val);
-  await bootPanel();
+/* ---------- Portão: abas e mensagens ---------- */
+function gateMsg(msg, type) {
+  const el = document.getElementById('gateMsg');
+  el.textContent = msg;
+  el.className = 'admin-gate-msg show ' + (type || 'info');
+}
+function hideGateMsg() {
+  document.getElementById('gateMsg').className = 'admin-gate-msg';
+}
+
+function showTab(name) {
+  document.getElementById('tabLogin').hidden = name !== 'login';
+  document.getElementById('tabSetup').hidden = name !== 'setup';
+  document.querySelectorAll('#gateTabs button').forEach(b => b.classList.toggle('active', b.dataset.tab === name));
+  hideGateMsg();
+}
+document.querySelectorAll('#gateTabs button').forEach(b => {
+  b.addEventListener('click', () => showTab(b.dataset.tab));
+});
+
+document.getElementById('setupPassword').addEventListener('input', (e) => {
+  const v = e.target.value;
+  const strengthEl = document.getElementById('pwStrength');
+  if (!v) { strengthEl.textContent = ''; return; }
+  if (v.length < 12) { strengthEl.textContent = 'Curta — use pelo menos 12 caracteres (16+ recomendado).'; strengthEl.className = 'pw-strength weak'; }
+  else { strengthEl.textContent = 'Tamanho ok.'; strengthEl.className = 'pw-strength ok'; }
+});
+
+/* ---------- Login (só senha) ---------- */
+document.getElementById('loginBtn').addEventListener('click', async () => {
+  hideGateMsg();
+  const password = document.getElementById('loginPassword').value;
+  if (!password) return;
+  gateMsg('Verificando…', 'info');
+  let found;
+  try {
+    found = await fetchPublicJson(KEY_PATH);
+  } catch (e) {
+    gateMsg('Erro ao conectar: ' + e.message, 'err');
+    return;
+  }
+  if (found.notFound) {
+    gateMsg('Nenhuma senha configurada ainda. Use a aba "Primeira vez / trocar senha".', 'err');
+    return;
+  }
+  try {
+    const token = await decryptToken(found.json, password);
+    sessionToken = token;
+    await bootPanel();
+  } catch (e) {
+    gateMsg('Senha incorreta.', 'err');
+  }
+});
+document.getElementById('loginPassword').addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('loginBtn').click(); });
+
+/* ---------- Configuração inicial / trocar senha ---------- */
+document.getElementById('setupBtn').addEventListener('click', async () => {
+  hideGateMsg();
+  const token = document.getElementById('setupToken').value.trim();
+  const password = document.getElementById('setupPassword').value;
+  const confirm2 = document.getElementById('setupPasswordConfirm').value;
+  if (!token) { gateMsg('Cole o token do GitHub.', 'err'); return; }
+  if (password.length < 8) { gateMsg('Escolha uma senha com pelo menos 8 caracteres (16+ recomendado).', 'err'); return; }
+  if (password !== confirm2) { gateMsg('As senhas não conferem.', 'err'); return; }
+
+  gateMsg('Testando o token e salvando a configuração…', 'info');
+  sessionToken = token;
+  try {
+    // valida o token tentando ler precos.json
+    await fetchPrecos();
+
+    const blob = await encryptToken(token, password);
+    // busca sha atual do admin-key.json, se existir, para poder sobrescrever
+    let keySha = null;
+    try {
+      const existing = await fetchPublicJson(KEY_PATH);
+      if (!existing.notFound) keySha = existing.sha;
+    } catch (e) { /* segue sem sha — provavelmente ainda não existe */ }
+
+    const res = await fetch('https://api.github.com/repos/' + OWNER + '/' + REPO + '/contents/' + KEY_PATH, {
+      method: 'PUT',
+      headers: ghHeaders({ 'Content-Type': 'application/json' }),
+      body: JSON.stringify(Object.assign({
+        message: 'Configura senha do admin (via admin.html)',
+        content: utf8ToB64(JSON.stringify(blob, null, 2)),
+        branch: BRANCH
+      }, keySha ? { sha: keySha } : {}))
+    });
+    if (!res.ok) {
+      const t = await res.text();
+      throw new Error('HTTP ' + res.status + ' — ' + t.slice(0, 200));
+    }
+
+    gateMsg('✓ Senha configurada! Entrando…', 'ok');
+    await bootPanel();
+  } catch (e) {
+    sessionToken = null;
+    gateMsg('Erro ao configurar: ' + e.message, 'err');
+  }
 });
 
 async function bootPanel() {
@@ -355,15 +539,12 @@ async function bootPanel() {
     render();
     hideStatus();
   } catch (e) {
+    sessionToken = null;
     document.getElementById('panel').hidden = true;
     document.getElementById('gate').hidden = false;
-    alert(e.message);
+    gateMsg(e.message, 'err');
   }
 }
-
-(function init() {
-  if (getToken()) bootPanel();
-})();
 </script>
 </body>
 </html>
