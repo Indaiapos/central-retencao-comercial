@@ -195,6 +195,122 @@ section .section-head p { font-size: 1rem; }
 .callout.info { border-left-color: var(--info); }
 .callout strong { color: var(--ink); }
 
+/* ---------- Topic finder (busca de motivo na página inicial) ---------- */
+.topic-finder { max-width: 760px; }
+
+.topic-search-wrap { position: relative; margin-bottom: 16px; }
+.topic-search-wrap input {
+  width: 100%;
+  padding: 16px 20px;
+  font-size: 1.05rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  color: var(--ink);
+}
+.topic-search-wrap input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px var(--gold-soft); }
+
+.topic-suggestions {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0; right: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lift);
+  padding: 6px;
+  z-index: 20;
+}
+.topic-suggestion {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  text-align: left;
+  padding: 9px 10px;
+  border: none;
+  background: none;
+  border-radius: var(--radius-sm);
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.topic-suggestion:hover { background: var(--surface-2); }
+
+.topic-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+.topic-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 15px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.topic-chip:hover { border-color: var(--gold); color: var(--ink); }
+.topic-chip.active { background: var(--gold-soft); border-color: var(--gold); color: var(--gold-strong); }
+
+.topic-result {
+  scroll-margin-top: calc(var(--topbar-h) + 14px);
+  display: none;
+  background: var(--surface);
+  border: 1px solid var(--gold-soft);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lift);
+  padding: 22px 24px;
+}
+.topic-result.show { display: block; animation: topic-in .18s ease; }
+@keyframes topic-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+.topic-result-head { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+.topic-result-head h3 { margin: 0; }
+.topic-result-desc { font-size: .92rem; }
+.topic-result h4 { font-size: .8rem; text-transform: uppercase; letter-spacing: .5px; color: var(--gold-strong); margin: 16px 0 6px; }
+.topic-perguntas { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+.topic-perguntas li { font-size: .88rem; color: var(--ink-soft); padding-left: 16px; position: relative; }
+.topic-perguntas li::before { content: '›'; position: absolute; left: 2px; color: var(--gold); font-weight: 700; }
+.topic-result-links { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border-soft); }
+.topic-result-links a { font-size: .86rem; font-weight: 700; text-decoration: none; }
+.topic-result-links a:hover { text-decoration: underline; }
+
+.copy-btn {
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  border-radius: 999px;
+  padding: 3px 11px;
+  font-size: .72rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  flex-shrink: 0;
+}
+.copy-btn:hover { border-color: var(--gold); color: var(--gold-strong); }
+.copy-btn.copied { background: var(--success-soft); border-color: var(--success); color: var(--success); }
+
+/* ---------- Context accordion (fluxo completo / indicadores) ---------- */
+.overview-context {
+  margin-top: 36px;
+  border-top: 1px solid var(--border);
+  padding-top: 18px;
+}
+.overview-context summary {
+  cursor: pointer;
+  list-style: none;
+  font-weight: 700;
+  color: var(--gold-strong);
+  font-size: .92rem;
+}
+.overview-context summary::-webkit-details-marker { display: none; }
+.overview-context[open] summary { margin-bottom: 8px; }
+
+/* Highlight genérico usado por jumpToAndHighlight em qualquer card */
+.motivo-card.highlight, .caso-card.highlight, .script-card.highlight {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
 /* ---------- Flow diagram (overview) ---------- */
 .flow {
   display: flex;

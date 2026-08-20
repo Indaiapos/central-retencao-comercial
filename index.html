@@ -41,42 +41,55 @@
 
   <main class="content">
 
-    <!-- 1. VISÃO GERAL -->
+    <!-- 1. VISÃO GERAL / BUSCA DE MOTIVO -->
     <section id="overview">
       <div class="section-head">
-        <span class="eyebrow">Visão Geral</span>
-        <h2>Antes de tratar o cancelamento como definitivo</h2>
-        <p>Antes de tratar o cancelamento como uma decisão definitiva, entenda o motivo, identifique a necessidade do cliente e percorra corretamente as etapas de retenção. Retenção não significa impedir o cancelamento — significa garantir que todas as soluções possíveis foram avaliadas antes da decisão final.</p>
+        <span class="eyebrow">Comece por aqui</span>
+        <h2>Qual é o motivo do cliente?</h2>
+        <p>Digite o motivo (ex.: <em>financeiro</em>, <em>concorrência</em>, <em>insatisfação</em>) ou clique numa opção abaixo. Vai aparecer na hora o texto pronto para usar com o cliente.</p>
       </div>
 
-      <div class="flow">
-        <div class="flow-step">Solicitação de Cancelamento</div>
-        <div class="flow-arrow">↓</div>
-        <div class="flow-step">Entender o Motivo</div>
-        <div class="flow-arrow">↓</div>
-        <div class="flow-step">Diagnosticar o Problema Real</div>
-        <div class="flow-arrow">↓</div>
-        <div class="flow-step">Argumentar</div>
-        <div class="flow-arrow">↓</div>
-        <div class="flow-step">Apresentar Alternativas</div>
-        <div class="flow-arrow">↓</div>
-        <div class="flow-step">Utilizar Liberações Comerciais (R-01 → R-09)</div>
-        <div class="flow-arrow">↓</div>
-        <div class="flow-step">Retenção ou Cancelamento</div>
+      <div class="topic-finder">
+        <div class="topic-search-wrap">
+          <input id="topicSearch" type="search" placeholder="Digite o motivo do cliente…" aria-label="Buscar motivo de cancelamento" autocomplete="off" />
+          <div id="topicSuggestions" class="topic-suggestions" hidden></div>
+        </div>
+        <div class="topic-chips" id="topicChips"></div>
+        <div class="topic-result" id="topicResult"></div>
       </div>
 
-      <h3 style="margin-top:34px">Indicadores <span class="pill pill-demo">dados demonstrativos</span></h3>
-      <div class="stat-grid">
-        <div class="stat-card"><div class="stat-value">128</div><div class="stat-label">Solicitações de cancelamento (mês)</div></div>
-        <div class="stat-card"><div class="stat-value">54</div><div class="stat-label">Clientes recuperados</div></div>
-        <div class="stat-card"><div class="stat-value">42%</div><div class="stat-label">Taxa de retenção</div></div>
-        <div class="stat-card"><div class="stat-value">Financeiro</div><div class="stat-label">Principal motivo de cancelamento</div></div>
-        <div class="stat-card"><div class="stat-value">R$ 186 mil</div><div class="stat-label">Valor financeiro preservado</div></div>
-        <div class="stat-card"><div class="stat-value">74</div><div class="stat-label">Cancelamentos efetivados</div></div>
-      </div>
+      <details class="overview-context">
+        <summary>Ver o fluxo completo e os indicadores do time ▾</summary>
 
-      <h3 style="margin-top:34px">Casos reais analisados neste playbook <span class="pill pill-real">dado real · Indaiá Chat</span></h3>
-      <div class="stat-grid" id="realCounts"></div>
+        <div class="flow" style="margin-top:20px">
+          <div class="flow-step">Solicitação de Cancelamento</div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-step">Entender o Motivo</div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-step">Diagnosticar o Problema Real</div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-step">Argumentar</div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-step">Apresentar Alternativas</div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-step">Utilizar Liberações Comerciais (R-01 → R-09)</div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-step">Retenção ou Cancelamento</div>
+        </div>
+
+        <h3 style="margin-top:34px">Indicadores <span class="pill pill-demo">dados demonstrativos</span></h3>
+        <div class="stat-grid">
+          <div class="stat-card"><div class="stat-value">128</div><div class="stat-label">Solicitações de cancelamento (mês)</div></div>
+          <div class="stat-card"><div class="stat-value">54</div><div class="stat-label">Clientes recuperados</div></div>
+          <div class="stat-card"><div class="stat-value">42%</div><div class="stat-label">Taxa de retenção</div></div>
+          <div class="stat-card"><div class="stat-value">Financeiro</div><div class="stat-label">Principal motivo de cancelamento</div></div>
+          <div class="stat-card"><div class="stat-value">R$ 186 mil</div><div class="stat-label">Valor financeiro preservado</div></div>
+          <div class="stat-card"><div class="stat-value">74</div><div class="stat-label">Cancelamentos efetivados</div></div>
+        </div>
+
+        <h3 style="margin-top:34px">Casos reais analisados neste playbook <span class="pill pill-real">dado real · Indaiá Chat</span></h3>
+        <div class="stat-grid" id="realCounts"></div>
+      </details>
     </section>
 
     <!-- 2. MOTIVOS DE CANCELAMENTO -->

@@ -140,6 +140,10 @@ const MOTIVOS = [
     alternativas: ['R-01 · Redução das Parcelas', 'R-04 · Congelamento de Parcelas', 'R-03 · Redução Contratual', 'R-05 · Alteração de Data, quando aplicável'],
     erros: ['Oferecer desconto na multa antes de entender se o aperto é temporário.', 'Ignorar se o problema é no valor total ou nas parcelas — a solução é diferente para cada caso.'],
     estagio: 'Etapa 1-2 · iniciar por R-01/R-04 antes de discutir R-08.',
+    mensagens: [
+      { tom: 'Abertura / diagnóstico', texto: 'Imagino que essa decisão não seja fácil depois de todo o planejamento até aqui. Antes de pensarmos em cancelar, me conta: a dificuldade está mais no valor das parcelas ou no valor total do contrato? Dependendo da resposta, talvez consigamos reorganizar as condições de pagamento sem precisar chegar ao cancelamento.' },
+      { tom: 'Se o problema é o valor mensal', texto: 'Consigo reduzir o valor da parcela para o mínimo e direcionar o restante para o saldo final — assim o mês a mês fica mais leve, sem mudar o valor total do contrato. Também dá para congelar as parcelas por um tempo, dependendo de quanto falta para o evento. Faz sentido explorarmos isso antes de pensar em cancelar?' }
+    ],
     casoRealId: 'gabriela'
   },
   {
@@ -152,6 +156,9 @@ const MOTIVOS = [
     alternativas: ['R-03 · Redução Contratual', 'R-06 · Liberação de Data (mantendo vínculo)'],
     erros: ['Tratar como cancelamento definitivo sem checar se algum formato menor resolveria.'],
     estagio: 'Etapa 1-2.',
+    mensagens: [
+      { tom: 'Abertura / diagnóstico', texto: 'Entendo. Antes de tratarmos isso como um cancelamento, me conta: o evento em si não vai mais acontecer, ou é mais uma mudança de formato ou tamanho? Às vezes conseguimos adaptar o contrato para o novo formato sem precisar encerrar tudo.' }
+    ],
     casoRealId: null
   },
   {
@@ -164,6 +171,9 @@ const MOTIVOS = [
     alternativas: ['R-05 · Alteração de Data', 'R-06 · Liberação de Data, se o evento for superior a 1 ano'],
     erros: ['Tratar pedido de remarcação como pedido de cancelamento.'],
     estagio: 'Etapa 2-3 · R-05 pode precisar de alinhamento com a gestão se o desconto na taxa for maior que o padrão.',
+    mensagens: [
+      { tom: 'Abertura / diagnóstico', texto: 'Sem problema, remarcar é bem mais simples do que cancelar! Você já tem uma nova data em mente? Consigo verificar a disponibilidade e te passar as condições para a alteração — dependendo da antecedência, a taxa pode até ser isenta.' }
+    ],
     casoRealId: null
   },
   {
@@ -176,6 +186,9 @@ const MOTIVOS = [
     alternativas: ['R-03 · Redução Contratual'],
     erros: ['Assumir que menos convidados significa que o cliente quer cancelar — geralmente quer ajustar.'],
     estagio: 'Etapa 1-2.',
+    mensagens: [
+      { tom: 'Abertura / diagnóstico', texto: 'Faz todo sentido ajustar para o novo número de convidados. Me conta quantas pessoas vocês estão projetando agora — na maioria dos casos conseguimos adequar o contrato ao novo tamanho, sem precisar cancelar.' }
+    ],
     casoRealId: null
   },
   {
@@ -192,6 +205,10 @@ const MOTIVOS = [
     alternativas: ['R-02 · Cortesias', 'R-03 · Redução Contratual'],
     erros: ['Discutir com o cliente ou minimizar o problema relatado.', 'Pular direto para negociar a multa de cancelamento sem tentar reparar a insatisfação primeiro.'],
     estagio: 'Etapa 1 · resolver na base antes de qualquer escalonamento.',
+    mensagens: [
+      { tom: 'Escuta / acolhimento', texto: 'Sinto muito que isso tenha acontecido, e quero entender exatamente o que houve para conseguir resolver da forma certa. Pode me contar com calma o que aconteceu? Antes de falar em cancelamento, quero ver o que está ao meu alcance para reparar isso com vocês.' },
+      { tom: 'Após entender o problema', texto: 'Peço desculpas por isso — não é o padrão que a gente busca ter com vocês. Deixa eu já te trazer uma solução concreta, e não só um pedido de desculpas.' }
+    ],
     casoRealId: 'eduarda'
   },
   {
@@ -204,6 +221,9 @@ const MOTIVOS = [
     alternativas: ['R-03 · Redução Contratual', 'R-02 · Cortesias, como reparação pontual'],
     erros: ['Ignorar a reclamação técnica e ir direto para a negociação financeira.'],
     estagio: 'Etapa 1-2.',
+    mensagens: [
+      { tom: 'Abertura / diagnóstico', texto: 'Entendo a preocupação. Me conta com mais detalhes o que te deixou inseguro(a) em relação ao espaço ou serviço — quero verificar com o time se existe uma alternativa dentro da nossa estrutura que resolva isso antes de pensarmos em qualquer outra coisa.' }
+    ],
     casoRealId: null
   },
   {
@@ -216,6 +236,9 @@ const MOTIVOS = [
     alternativas: ['R-02 · Cortesias, se fizer sentido reforçar valor percebido'],
     erros: ['Falar mal do concorrente.', 'Entrar direto em queda de preço sem antes reforçar diferenciais.'],
     estagio: 'Etapa 1.',
+    mensagens: [
+      { tom: 'Comparativo, sem atacar o concorrente', texto: 'Que bom que vocês estão pesquisando com cuidado, isso mostra o quanto esse dia é importante. Pode me contar o que mais chamou atenção na outra proposta? Assim consigo te mostrar com clareza o que está incluso aqui e o que normalmente pega os casais de surpresa em propostas mais baratas.' }
+    ],
     casoRealId: null
   },
   {
@@ -228,6 +251,9 @@ const MOTIVOS = [
     alternativas: ['R-07 · Promissória, se fizer sentido financeiramente', 'R-08 · Multa de Cancelamento'],
     erros: ['Tentar reter emocionalmente ou fazer perguntas invasivas sobre o relacionamento.'],
     estagio: 'Etapa 4-5 · normalmente segue direto para encerramento.',
+    mensagens: [
+      { tom: 'Respeitoso, sem argumentação comercial', texto: 'Sinto muito por isso. Vou te explicar com calma como funciona o processo a partir daqui, e fico à disposição para qualquer dúvida — pode ficar tranquilo(a) que vamos conduzir tudo com respeito ao momento de vocês.' }
+    ],
     casoRealId: null
   },
   {
@@ -240,6 +266,9 @@ const MOTIVOS = [
     alternativas: ['R-04 · Congelamento de Parcelas', 'R-05 · Alteração de Data', 'R-08 · Multa de Cancelamento, com isenção quando aplicável'],
     erros: ['Insistir comercialmente diante de um motivo de saúde ou luto.', 'Pular etapas leves e ir direto para a negociação de multa sem tentar acolher com alternativas de tempo.'],
     estagio: 'Etapa 2 antes da Etapa 4 — não pular direto para a multa.',
+    mensagens: [
+      { tom: 'Acolhimento, com muita sensibilidade', texto: 'Sinto muito por tudo que estão passando. Antes de falarmos em cancelar, quero entender: é algo que muda os planos por um tempo ou definitivamente? Se for algo temporário, talvez consigamos pausar ou remarcar sem precisar encerrar o contrato.' }
+    ],
     casoRealId: 'fabiola'
   },
   {
@@ -252,6 +281,9 @@ const MOTIVOS = [
     alternativas: ['R-06 · Liberação de Data, mantendo vínculo por pagamentos mensais', 'R-05 · Alteração de Data'],
     erros: ['Não considerar transferência de unidade antes de tratar como perda do cliente.'],
     estagio: 'Etapa 2-3.',
+    mensagens: [
+      { tom: 'Abertura / diagnóstico', texto: 'Entendo perfeitamente. Antes de tratarmos isso como um cancelamento, deixa eu verificar se temos alguma unidade Indaiá na região para onde vocês estão indo — às vezes dá para transferir o evento em vez de encerrar o contrato.' }
+    ],
     casoRealId: null
   },
   {
@@ -264,6 +296,9 @@ const MOTIVOS = [
     alternativas: ['Definido conforme o diagnóstico revelar.'],
     erros: ['Avançar para uma liberação comercial sem entender o motivo real.'],
     estagio: 'Etapa 0 · sempre começar pelo diagnóstico.',
+    mensagens: [
+      { tom: 'Acolhedor + investigativo + comercial', texto: 'Entendi. Antes de seguirmos com o processo de cancelamento, queria entender um pouco melhor o que levou vocês a essa decisão. Dependendo do motivo, talvez exista alguma alternativa que possamos analisar juntos antes de encerrarmos o contrato.' }
+    ],
     casoRealId: 'diego'
   }
 ];
@@ -396,6 +431,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNav();
   initSearch();
   initBackToTop();
+  initTopicFinder();
 });
 
 function el(tag, opts = {}, children = []) {
@@ -439,6 +475,11 @@ function renderMotivos() {
     details.appendChild(summary);
 
     const body = el('div', { class: 'motivo-body' });
+    if (m.mensagens && m.mensagens.length) {
+      const h4 = el('h4', { text: 'Textos prontos para usar' });
+      body.appendChild(h4);
+      m.mensagens.forEach(msg => body.appendChild(buildMensagemBubble(msg)));
+    }
     body.appendChild(sectionBlock('Como identificar', m.comoIdentificar));
     body.appendChild(sectionBlock('Perguntas para diagnóstico', m.perguntas));
     body.appendChild(labelPara('Objetivo da argumentação', m.objetivo));
@@ -458,6 +499,40 @@ function renderMotivos() {
   });
 }
 
+function buildMensagemBubble(msg) {
+  const wrap = el('div', { attrs: { style: 'margin-bottom:10px' } });
+  const tomRow = el('div', { class: 's-tom', attrs: { style: 'display:flex;justify-content:space-between;align-items:center;gap:8px' } });
+  tomRow.appendChild(el('span', { text: msg.tom }));
+  const copyBtn = el('button', { class: 'copy-btn', text: '📋 Copiar', attrs: { type: 'button' } });
+  copyBtn.addEventListener('click', () => copyToClipboard(msg.texto, copyBtn));
+  tomRow.appendChild(copyBtn);
+  wrap.appendChild(tomRow);
+  wrap.appendChild(el('div', { class: 'whats-bubble', text: msg.texto }));
+  return wrap;
+}
+
+function copyToClipboard(text, btn) {
+  const done = () => {
+    const original = btn.textContent;
+    btn.textContent = '✓ Copiado';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 1600);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(done).catch(done);
+  } else {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+    done();
+  }
+}
+
 function sectionBlock(titulo, itens) {
   const wrap = el('div');
   wrap.appendChild(el('h4', { text: titulo }));
@@ -471,6 +546,150 @@ function labelPara(titulo, texto) {
   wrap.appendChild(el('h4', { text: titulo }));
   wrap.appendChild(el('p', { text: texto }));
   return wrap;
+}
+
+/* ---------- Buscador de motivo (página inicial) ----------
+   Sinônimos ampliam o que o consultor pode digitar além do título oficial
+   do motivo — não alteram nenhuma regra de negócio, só ajudam a busca. */
+const TOPIC_SYNONYMS = {
+  financeiro: ['dinheiro', 'parcela', 'desemprego', 'renda', 'pagamento', 'sem grana', 'orçamento'],
+  'mudanca-planos': ['desistiu', 'não vai mais casar', 'mudou de ideia', 'cancelar tudo'],
+  'mudanca-data': ['remarcar', 'adiar', 'antecipar', 'nova data', 'trocar data'],
+  'reducao-convidados': ['menos convidados', 'diminuiu a lista', 'lista menor'],
+  'insatisfacao-atendimento': ['reclamação', 'enganado', 'mal atendido', 'sumiu', 'demora'],
+  'insatisfacao-servico': ['espaço', 'estrutura', 'fornecedor', 'cardápio', 'buffet ruim'],
+  concorrencia: ['concorrente', 'outro buffet', 'outro espaço', 'mais barato', 'achou mais barato'],
+  separacao: ['terminaram', 'rompeu', 'separaram', 'brigaram', 'noivado desfeito'],
+  familiar: ['doença', 'luto', 'saúde', 'falecimento', 'problema de saúde'],
+  'mudanca-cidade': ['mudou de cidade', 'se mudou', 'vai morar fora'],
+  outro: ['não sei', 'não informou']
+};
+
+function normalizeTopic(s) {
+  return (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim();
+}
+
+function matchMotivos(query) {
+  const q = normalizeTopic(query);
+  if (!q) return [];
+  return MOTIVOS.filter(m => {
+    const hay = normalizeTopic(m.titulo + ' ' + m.desc + ' ' + m.id + ' ' + (TOPIC_SYNONYMS[m.id] || []).join(' '));
+    return hay.includes(q);
+  });
+}
+
+function initTopicFinder() {
+  const chipsWrap = document.getElementById('topicChips');
+  const input = document.getElementById('topicSearch');
+  const suggestWrap = document.getElementById('topicSuggestions');
+  const resultWrap = document.getElementById('topicResult');
+  if (!chipsWrap || !input || !resultWrap) return;
+
+  MOTIVOS.forEach(m => {
+    const chip = el('button', { class: 'topic-chip', attrs: { type: 'button', id: 'chip-' + m.id } }, [
+      el('span', { text: m.icone }),
+      el('span', { text: m.titulo })
+    ]);
+    chip.addEventListener('click', () => selectMotivoTopic(m.id));
+    chipsWrap.appendChild(chip);
+  });
+
+  input.addEventListener('input', () => {
+    const q = input.value;
+    if (!q.trim()) { suggestWrap.hidden = true; suggestWrap.innerHTML = ''; return; }
+    const matches = matchMotivos(q).slice(0, 6);
+    suggestWrap.innerHTML = '';
+    if (!matches.length) {
+      suggestWrap.appendChild(el('div', { class: 'sr-empty', text: 'Nenhum motivo encontrado para "' + q + '". Veja os botões abaixo.' }));
+    } else {
+      matches.forEach(m => {
+        const item = el('button', { class: 'topic-suggestion', attrs: { type: 'button' } }, [
+          el('span', { text: m.icone }),
+          el('span', { text: m.titulo })
+        ]);
+        item.addEventListener('click', () => { input.value = ''; suggestWrap.hidden = true; selectMotivoTopic(m.id); });
+        suggestWrap.appendChild(item);
+      });
+    }
+    suggestWrap.hidden = false;
+  });
+
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const matches = matchMotivos(input.value);
+      if (matches.length) { selectMotivoTopic(matches[0].id); input.value = ''; suggestWrap.hidden = true; }
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!suggestWrap.contains(e.target) && e.target !== input) suggestWrap.hidden = true;
+  });
+
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href^="#motivo-"]');
+    if (!a) return;
+    e.preventDefault();
+    const id = a.getAttribute('href').slice(1);
+    const details = document.getElementById(id);
+    if (details) { details.open = true; jumpToAndHighlight(id); }
+  });
+}
+
+function selectMotivoTopic(id) {
+  const m = MOTIVOS.find(x => x.id === id);
+  if (!m) return;
+
+  document.querySelectorAll('.topic-chip').forEach(c => c.classList.toggle('active', c.id === 'chip-' + id));
+
+  const resultWrap = document.getElementById('topicResult');
+  resultWrap.innerHTML = '';
+  resultWrap.classList.add('show');
+
+  resultWrap.appendChild(el('div', { class: 'topic-result-head' }, [
+    el('span', { class: 'm-icon', text: m.icone }),
+    el('h3', { text: m.titulo }),
+    el('span', { class: 'pill pill-alert', text: m.estagio.split('·')[0].trim() })
+  ]));
+  resultWrap.appendChild(el('p', { class: 'topic-result-desc', text: m.desc }));
+
+  if (m.mensagens && m.mensagens.length) {
+    resultWrap.appendChild(el('h4', { text: 'Textos prontos para usar' }));
+    m.mensagens.forEach(msg => resultWrap.appendChild(buildMensagemBubble(msg)));
+  }
+
+  if (m.perguntas && m.perguntas.length) {
+    resultWrap.appendChild(el('h4', { text: 'Perguntas-chave' }));
+    const ul = el('ul', { class: 'topic-perguntas' });
+    m.perguntas.slice(0, 4).forEach(p => ul.appendChild(el('li', { text: p })));
+    resultWrap.appendChild(ul);
+  }
+
+  if (m.alternativas && m.alternativas.length) {
+    resultWrap.appendChild(el('h4', { text: 'Liberações aplicáveis' }));
+    const row = el('div', { class: 'caso-rcodes' });
+    m.alternativas.forEach(a => {
+      const codeMatch = a.match(/R-0\d/);
+      const chip = el('button', { class: 'rcode-chip', text: a, attrs: { type: 'button' } });
+      if (codeMatch) {
+        const rid = 'r' + codeMatch[0].slice(2);
+        chip.addEventListener('click', () => jumpToAndHighlight('step-' + rid));
+      } else {
+        chip.disabled = true;
+      }
+      row.appendChild(chip);
+    });
+    resultWrap.appendChild(row);
+  }
+
+  const caso = CASOS.find(c => c.id === m.casoRealId);
+  const linksRow = el('div', { class: 'topic-result-links' });
+  linksRow.appendChild(el('a', { text: 'Ver ficha completa deste motivo ↓', attrs: { href: '#motivo-' + m.id } }));
+  if (caso) {
+    linksRow.appendChild(el('a', { text: 'Ver caso real: ' + caso.nome + ' ↓', attrs: { href: '#caso-' + caso.id } }));
+  }
+  resultWrap.appendChild(linksRow);
+
+  resultWrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
 /* ---------- Diagnóstico ---------- */
@@ -605,27 +824,14 @@ function jumpToAndHighlight(targetId) {
   setTimeout(() => target.classList.remove('highlight'), 2200);
 }
 
-/* ---------- Scripts de atendimento ---------- */
+/* ---------- Scripts de atendimento ----------
+   Scripts específicos por motivo agora vivem em MOTIVOS[].mensagens e
+   aparecem na busca da página inicial. Aqui ficam só os de uso geral,
+   que não dependem de já saber o motivo. */
 const SCRIPTS = [
   {
     id: 'primeiro-contato', titulo: 'Primeiro contato', tom: 'Acolhedor + investigativo + comercial',
     texto: 'Entendi. Antes de seguirmos com o processo de cancelamento, queria entender um pouco melhor o que levou vocês a essa decisão. Dependendo do motivo, talvez exista alguma alternativa que possamos analisar juntos antes de encerrarmos o contrato.'
-  },
-  {
-    id: 'financeiro-script', titulo: 'Cliente diz que o motivo é financeiro', tom: 'Consultivo',
-    texto: 'Imagino que essa decisão não seja fácil depois de todo o planejamento até aqui. Antes de pensarmos em cancelar, me conta: a dificuldade está mais no valor das parcelas ou no valor total do contrato? Dependendo da resposta, talvez consigamos reorganizar as condições de pagamento sem precisar chegar ao cancelamento.'
-  },
-  {
-    id: 'concorrencia-script', titulo: 'Cliente diz que encontrou outro local', tom: 'Comparativo, sem atacar o concorrente',
-    texto: 'Que bom que vocês estão pesquisando com cuidado, isso mostra o quanto esse dia é importante. Pode me contar o que mais chamou atenção na outra proposta? Assim consigo te mostrar com clareza o que está incluso aqui e o que normalmente pega os casais de surpresa em propostas mais baratas.'
-  },
-  {
-    id: 'reducao-script', titulo: 'Cliente quer reduzir o evento', tom: 'Adequação de projeto',
-    texto: 'Faz total sentido ajustar o evento para o novo número de convidados. Antes de pensarmos em cancelar, deixa eu entender quantas pessoas vocês estão projetando agora — muito provavelmente conseguimos adequar o contrato ao novo tamanho, sem precisar encerrar tudo.'
-  },
-  {
-    id: 'insatisfacao-script', titulo: 'Cliente está insatisfeito', tom: 'Escuta antes de qualquer argumento comercial',
-    texto: 'Sinto muito que isso tenha acontecido, e quero entender exatamente o que houve para conseguir resolver da forma certa. Pode me contar com calma o que aconteceu? Antes de falar em cancelamento, quero ver o que está ao meu alcance para reparar isso com vocês.'
   },
   {
     id: 'nao-negociar-script', titulo: 'Cliente não quer negociar', tom: 'Respeitoso, sem insistência excessiva',
