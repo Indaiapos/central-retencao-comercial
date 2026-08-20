@@ -1169,56 +1169,8 @@ function registerPrecosInIndex() {
 
 function initSearch() {
   const input = document.getElementById('masterSearch');
-  const chipsWrap = document.getElementById('quickChips');
   const resultsArea = document.getElementById('searchResults');
   if (!input || !resultsArea) return;
-
-  function buildChip(label, entry) {
-    const chip = el('button', { class: 'quick-chip', text: label, attrs: { type: 'button' } });
-    chip.addEventListener('click', () => {
-      document.querySelectorAll('.quick-chip').forEach(c => c.classList.remove('active'));
-      chip.classList.add('active');
-      input.value = entry.title;
-      resultsArea.classList.add('show');
-      renderResults([entry]);
-      resultsArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-    return chip;
-  }
-
-  if (chipsWrap) {
-    chipsWrap.appendChild(el('span', { class: 'chip-divider', text: 'Motivos de Cancelamento' }));
-    MOTIVOS.forEach(m => {
-      const entry = SEARCH_INDEX.find(e => e.id === 'motivo-' + m.id);
-      chipsWrap.appendChild(buildChip(m.icone + ' ' + m.titulo, entry));
-    });
-    chipsWrap.appendChild(el('span', { class: 'chip-divider', text: 'Procedimentos Pós-Venda' }));
-    PROCEDIMENTOS.forEach(p => {
-      const entry = SEARCH_INDEX.find(e => e.id === 'procedimento-' + p.id);
-      chipsWrap.appendChild(buildChip(p.icone + ' ' + p.titulo, entry));
-    });
-    if (PRECOS.length) {
-      chipsWrap.appendChild(el('span', { class: 'chip-divider', text: 'Valores Praticados' }));
-      PRECOS.forEach(cat => {
-        const entry = SEARCH_INDEX.find(e => e.id === 'preco-' + cat.id);
-        chipsWrap.appendChild(buildChip(cat.icone + ' ' + cat.titulo, entry));
-      });
-    }
-    chipsWrap.appendChild(el('span', { class: 'chip-divider', text: 'Outros temas' }));
-    [
-      ['bundle-escada', '🪜 Escada completa'],
-      ['bundle-matriz', '📋 Matriz de Liberações'],
-      ['bundle-diagnostico', '🔎 Diagnóstico do Cliente'],
-      ['bundle-naofazer', '🚫 O que não fazer'],
-      ['bundle-encerramento', '✅ Encerramento'],
-      ['bundle-arvore', '🌳 Árvore de Decisão'],
-      ['bundle-casos', '🗂️ Casos Reais'],
-      ['bundle-indicadores', '📊 Indicadores']
-    ].forEach(([id, label]) => {
-      const entry = SEARCH_INDEX.find(e => e.id === id);
-      chipsWrap.appendChild(buildChip(label, entry));
-    });
-  }
 
   function renderResults(entries) {
     resultsArea.innerHTML = '';
@@ -1235,7 +1187,6 @@ function initSearch() {
   }
 
   input.addEventListener('input', () => {
-    document.querySelectorAll('.quick-chip').forEach(c => c.classList.remove('active'));
     const q = input.value;
     if (!q.trim()) {
       resultsArea.innerHTML = '';

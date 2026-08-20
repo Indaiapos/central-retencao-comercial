@@ -97,32 +97,6 @@ button { font-family: inherit; cursor: pointer; }
 .master-search-wrap input::placeholder { color: var(--ink-faint); }
 .master-search-wrap input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px var(--gold-soft); text-align: left; }
 
-.quick-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
-.chip-divider {
-  width: 100%;
-  text-align: center;
-  font-size: .7rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 700;
-  color: var(--ink-faint);
-  margin: 10px 0 2px;
-}
-.quick-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 9px 15px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  font-size: .85rem;
-  font-weight: 600;
-  color: var(--ink-soft);
-}
-.quick-chip:hover { border-color: var(--gold); color: var(--ink); }
-.quick-chip.active { background: var(--gold-soft); border-color: var(--gold); color: var(--gold-strong); }
-
 /* ---------- Search results ---------- */
 .search-results-area { display: none; margin-top: 36px; }
 .search-results-area.show { display: block; }
