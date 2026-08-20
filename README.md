@@ -1,0 +1,55 @@
+# Central de Retenção Comercial — Indaiá Eventos
+
+Portal interno de pós-vendas para orientar consultores, supervisores e gerentes no atendimento de clientes que manifestam intenção de cancelar contratos. Transforma o cancelamento em um fluxo comercial estruturado: **ouvir → entender → diagnosticar → argumentar → solucionar → negociar → reter** — e só depois, se necessário, **cancelar**.
+
+Uso interno da equipe comercial. Contém nomes de clientes reais em casos de estudo — não publicar ou compartilhar este conteúdo fora da empresa.
+
+## Estrutura
+
+```
+index.html   → estrutura da página (seções e pontos de montagem)
+style.css    → identidade visual (cores, tipografia, layout responsivo)
+script.js    → todo o conteúdo (dados) + lógica de renderização/interação
+README.md    → este arquivo
+```
+
+Todo o conteúdo textual (motivos, escada de liberações, casos reais, scripts, matriz, indicadores) vive em objetos JavaScript no topo do `script.js`. O HTML é montado automaticamente a partir desses dados — não é necessário editar HTML para atualizar conteúdo.
+
+## Como editar
+
+### Adicionar ou alterar um motivo de cancelamento
+Edite o array `MOTIVOS` em `script.js`. Cada item aceita:
+- `titulo`, `icone`, `desc`
+- `comoIdentificar[]`, `perguntas[]`, `objetivo`, `argumentos[]`, `alternativas[]`, `erros[]`, `estagio`
+- `casoRealId`: o `id` de um item de `CASOS` para linkar um caso real, ou `null` se ainda não houver caso registrado. **Não invente um caso real** — deixe `null` até haver um registro de verdade.
+
+### Atualizar a escada de liberações (R-01 a R-09)
+Edite o array `RSTEPS`. Os percentuais, prazos e regras vieram do "Manual de Negociação — Protocolo R-09 · Retenção" fornecido pela gestão. **Não altere valores sem confirmação oficial** — se uma regra nova chegar, atualize o objeto correspondente e mantenha as demais intactas.
+
+### Adicionar um novo caso real
+Edite o array `CASOS`. Campos: `nome`, `evento`, `categoria`, `status` (`cancelado` | `andamento` | `disputa`), `motivo`, `oferta`, `rcodes[]` (ids de `RSTEPS` usados no caso, ex.: `['r03','r08']`) e `tatica` (leitura tática — o que o caso ensina sobre a aderência à escada). Casos vêm do histórico do Indaiá Chat; ao adicionar um novo, confirme os fatos antes de publicar.
+
+### Matriz de Liberações (alçada por cargo)
+A matriz (`MATRIZ`, derivada automaticamente de `RSTEPS`) hoje marca a alçada por cargo como **A DEFINIR**, porque a gestão ainda não confirmou o que cada nível (Consultor / Supervisor / Gerente / Diretoria) pode aprovar sozinho. Quando essa informação for fornecida, adicione os campos `consultor`, `supervisor`, `gerente`, `diretoria` a cada item de `RSTEPS` (valores sugeridos: `'autorizado'`, `'aprovacao'`, `'nao_autorizado'`) e ajuste `renderMatriz()` em `script.js` para exibir os ícones (✓ / ⚠ / ✕) em vez do badge "A DEFINIR".
+
+### Atualizar scripts de atendimento
+Edite o array `SCRIPTS`. Cada item tem `titulo`, `tom` e `texto` (mensagem de WhatsApp).
+
+### Atualizar indicadores
+Os números em `#overview` (cards de estatística) e em `INDICADORES_DEMO` são **dados demonstrativos**, identificados como tal na tela. O bloco "Casos reais analisados" já é calculado automaticamente a partir de `CASOS` (contagem real por categoria). Quando houver uma fonte de dados real (planilha, banco, API), substitua os valores fixos por uma chamada que popule esses mesmos objetos antes da renderização — a função `renderOverviewStats()` e `renderIndicadores()` em `script.js` são os pontos de entrada.
+
+### Árvore de decisão
+Edite o objeto `ARVORE`. Cada ramo tem uma `pergunta` e um mapa de `opcoes`, onde cada opção define o `texto` da recomendação e os `rcodes` relacionados (para o botão de atalho que leva até a etapa correspondente na escada).
+
+## Publicar no GitHub Pages
+
+1. Crie um repositório no GitHub (ou use um existente) e adicione estes arquivos.
+2. Faça commit e push para a branch principal.
+3. Em **Settings → Pages**, selecione a branch (`main`) e a pasta raiz (`/`).
+4. Aguarde alguns minutos — o site ficará disponível em `https://<usuario>.github.io/<repositorio>/`.
+
+Não há build step nem dependências externas: o projeto funciona diretamente ao abrir `index.html` no navegador ou publicado em qualquer hospedagem estática.
+
+## Sobre as informações de negócio
+
+Os percentuais, prazos e regras contratuais deste portal vêm de documentos oficiais fornecidos pela gestão (Manual de Negociação R-09) ou de casos reais registrados no Indaiá Chat. Nada foi inventado. Onde a informação ainda não existe (ex.: alçada de aprovação por cargo), o portal marca claramente como **A DEFINIR** — mantenha essa marcação até receber a confirmação oficial.

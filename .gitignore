@@ -1,0 +1,2 @@
+# Configuração local de MCP — contém API key, nunca deve ir para um repositório público.
+.mcp.json
