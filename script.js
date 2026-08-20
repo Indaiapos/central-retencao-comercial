@@ -56,10 +56,11 @@ const RSTEPS = [
     intensidade: 3, label: 'Moderada',
     desc: 'Remarcar o evento com taxa proporcional — ou isenta — conforme a antecedência.',
     prazos: [
-      { rotulo: 'Curto prazo', valor: 'taxa mín. 20%' },
-      { rotulo: 'Longo prazo', valor: 'isenção mínima' }
+      { rotulo: 'Curto prazo (< 180 dias) · abre em', valor: '50% · mín. 25%' },
+      { rotulo: 'Longo prazo (> 180 dias) · abre em', valor: '20% · mín. 10%' }
     ],
     alerta: 'Desconto maior na taxa — conversar com a gestão.',
+    nota: 'Valores atualizados a partir da planilha de Valores Praticados (substitui a regra anterior). Ver detalhe editável em "Valores Praticados → Alteração de Data".',
     sinonimos: ['remarcar', 'trocar data', 'mudar data', 'taxa de alteracao']
   },
   {
@@ -562,6 +563,32 @@ const INDICADORES_DEMO = [
   { label: 'Outros', valor: 6 }
 ];
 
+/* -------------------------------------------------------------------------
+   9. VALORES PRATICADOS (PREÇOS)
+   Carregado em tempo de execução a partir de precos.json — é o mesmo
+   arquivo que a página de admin (admin.html) edita e salva direto no
+   GitHub. Por isso os dados não ficam aqui como um array fixo: PRECOS
+   começa vazio e é preenchido pela função loadPrecos() antes da busca
+   ser inicializada. Fonte original: planilha "[PÓS-VENDAS] NEGOCIAÇÃO
+   VALORES" — valores sujeitos a reajuste, por isso editáveis pelo admin.
+   ------------------------------------------------------------------------- */
+let PRECOS = [];
+let PRECOS_META = {};
+
+async function loadPrecos() {
+  try {
+    const res = await fetch('precos.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    PRECOS = data.categorias || [];
+    PRECOS_META = { atualizadoEm: data.atualizadoEm || null };
+  } catch (e) {
+    console.warn('Não foi possível carregar precos.json (normal se estiver abrindo o arquivo direto do disco, sem servidor):', e);
+    PRECOS = [];
+    PRECOS_META = {};
+  }
+}
+
 /* ==========================================================================
    HELPERS DE DOM
    ========================================================================== */
@@ -692,6 +719,7 @@ function buildRStepCard(r) {
     right.appendChild(row);
   }
   if (r.alerta) right.appendChild(el('span', { class: 'r-alert', text: '⚠ ' + r.alerta }));
+  if (r.nota) right.appendChild(el('p', { attrs: { style: 'margin-top:8px;font-size:.78rem;color:var(--ink-faint)' }, text: r.nota }));
   card.appendChild(right);
   return card;
 }
@@ -802,6 +830,38 @@ function buildProcedimentoResult(p) {
     card.appendChild(sectionBlock('Erros a evitar', p.erros));
   }
   return card;
+}
+
+function buildPrecoCategoriaResult(cat) {
+  const wrap = el('div', { class: 'card bundle-card' });
+  wrap.appendChild(el('h3', { html: cat.icone + ' ' + cat.titulo + ' <span class="pill pill-real">valores praticados</span>' }));
+  if (cat.desc) wrap.appendChild(el('p', { text: cat.desc }));
+
+  const tableWrap = el('div', { class: 'table-wrap' });
+  const table = el('table', { class: 'matriz' });
+  const headRow = el('tr');
+  headRow.appendChild(el('th', { text: 'Item' }));
+  (cat.colunas || []).forEach(c => headRow.appendChild(el('th', { text: c })));
+  const thead = el('thead');
+  thead.appendChild(headRow);
+  table.appendChild(thead);
+
+  const tbody = el('tbody');
+  (cat.itens || []).forEach(item => {
+    const tr = el('tr');
+    tr.appendChild(el('td', { html: '<b>' + item.nome + '</b>' }));
+    (item.valores || []).forEach(v => tr.appendChild(el('td', { text: v })));
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+  tableWrap.appendChild(table);
+  wrap.appendChild(tableWrap);
+
+  if (cat.observacao) {
+    wrap.appendChild(el('div', { class: 'callout info', attrs: { style: 'margin-top:14px' }, text: cat.observacao }));
+  }
+  wrap.appendChild(el('p', { attrs: { style: 'margin-top:14px;font-size:.76rem;color:var(--ink-faint)' }, text: 'Valores sujeitos a reajuste · atualizado em ' + (PRECOS_META.atualizadoEm || '—') + '.' }));
+  return wrap;
 }
 
 function buildEscadaCompletaBlock() {
@@ -1088,10 +1148,24 @@ SEARCH_INDEX.push({
 /* ==========================================================================
    BUSCA — página inicial é só isto: input + chips + resultados filtrados
    ========================================================================== */
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadPrecos();
+  registerPrecosInIndex();
   initSearch();
   initBackToTop();
 });
+
+function registerPrecosInIndex() {
+  PRECOS.forEach(cat => {
+    SEARCH_INDEX.push({
+      id: 'preco-' + cat.id,
+      type: 'Valores praticados',
+      title: cat.titulo,
+      keywords: normalize(cat.titulo + ' ' + (cat.desc || '') + ' ' + cat.id + ' ' + (cat.sinonimos || []).join(' ') + ' ' + (cat.itens || []).map(i => i.nome).join(' ')),
+      render: () => buildPrecoCategoriaResult(cat)
+    });
+  });
+}
 
 function initSearch() {
   const input = document.getElementById('masterSearch');
@@ -1123,6 +1197,13 @@ function initSearch() {
       const entry = SEARCH_INDEX.find(e => e.id === 'procedimento-' + p.id);
       chipsWrap.appendChild(buildChip(p.icone + ' ' + p.titulo, entry));
     });
+    if (PRECOS.length) {
+      chipsWrap.appendChild(el('span', { class: 'chip-divider', text: 'Valores Praticados' }));
+      PRECOS.forEach(cat => {
+        const entry = SEARCH_INDEX.find(e => e.id === 'preco-' + cat.id);
+        chipsWrap.appendChild(buildChip(cat.icone + ' ' + cat.titulo, entry));
+      });
+    }
     chipsWrap.appendChild(el('span', { class: 'chip-divider', text: 'Outros temas' }));
     [
       ['bundle-escada', '🪜 Escada completa'],

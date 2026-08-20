@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin · Valores Praticados · Indaiá Eventos</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="stylesheet" href="style.css" />
+<style>
+  .admin-wrap { max-width: 920px; margin: 0 auto; padding: 32px 24px 80px; }
+  .admin-gate { max-width: 520px; margin: 60px auto; }
+  .admin-gate .card { padding: 28px; }
+  .admin-gate label { display: block; font-size: .84rem; font-weight: 700; margin-bottom: 6px; color: var(--ink-soft); }
+  .admin-gate input { width: 100%; padding: 11px 14px; border-radius: var(--radius-md); border: 1px solid var(--border); font-size: .92rem; margin-bottom: 12px; }
+  .admin-gate button, .btn { background: var(--gold-strong); color: #fff; border: none; padding: 11px 20px; border-radius: 999px; font-weight: 700; font-size: .88rem; cursor: pointer; }
+  .admin-gate button:hover, .btn:hover { opacity: .92; }
+  .btn-secondary { background: var(--surface-2); color: var(--ink); border: 1px solid var(--border); }
+  .btn-danger { background: var(--danger); color: #fff; border: none; }
+  .btn-sm { padding: 6px 12px; font-size: .78rem; }
+  .admin-security-note { font-size: .8rem; color: var(--ink-faint); margin-top: 14px; line-height: 1.5; }
+  .admin-topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 10px; }
+  .admin-status { font-size: .84rem; padding: 10px 14px; border-radius: var(--radius-md); margin-bottom: 18px; display: none; }
+  .admin-status.show { display: block; }
+  .admin-status.ok { background: var(--success-soft); color: var(--success); }
+  .admin-status.err { background: var(--danger-soft); color: var(--danger); }
+  .admin-status.info { background: var(--info-soft); color: var(--info); }
+  .admin-cat { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px 22px; margin-bottom: 20px; box-shadow: var(--shadow); }
+  .admin-cat-head { display: flex; gap: 10px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; }
+  .admin-cat-head input.ac-icone { width: 56px; text-align: center; }
+  .admin-cat-head input.ac-titulo { flex: 1; min-width: 180px; font-weight: 700; font-size: 1rem; }
+  .admin-field { margin-bottom: 12px; }
+  .admin-field label { display: block; font-size: .76rem; text-transform: uppercase; letter-spacing: .4px; font-weight: 700; color: var(--gold-strong); margin-bottom: 4px; }
+  .admin-field input, .admin-field textarea { width: 100%; padding: 9px 12px; border-radius: var(--radius-sm); border: 1px solid var(--border); font-size: .88rem; font-family: var(--font-sans); }
+  .admin-field textarea { resize: vertical; min-height: 44px; }
+  table.admin-itens { width: 100%; border-collapse: collapse; margin: 10px 0; }
+  table.admin-itens th { text-align: left; font-size: .72rem; text-transform: uppercase; color: var(--ink-faint); padding: 4px 6px; }
+  table.admin-itens td { padding: 3px 6px; }
+  table.admin-itens input { width: 100%; padding: 7px 9px; border-radius: var(--radius-sm); border: 1px solid var(--border-soft); font-size: .86rem; }
+  .admin-row-actions { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+  .admin-new-cat { border: 2px dashed var(--border); border-radius: var(--radius-lg); padding: 20px 22px; text-align: center; }
+  .admin-footer-actions { position: sticky; bottom: 0; background: var(--bg); padding: 16px 0; border-top: 1px solid var(--border); display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 20px; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-eyebrow">Indaiá Eventos · Pós-Vendas</span>
+    <span class="brand-title">Admin · Valores Praticados</span>
+  </div>
+</header>
+
+<!-- PORTÃO: pede o token antes de mostrar qualquer coisa -->
+<div class="admin-gate" id="gate">
+  <div class="card">
+    <h2>Entrar no admin</h2>
+    <p>Esta página edita <code>precos.json</code> direto no GitHub. Você precisa de um token pessoal (PAT) com acesso de escrita só a este repositório.</p>
+    <label for="patInput">Token de acesso do GitHub</label>
+    <input id="patInput" type="password" placeholder="github_pat_..." autocomplete="off" />
+    <button id="gateBtn" class="btn">Entrar</button>
+    <div class="admin-security-note">
+      <strong>Como gerar (uma vez só):</strong> GitHub → Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token. Em "Repository access" escolha <em>Only select repositories</em> → <code>Indaiapos/central-retencao-comercial</code>. Em "Permissions" → <em>Contents</em> → <em>Read and write</em>. Nenhuma outra permissão é necessária.<br><br>
+      O token fica salvo só neste navegador (não é enviado para nenhum lugar além do próprio GitHub). Para sair, use "Esquecer token" no topo depois de entrar.
+    </div>
+  </div>
+</div>
+
+<!-- PAINEL: só aparece depois de entrar -->
+<div class="admin-wrap" id="panel" hidden>
+  <div class="admin-topbar">
+    <h1 style="margin:0">Valores Praticados</h1>
+    <div style="display:flex; gap:10px;">
+      <button class="btn btn-secondary btn-sm" id="reloadBtn">↻ Recarregar do GitHub</button>
+      <button class="btn btn-secondary btn-sm" id="forgetBtn">Esquecer token</button>
+    </div>
+  </div>
+
+  <div class="admin-status" id="status"></div>
+
+  <div id="categoriasWrap"></div>
+
+  <div class="admin-new-cat">
+    <p style="margin-bottom:14px">Adicionar uma categoria nova (ex.: Cardápios, Decoração, DJ...)</p>
+    <button class="btn btn-secondary" id="addCatBtn">+ Nova categoria</button>
+  </div>
+
+  <div class="admin-footer-actions">
+    <button class="btn" id="saveBtn">💾 Salvar no GitHub</button>
+    <span style="font-size:.8rem;color:var(--ink-faint)">As mudanças ficam no ar no site em cerca de 1 minuto depois de salvar.</span>
+  </div>
+</div>
+
+<script>
+const OWNER = 'Indaiapos';
+const REPO = 'central-retencao-comercial';
+const FILE_PATH = 'precos.json';
+const BRANCH = 'master';
+const TOKEN_KEY = 'indaia_admin_pat';
+
+let currentSha = null;
+let precos = null; // { atualizadoEm, categorias: [...] }
+
+function getToken() { return localStorage.getItem(TOKEN_KEY) || ''; }
+function setToken(t) { localStorage.setItem(TOKEN_KEY, t); }
+function clearToken() { localStorage.removeItem(TOKEN_KEY); }
+
+function ghHeaders() {
+  return {
+    'Authorization': 'token ' + getToken(),
+    'Accept': 'application/vnd.github+json'
+  };
+}
+
+function utf8ToB64(str) {
+  const bytes = new TextEncoder().encode(str);
+  let binary = '';
+  bytes.forEach(b => binary += String.fromCharCode(b));
+  return btoa(binary);
+}
+function b64ToUtf8(b64) {
+  const binary = atob(b64.replace(/\n/g, ''));
+  const bytes = Uint8Array.from(binary, c => c.charCodeAt(0));
+  return new TextDecoder('utf-8').decode(bytes);
+}
+
+function showStatus(msg, type) {
+  const el = document.getElementById('status');
+  el.textContent = msg;
+  el.className = 'admin-status show ' + (type || 'info');
+}
+function hideStatus() {
+  document.getElementById('status').className = 'admin-status';
+}
+
+async function fetchPrecos() {
+  const res = await fetch('https://api.github.com/repos/' + OWNER + '/' + REPO + '/contents/' + FILE_PATH + '?ref=' + BRANCH, {
+    headers: ghHeaders()
+  });
+  if (res.status === 401 || res.status === 403) throw new Error('Token inválido ou sem permissão. Verifique o token e tente de novo.');
+  if (!res.ok) throw new Error('Erro ao buscar precos.json: HTTP ' + res.status);
+  const data = await res.json();
+  currentSha = data.sha;
+  return JSON.parse(b64ToUtf8(data.content));
+}
+
+async function savePrecos(newData) {
+  const content = utf8ToB64(JSON.stringify(newData, null, 2));
+  const res = await fetch('https://api.github.com/repos/' + OWNER + '/' + REPO + '/contents/' + FILE_PATH, {
+    method: 'PUT',
+    headers: Object.assign({ 'Content-Type': 'application/json' }, ghHeaders()),
+    body: JSON.stringify({
+      message: 'Atualiza valores praticados (via admin)',
+      content: content,
+      sha: currentSha,
+      branch: BRANCH
+    })
+  });
+  if (res.status === 409) throw new Error('Alguém salvou uma versão mais nova enquanto você editava. Clique em "Recarregar do GitHub" e refaça suas mudanças.');
+  if (res.status === 401 || res.status === 403) throw new Error('Token inválido ou sem permissão de escrita.');
+  if (!res.ok) {
+    const t = await res.text();
+    throw new Error('Erro ao salvar: HTTP ' + res.status + ' — ' + t.slice(0, 200));
+  }
+  const data = await res.json();
+  currentSha = data.content.sha;
+  return data;
+}
+
+/* ---------- Render do formulário ---------- */
+function render() {
+  const wrap = document.getElementById('categoriasWrap');
+  wrap.innerHTML = '';
+  precos.categorias.forEach((cat, catIdx) => wrap.appendChild(renderCategoria(cat, catIdx)));
+}
+
+function renderCategoria(cat, catIdx) {
+  const box = document.createElement('div');
+  box.className = 'admin-cat';
+
+  const head = document.createElement('div');
+  head.className = 'admin-cat-head';
+  head.innerHTML =
+    '<input class="ac-icone" value="' + escAttr(cat.icone || '') + '" maxlength="4" />' +
+    '<input class="ac-titulo" value="' + escAttr(cat.titulo || '') + '" />' +
+    '<button class="btn btn-danger btn-sm" data-action="remove-cat">🗑 Remover categoria</button>';
+  head.querySelector('.ac-icone').addEventListener('input', e => cat.icone = e.target.value);
+  head.querySelector('.ac-titulo').addEventListener('input', e => cat.titulo = e.target.value);
+  head.querySelector('[data-action="remove-cat"]').addEventListener('click', () => {
+    if (confirm('Remover a categoria "' + cat.titulo + '"?')) {
+      precos.categorias.splice(catIdx, 1);
+      render();
+    }
+  });
+  box.appendChild(head);
+
+  box.appendChild(fieldTextarea('Descrição', cat.desc || '', v => cat.desc = v));
+  box.appendChild(fieldInput('Sinônimos de busca (separados por vírgula)', (cat.sinonimos || []).join(', '), v => cat.sinonimos = v.split(',').map(s => s.trim()).filter(Boolean)));
+
+  const colunasField = fieldInput('Colunas de valor (separadas por vírgula)', (cat.colunas || []).join(', '), null);
+  const colunasInput = colunasField.querySelector('input');
+  const applyColBtn = document.createElement('button');
+  applyColBtn.className = 'btn btn-secondary btn-sm';
+  applyColBtn.textContent = '🔄 Aplicar colunas';
+  applyColBtn.style.marginTop = '6px';
+  applyColBtn.addEventListener('click', () => {
+    const novasColunas = colunasInput.value.split(',').map(s => s.trim()).filter(Boolean);
+    const oldLen = (cat.colunas || []).length;
+    cat.colunas = novasColunas;
+    (cat.itens || []).forEach(item => {
+      const vals = item.valores || [];
+      const novo = novasColunas.map((_, i) => vals[i] !== undefined ? vals[i] : '');
+      item.valores = novo;
+    });
+    render();
+  });
+  colunasField.appendChild(applyColBtn);
+  box.appendChild(colunasField);
+
+  box.appendChild(renderItensTable(cat));
+
+  const addItemBtn = document.createElement('button');
+  addItemBtn.className = 'btn btn-secondary btn-sm';
+  addItemBtn.textContent = '+ Adicionar item';
+  addItemBtn.addEventListener('click', () => {
+    if (!cat.itens) cat.itens = [];
+    cat.itens.push({ nome: '', valores: (cat.colunas || []).map(() => '') });
+    render();
+  });
+  box.appendChild(addItemBtn);
+
+  box.appendChild(fieldTextarea('Observação (opcional, aparece como aviso no card)', cat.observacao || '', v => cat.observacao = v || null));
+
+  return box;
+}
+
+function renderItensTable(cat) {
+  const table = document.createElement('table');
+  table.className = 'admin-itens';
+  const thead = document.createElement('thead');
+  const headRow = document.createElement('tr');
+  headRow.innerHTML = '<th>Item</th>' + (cat.colunas || []).map(c => '<th>' + escHtml(c) + '</th>').join('') + '<th></th>';
+  thead.appendChild(headRow);
+  table.appendChild(thead);
+
+  const tbody = document.createElement('tbody');
+  (cat.itens || []).forEach((item, itemIdx) => {
+    const tr = document.createElement('tr');
+    const nomeTd = document.createElement('td');
+    const nomeInput = document.createElement('input');
+    nomeInput.value = item.nome || '';
+    nomeInput.addEventListener('input', e => item.nome = e.target.value);
+    nomeTd.appendChild(nomeInput);
+    tr.appendChild(nomeTd);
+
+    (cat.colunas || []).forEach((_, colIdx) => {
+      const td = document.createElement('td');
+      const input = document.createElement('input');
+      input.value = (item.valores && item.valores[colIdx]) || '';
+      input.addEventListener('input', e => {
+        if (!item.valores) item.valores = [];
+        item.valores[colIdx] = e.target.value;
+      });
+      td.appendChild(input);
+      tr.appendChild(td);
+    });
+
+    const rmTd = document.createElement('td');
+    const rmBtn = document.createElement('button');
+    rmBtn.className = 'btn btn-danger btn-sm';
+    rmBtn.textContent = '🗑';
+    rmBtn.addEventListener('click', () => { cat.itens.splice(itemIdx, 1); render(); });
+    rmTd.appendChild(rmBtn);
+    tr.appendChild(rmTd);
+
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+  return table;
+}
+
+function fieldInput(label, value, onInput) {
+  const wrap = document.createElement('div');
+  wrap.className = 'admin-field';
+  wrap.innerHTML = '<label>' + escHtml(label) + '</label>';
+  const input = document.createElement('input');
+  input.value = value;
+  if (onInput) input.addEventListener('input', e => onInput(e.target.value));
+  wrap.appendChild(input);
+  return wrap;
+}
+function fieldTextarea(label, value, onInput) {
+  const wrap = document.createElement('div');
+  wrap.className = 'admin-field';
+  wrap.innerHTML = '<label>' + escHtml(label) + '</label>';
+  const ta = document.createElement('textarea');
+  ta.value = value;
+  ta.addEventListener('input', e => onInput(e.target.value));
+  wrap.appendChild(ta);
+  return wrap;
+}
+function escAttr(s) { return String(s).replace(/"/g, '&quot;'); }
+function escHtml(s) { return String(s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c])); }
+
+/* ---------- Ações principais ---------- */
+document.getElementById('addCatBtn').addEventListener('click', () => {
+  const titulo = prompt('Nome da nova categoria (ex.: Cardápios):');
+  if (!titulo) return;
+  const id = titulo.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+  precos.categorias.push({ id, titulo, icone: '📄', desc: '', sinonimos: [], colunas: ['Valor'], itens: [], observacao: null });
+  render();
+});
+
+document.getElementById('saveBtn').addEventListener('click', async () => {
+  hideStatus();
+  precos.atualizadoEm = new Date().toISOString().slice(0, 10);
+  showStatus('Salvando no GitHub…', 'info');
+  try {
+    await savePrecos(precos);
+    showStatus('✓ Salvo! O site atualiza em ~1 minuto (GitHub Pages precisa reconstruir).', 'ok');
+  } catch (e) {
+    showStatus('Erro ao salvar: ' + e.message, 'err');
+  }
+});
+
+document.getElementById('reloadBtn').addEventListener('click', async () => {
+  hideStatus();
+  showStatus('Recarregando…', 'info');
+  try {
+    precos = await fetchPrecos();
+    render();
+    showStatus('Recarregado do GitHub.', 'ok');
+  } catch (e) {
+    showStatus('Erro ao recarregar: ' + e.message, 'err');
+  }
+});
+
+document.getElementById('forgetBtn').addEventListener('click', () => {
+  clearToken();
+  location.reload();
+});
+
+document.getElementById('gateBtn').addEventListener('click', async () => {
+  const val = document.getElementById('patInput').value.trim();
+  if (!val) return;
+  setToken(val);
+  await bootPanel();
+});
+
+async function bootPanel() {
+  document.getElementById('gate').hidden = true;
+  document.getElementById('panel').hidden = false;
+  showStatus('Carregando dados do GitHub…', 'info');
+  try {
+    precos = await fetchPrecos();
+    render();
+    hideStatus();
+  } catch (e) {
+    document.getElementById('panel').hidden = true;
+    document.getElementById('gate').hidden = false;
+    alert(e.message);
+  }
+}
+
+(function init() {
+  if (getToken()) bootPanel();
+})();
+</script>
+</body>
+</html>

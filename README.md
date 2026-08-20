@@ -62,6 +62,16 @@ Edite o array `SCRIPTS` — só os scripts que **não dependem do motivo** (ex.:
 ### Árvore de decisão
 Edite o objeto `ARVORE`. Cada ramo tem uma `pergunta` e um mapa de `opcoes`, onde cada opção define o `texto` da recomendação e os `rcodes` relacionados (chip que expande o detalhe da etapa correspondente ali mesmo).
 
+### Valores Praticados (preços) e o painel de admin
+Os preços não ficam no `script.js` — ficam em **`precos.json`**, carregado em tempo de execução (`fetch('precos.json')`) porque é o mesmo arquivo que a página **`admin.html`** edita e salva direto no GitHub. Isso significa:
+
+- Editar preço por preço à mão em `precos.json` também funciona (é só JSON), mas o jeito pensado para o dia a dia é abrir `admin.html`, entrar com um token do GitHub e editar pela interface — sem precisar mexer em código.
+- **Como gerar o token** (só uma vez): GitHub → Settings → Developer settings → Personal access tokens → Fine-grained tokens → *Generate new token* → em "Repository access" escolha *Only select repositories* → este repositório → em "Permissions" dê *Contents: Read and write*. Nenhuma outra permissão é necessária. O token fica salvo só no navegador de quem faz login (localStorage) e nunca é enviado a lugar nenhum além da API do próprio GitHub.
+- Cada categoria em `precos.json` tem: `id`, `titulo`, `icone`, `desc`, `sinonimos[]` (ajuda a busca), `colunas[]` (cabeçalhos das colunas de valor, ex.: `["Margem inicial", "Mínimo"]`), `itens[]` (cada um com `nome` e `valores[]`, na mesma ordem de `colunas`) e `observacao` (opcional, vira um aviso no card).
+- Ao salvar pelo admin, o commit vai direto para o GitHub e o GitHub Pages reconstrói o site em cerca de 1 minuto.
+- **Importante:** como é local ao navegador, `fetch('precos.json')` só funciona servido por http(s) — não funciona abrindo `index.html` direto do disco (`file://`) por causa de CORS. Use um servidor local (`npx serve`, `python -m http.server` etc.) para testar, ou teste direto no GitHub Pages.
+- Hoje só existem 3 categorias (Alteração de Data, Taxas para Serviços Terceirizados, Consumação) — as próximas (Cardápios, Decoração, Bebidas por open bar, Serviços, Terceirizados, DJ, Cerimonial, Fotografia, Ateliê de Vestidos, Floral etc.) entram aos poucos, sempre a partir de dados reais confirmados — nunca inventados.
+
 ### Adicionar um novo "tema" de busca (fora dos motivos)
 Coisas como Matriz, Escada completa, Não fazer etc. são entradas manuais no `SEARCH_INDEX` (bloco `bundle-*`) com `keywords` e `render`. Para adicionar um tema novo, siga o mesmo padrão e, se quiser um atalho, adicione um chip na lista `outrosTemas` dentro de `initSearch()`.
 

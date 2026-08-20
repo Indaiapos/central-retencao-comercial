@@ -1,0 +1,74 @@
+{
+  "atualizadoEm": "2026-08-20",
+  "categorias": [
+    {
+      "id": "alteracao-de-data",
+      "titulo": "Alteração de Data",
+      "icone": "📅",
+      "desc": "Percentuais de taxa para alteração de data, conforme a antecedência até a data original contratada.",
+      "sinonimos": ["taxa de alteracao", "remarcar", "trocar data", "valor da alteracao de data", "quanto custa remarcar"],
+      "colunas": ["Margem inicial", "Mínimo"],
+      "itens": [
+        { "nome": "Curto Prazo (inferior a 180 dias)", "valores": ["50,00%", "25,00%"] },
+        { "nome": "Longo Prazo (superior a 180 dias)", "valores": ["20,00%", "10,00%"] },
+        { "nome": "Juros de Parcelamento", "valores": ["1,29%", "0,65%"] }
+      ],
+      "observacao": "Estes valores substituem a regra anterior (taxa mín. 20% curto prazo / isenção mínima longo prazo) que vinha de outro documento e estava desatualizada em relação a esta planilha. \"Margem inicial\" é o valor de abertura da negociação; \"Mínimo\" é o piso até onde dá para negociar sem escalar para a gestão."
+    },
+    {
+      "id": "taxas-terceirizados",
+      "titulo": "Taxas para Serviços Terceirizados",
+      "icone": "🧾",
+      "desc": "Taxa cobrada quando o cliente opta por terceirizar um serviço específico em vez de contratar da Indaiá.",
+      "sinonimos": ["taxa", "taxas", "bartender", "servico terceirizado", "valor da taxa"],
+      "colunas": ["Valor da taxa"],
+      "itens": [
+        { "nome": "Bartender", "valores": ["R$ 700,00"] },
+        { "nome": "Lanche da Madrugada", "valores": ["R$ 1.000,00"] },
+        { "nome": "Serviços de café", "valores": ["R$ 250,00"] },
+        { "nome": "Água Saborizada", "valores": ["R$ 250,00"] },
+        { "nome": "Mesa de Frios", "valores": ["R$ 1.000,00"] }
+      ],
+      "observacao": "Serviços não listados devem ser consultados sobre a possibilidade de terceirização e possíveis taxas."
+    },
+    {
+      "id": "consumacao",
+      "titulo": "Consumação (Bebidas)",
+      "icone": "🍹",
+      "desc": "Valor padrão por bebida no cardápio de consumação.",
+      "sinonimos": ["bebida", "bebidas", "drink", "preco de bebida", "valor de bebida", "cardapio de bebidas", "vinho", "whisky", "vodka", "gin", "espumante", "cerveja"],
+      "colunas": ["Categoria", "Valor"],
+      "itens": [
+        { "nome": "Coca-Cola", "valores": ["Soft", "R$ 12,00"] },
+        { "nome": "Coca-Cola zero", "valores": ["Soft", "R$ 12,00"] },
+        { "nome": "Guaraná Antarctica", "valores": ["Soft", "R$ 12,00"] },
+        { "nome": "Guaraná Antarctica zero", "valores": ["Soft", "R$ 12,00"] },
+        { "nome": "Água com gás", "valores": ["Soft", "R$ 12,00"] },
+        { "nome": "Água sem gás", "valores": ["Soft", "R$ 12,00"] },
+        { "nome": "Água Tônica", "valores": ["Soft", "R$ 12,00"] },
+        { "nome": "Suco de Laranja", "valores": ["Soft", "R$ 13,00"] },
+        { "nome": "Heineken Zero", "valores": ["Sem álcool", "R$ 16,00"] },
+        { "nome": "Espumante sem álcool (Aurora)", "valores": ["Sem álcool", "R$ 117,00"] },
+        { "nome": "Red Bull", "valores": ["Energéticos", "R$ 19,00"] },
+        { "nome": "Red Bull Tropical", "valores": ["Energéticos", "R$ 19,00"] },
+        { "nome": "Heineken", "valores": ["Cervejas", "R$ 16,00"] },
+        { "nome": "Budweiser", "valores": ["Cervejas", "R$ 16,00"] },
+        { "nome": "Smirnoff", "valores": ["Vodka", "R$ 182,00"] },
+        { "nome": "Absolut", "valores": ["Vodka", "R$ 234,00"] },
+        { "nome": "Passport", "valores": ["Whisky", "R$ 208,00"] },
+        { "nome": "J.W. Red Label", "valores": ["Whisky", "R$ 234,00"] },
+        { "nome": "J.W. Black Label", "valores": ["Whisky", "R$ 364,00"] },
+        { "nome": "Seagers", "valores": ["Gin", "R$ 182,00"] },
+        { "nome": "Tanqueray", "valores": ["Gin", "R$ 338,00"] },
+        { "nome": "Perini Moscatel", "valores": ["Espumantes", "R$ 130,00"] },
+        { "nome": "Perini Brut", "valores": ["Espumantes", "R$ 130,00"] },
+        { "nome": "Chandon Passion Rose", "valores": ["Espumantes", "R$ 208,00"] },
+        { "nome": "Chandon Brut", "valores": ["Espumantes", "R$ 208,00"] },
+        { "nome": "Veuve Clicquot Brut", "valores": ["Espumantes", "R$ 780,00"] },
+        { "nome": "Macaw Merlot (tinto)", "valores": ["Vinhos", "R$ 104,00"] },
+        { "nome": "Macaw Moscato (branco)", "valores": ["Vinhos", "R$ 104,00"] }
+      ],
+      "observacao": null
+    }
+  ]
+}
