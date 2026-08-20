@@ -97,6 +97,52 @@ button { font-family: inherit; cursor: pointer; }
 .master-search-wrap input::placeholder { color: var(--ink-faint); }
 .master-search-wrap input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px var(--gold-soft); text-align: left; }
 
+.scope-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.scope-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 11px 20px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-size: .88rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  box-shadow: var(--shadow);
+}
+.scope-chip:hover { border-color: var(--gold); color: var(--ink); }
+.scope-chip.active { background: var(--gold-soft); border-color: var(--gold); color: var(--gold-strong); }
+
+/* ---------- Item de valor (resultado único, dentro da Tabela de Valores) ---------- */
+.preco-item-card { padding: 22px 26px; }
+.preco-item-context {
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  letter-spacing: .4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.preco-item-values { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 12px; }
+.preco-item-value {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-soft);
+  background: var(--surface-2);
+  min-width: 120px;
+}
+.preco-item-value-label { font-size: .72rem; text-transform: uppercase; letter-spacing: .4px; color: var(--ink-faint); font-weight: 700; }
+.preco-item-value-num { font-size: 1.1rem; font-weight: 700; color: var(--ink); }
+.preco-item-value:last-child { border-color: var(--gold); background: var(--gold-soft); }
+.preco-item-value:last-child .preco-item-value-num { color: var(--gold-strong); }
+
 /* ---------- Search results ---------- */
 .search-results-area { display: none; margin-top: 36px; }
 .search-results-area.show { display: block; }

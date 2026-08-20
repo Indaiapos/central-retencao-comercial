@@ -864,6 +864,27 @@ function buildPrecoCategoriaResult(cat) {
   return wrap;
 }
 
+function buildPrecoItemResult(cat, item) {
+  const wrap = el('div', { class: 'card bundle-card preco-item-card' });
+  wrap.appendChild(el('div', {
+    class: 'preco-item-context',
+    html: cat.icone + ' ' + cat.titulo + ' <span class="pill pill-real">valores praticados</span>'
+  }));
+  wrap.appendChild(el('h3', { text: item.nome }));
+
+  const valuesRow = el('div', { class: 'preco-item-values' });
+  (cat.colunas || []).forEach((label, i) => {
+    const box = el('div', { class: 'preco-item-value' });
+    box.appendChild(el('span', { class: 'preco-item-value-label', text: label }));
+    box.appendChild(el('span', { class: 'preco-item-value-num', text: (item.valores || [])[i] || '—' }));
+    valuesRow.appendChild(box);
+  });
+  wrap.appendChild(valuesRow);
+
+  wrap.appendChild(el('p', { attrs: { style: 'margin-top:14px;font-size:.76rem;color:var(--ink-faint)' }, text: 'Valores sujeitos a reajuste · atualizado em ' + (PRECOS_META.atualizadoEm || '—') + '.' }));
+  return wrap;
+}
+
 function buildEscadaCompletaBlock() {
   const wrap = el('div', { class: 'card bundle-card' });
   wrap.appendChild(el('h3', { text: 'Escada de Liberações · R-01 → R-09' }));
@@ -1058,6 +1079,7 @@ MOTIVOS.forEach(m => {
   SEARCH_INDEX.push({
     id: 'motivo-' + m.id,
     type: 'Motivo de cancelamento',
+    scope: 'cancelamento',
     title: m.titulo,
     keywords: normalize(m.titulo + ' ' + m.desc + ' ' + m.id + ' ' + (m.sinonimos || []).join(' ')),
     render: () => buildMotivoResult(m)
@@ -1068,6 +1090,7 @@ PROCEDIMENTOS.forEach(p => {
   SEARCH_INDEX.push({
     id: 'procedimento-' + p.id,
     type: 'Procedimento pós-venda',
+    scope: 'data',
     title: p.titulo,
     keywords: normalize(p.titulo + ' ' + p.desc + ' ' + p.id + ' ' + (p.sinonimos || []).join(' ')),
     render: () => buildProcedimentoResult(p)
@@ -1078,6 +1101,7 @@ RSTEPS.forEach(r => {
   SEARCH_INDEX.push({
     id: 'rstep-' + r.id,
     type: 'Etapa de retenção',
+    scope: 'cancelamento',
     title: r.codigo + ' · ' + r.nome,
     keywords: normalize(r.codigo + ' ' + r.nome + ' ' + (r.sinonimos || []).join(' ')),
     render: () => buildRStepCard(r)
@@ -1088,6 +1112,7 @@ CASOS.forEach(c => {
   SEARCH_INDEX.push({
     id: 'caso-' + c.id,
     type: 'Caso real',
+    scope: 'cancelamento',
     title: c.nome,
     keywords: normalize(c.nome + ' ' + c.evento + ' ' + c.motivo),
     render: () => buildCasoCard(c)
@@ -1098,6 +1123,7 @@ SCRIPTS.forEach(s => {
   SEARCH_INDEX.push({
     id: 'script-' + s.id,
     type: 'Script geral',
+    scope: 'cancelamento',
     title: s.titulo,
     keywords: normalize(s.titulo + ' ' + s.texto + ' script mensagem whatsapp'),
     render: () => buildScriptCard(s)
@@ -1105,42 +1131,42 @@ SCRIPTS.forEach(s => {
 });
 
 SEARCH_INDEX.push({
-  id: 'bundle-escada', type: 'Escada completa', title: 'Escada de Liberações (R-01 → R-09)',
+  id: 'bundle-escada', type: 'Escada completa', scope: 'outros', title: 'Escada de Liberações (R-01 → R-09)',
   keywords: normalize('escada liberacoes fluxo completo r-01 r-02 r-03 r-04 r-05 r-06 r-07 r-08 r-09 fase concessao'),
   render: buildEscadaCompletaBlock
 });
 SEARCH_INDEX.push({
-  id: 'bundle-matriz', type: 'Matriz', title: 'Matriz de Liberações',
+  id: 'bundle-matriz', type: 'Matriz', scope: 'outros', title: 'Matriz de Liberações',
   keywords: normalize('matriz liberacoes alcada aprovacao autorizacao consultor supervisor gerente diretoria'),
   render: buildMatrizBlock
 });
 SEARCH_INDEX.push({
-  id: 'bundle-diagnostico', type: 'Diagnóstico', title: 'Diagnóstico do Cliente',
+  id: 'bundle-diagnostico', type: 'Diagnóstico', scope: 'outros', title: 'Diagnóstico do Cliente',
   keywords: normalize('diagnostico checklist perguntas antes de argumentar'),
   render: buildDiagnosticoBlock
 });
 SEARCH_INDEX.push({
-  id: 'bundle-naofazer', type: 'Alertas', title: 'O que não fazer',
+  id: 'bundle-naofazer', type: 'Alertas', scope: 'outros', title: 'O que não fazer',
   keywords: normalize('o que nao fazer erros evitar alertas'),
   render: buildNaoFazerBlock
 });
 SEARCH_INDEX.push({
-  id: 'bundle-encerramento', type: 'Encerramento', title: 'Encerramento',
+  id: 'bundle-encerramento', type: 'Encerramento', scope: 'outros', title: 'Encerramento',
   keywords: normalize('encerramento cancelamento oficial registrar formalizar distrato'),
   render: buildEncerramentoBlock
 });
 SEARCH_INDEX.push({
-  id: 'bundle-arvore', type: 'Árvore de decisão', title: 'Árvore de Decisão',
+  id: 'bundle-arvore', type: 'Árvore de decisão', scope: 'outros', title: 'Árvore de Decisão',
   keywords: normalize('arvore de decisao interativo proxima acao'),
   render: buildArvoreBlock
 });
 SEARCH_INDEX.push({
-  id: 'bundle-casos', type: 'Casos Reais', title: 'Todos os Casos Reais',
+  id: 'bundle-casos', type: 'Casos Reais', scope: 'outros', title: 'Todos os Casos Reais',
   keywords: normalize('casos reais todos historico indaia chat'),
   render: buildCasosReaisBundle
 });
 SEARCH_INDEX.push({
-  id: 'bundle-indicadores', type: 'Indicadores', title: 'Indicadores de Cancelamento',
+  id: 'bundle-indicadores', type: 'Indicadores', scope: 'outros', title: 'Indicadores de Cancelamento',
   keywords: normalize('indicadores dados grafico taxa de retencao demonstrativo painel'),
   render: buildIndicadoresBlock
 });
@@ -1157,20 +1183,45 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 function registerPrecosInIndex() {
   PRECOS.forEach(cat => {
+    // Nível categoria: só bate ao digitar o nome da própria categoria — mostra a
+    // tabela inteira. Os itens de cada categoria entram como entradas separadas
+    // abaixo, para que buscar um item específico traga só aquele item.
     SEARCH_INDEX.push({
       id: 'preco-' + cat.id,
-      type: 'Valores praticados',
+      type: 'Categoria de valores',
+      scope: 'valores',
       title: cat.titulo,
-      keywords: normalize(cat.titulo + ' ' + (cat.desc || '') + ' ' + cat.id + ' ' + (cat.sinonimos || []).join(' ') + ' ' + (cat.itens || []).map(i => i.nome).join(' ')),
+      keywords: normalize(cat.titulo + ' ' + (cat.desc || '') + ' ' + cat.id + ' ' + (cat.sinonimos || []).join(' ')),
       render: () => buildPrecoCategoriaResult(cat)
+    });
+    (cat.itens || []).forEach((item, idx) => {
+      SEARCH_INDEX.push({
+        id: 'preco-item-' + cat.id + '-' + idx,
+        type: 'Item de valor',
+        scope: 'valores',
+        title: item.nome,
+        keywords: normalize(item.nome + ' ' + cat.titulo),
+        render: () => buildPrecoItemResult(cat, item)
+      });
     });
   });
 }
 
+const SCOPES = [
+  { id: 'cancelamento', label: '🚫 Cancelamento', placeholder: 'Buscar em Cancelamento: financeiro, insatisfação, mudança de data…' },
+  { id: 'data', label: '📅 Alteração de Data', placeholder: 'Buscar em Alteração de Data…' },
+  { id: 'valores', label: '💰 Tabela de Valores', placeholder: 'Buscar um item de valor: pista de led, menu superior, hora extra…' },
+  { id: 'outros', label: '🗂️ Outros Temas', placeholder: 'Buscar em Outros Temas: escada, matriz, casos, indicadores…' }
+];
+
 function initSearch() {
   const input = document.getElementById('masterSearch');
   const resultsArea = document.getElementById('searchResults');
+  const scopeWrap = document.getElementById('scopeButtons');
+  const defaultPlaceholder = input ? input.placeholder : '';
   if (!input || !resultsArea) return;
+
+  let activeScope = null;
 
   function renderResults(entries) {
     resultsArea.innerHTML = '';
@@ -1186,7 +1237,7 @@ function initSearch() {
     });
   }
 
-  input.addEventListener('input', () => {
+  function runSearch() {
     const q = input.value;
     if (!q.trim()) {
       resultsArea.innerHTML = '';
@@ -1195,10 +1246,27 @@ function initSearch() {
     }
     resultsArea.classList.add('show');
     const qn = normalize(q);
-    const matches = SEARCH_INDEX.filter(e => e.keywords.includes(qn));
+    const matches = SEARCH_INDEX.filter(e => (!activeScope || e.scope === activeScope) && e.keywords.includes(qn));
     renderResults(matches);
-  });
+  }
 
+  if (scopeWrap) {
+    SCOPES.forEach(s => {
+      const btn = el('button', { class: 'scope-chip', text: s.label, attrs: { type: 'button' } });
+      btn.addEventListener('click', () => {
+        const turningOff = activeScope === s.id;
+        activeScope = turningOff ? null : s.id;
+        document.querySelectorAll('.scope-chip').forEach(c => c.classList.remove('active'));
+        if (!turningOff) btn.classList.add('active');
+        input.placeholder = activeScope ? s.placeholder : defaultPlaceholder;
+        input.focus();
+        runSearch();
+      });
+      scopeWrap.appendChild(btn);
+    });
+  }
+
+  input.addEventListener('input', runSearch);
   input.addEventListener('keydown', (e) => { if (e.key === 'Enter') e.preventDefault(); });
 }
 
