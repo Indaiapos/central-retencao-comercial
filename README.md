@@ -1,6 +1,6 @@
-# Central de Retenção Comercial — Indaiá Eventos
+# Banco de Informações Pós-Vendas — Indaiá Eventos
 
-Portal interno de pós-vendas para orientar consultores, supervisores e gerentes no atendimento de clientes que manifestam intenção de cancelar contratos. Transforma o cancelamento em um fluxo comercial estruturado: **ouvir → entender → diagnosticar → argumentar → solucionar → negociar → reter** — e só depois, se necessário, **cancelar**.
+Portal interno de pós-vendas para orientar consultores, supervisores e gerentes. Cobre tanto o atendimento a clientes que manifestam intenção de cancelar contratos (transformando o cancelamento em um fluxo comercial estruturado: **ouvir → entender → diagnosticar → argumentar → solucionar → negociar → reter** — e só depois, se necessário, **cancelar**) quanto procedimentos operacionais do dia a dia do pós-venda que não envolvem risco de cancelamento — troca de data, troca de ambiente, redução contratual, entre outros que serão incluídos aos poucos.
 
 Uso interno da equipe comercial. Contém nomes de clientes reais em casos de estudo — não publicar ou compartilhar este conteúdo fora da empresa.
 
@@ -34,6 +34,18 @@ Novos motivos entram automaticamente na busca e ganham um chip — não precisa 
 
 ### Atualizar a escada de liberações (R-01 a R-09)
 Edite o array `RSTEPS`. Os percentuais, prazos e regras vieram do "Manual de Negociação — Protocolo R-09 · Retenção" fornecido pela gestão. **Não altere valores sem confirmação oficial** — se uma regra nova chegar, atualize o objeto correspondente e mantenha as demais intactas. O campo `sinonimos[]` só ajuda a busca (ex.: "multa" encontra R-08).
+
+### Adicionar um novo procedimento pós-venda (troca de data, troca de ambiente, redução contratual...)
+Esses temas não são "motivos de cancelamento" — são procedimentos que o cliente pede diretamente, sem necessariamente cogitar cancelar. Edite o array `PROCEDIMENTOS` em `script.js`. Cada item aceita:
+- `titulo`, `icone`, `desc`, `sinonimos[]`
+- `quandoUsar`: um parágrafo curto explicando quando esse procedimento se aplica
+- `passoAPasso[]`: a sequência de ações, nessa ordem
+- `perguntas[]`: o que perguntar ou verificar antes de agir
+- `alternativas[]`: liberações da escada (R-0X) relacionadas, se houver
+- `erros[]`
+- `mensagens[]`: **mais de uma opção de texto pronto**, igual aos motivos
+
+Novos itens entram automaticamente na busca e ganham um chip no grupo "Procedimentos Pós-Venda" — não precisa editar mais nada. Hoje só existe "Troca de Data"; os próximos (troca de ambiente, redução contratual etc.) devem seguir a mesma estrutura, um de cada vez, e só com regras confirmadas pela gestão — nunca inventadas.
 
 ### Adicionar um novo caso real
 Edite o array `CASOS`. Campos: `nome`, `evento`, `categoria`, `status` (`cancelado` | `andamento` | `disputa`), `motivo`, `oferta`, `rcodes[]` (ids de `RSTEPS` usados no caso, ex.: `['r03','r08']`) e `tatica` (leitura tática — o que o caso ensina sobre a aderência à escada). Casos vêm do histórico do Indaiá Chat; ao adicionar um novo, confirme os fatos antes de publicar.

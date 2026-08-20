@@ -324,6 +324,48 @@ const MOTIVOS = [
 ];
 
 /* -------------------------------------------------------------------------
+   2b. PROCEDIMENTOS PÓS-VENDA
+   Diferente de MOTIVOS (que trata sinais de que o cliente quer cancelar),
+   isto cobre pedidos operacionais diretos do cliente — troca de data,
+   troca de ambiente, redução contratual etc. — independente de haver
+   risco de cancelamento. Comece só com "Troca de Data"; os próximos
+   temas (troca de ambiente, redução contratual...) entram depois, um de
+   cada vez.
+   ------------------------------------------------------------------------- */
+const PROCEDIMENTOS = [
+  {
+    id: 'troca-data', icone: '📅', titulo: 'Troca de Data',
+    desc: 'Passo a passo para conduzir qualquer pedido de alteração da data do evento — disponibilidade, taxa e formalização.',
+    sinonimos: ['trocar data', 'mudar data', 'remarcar', 'alteracao de data', 'nova data', 'adiar evento', 'antecipar evento', 'mudanca de data'],
+    quandoUsar: 'Use este procedimento sempre que o cliente pedir para alterar a data do evento — não importa se veio como um pedido direto ou embutido numa conversa sobre cancelamento.',
+    passoAPasso: [
+      'Perguntar se já existe uma nova data em mente ou apenas um período/faixa de meses.',
+      'Verificar a disponibilidade da nova data (ou período) no espaço e na equipe já contratados.',
+      'Calcular a taxa de alteração conforme a antecedência até a data original contratada.',
+      'Se o evento for superior a 1 ano e a nova data ainda não estiver definida, avaliar manter o vínculo por pagamentos mensais até a definição.',
+      'Formalizar a alteração por escrito (aditivo contratual ou confirmação registrada) antes de tratar a nova data como certa.'
+    ],
+    perguntas: [
+      'Já existe uma nova data definida, ou ainda estão avaliando um período?',
+      'O motivo da mudança é pontual (conflito de agenda) ou estrutural (financeiro, saúde, família)?',
+      'A mudança é para uma data mais próxima ou mais distante da original?',
+      'Existe alguma condição promocional vinculada à data original que precisa ser revista?'
+    ],
+    alternativas: ['R-05 · Alteração de Data', 'R-06 · Liberação de Data, se o evento for superior a 1 ano'],
+    erros: [
+      'Tratar todo pedido de alteração de data como se fosse um cancelamento.',
+      'Confirmar a nova data com o cliente antes de checar disponibilidade real do espaço.',
+      'Aplicar a taxa sem explicar com transparência de onde ela vem.'
+    ],
+    mensagens: [
+      { tom: 'Abertura do atendimento', texto: 'Perfeito, vamos cuidar da alteração de data para vocês. Você já tem uma nova data em mente, ou prefere que eu verifique a disponibilidade para um período específico?' },
+      { tom: 'Explicando a taxa', texto: 'Como a mudança está sendo pedida com essa antecedência da data original, pode existir uma taxa de alteração — vou calcular certinho assim que confirmarmos a nova data. Ainda assim, costuma sair bem mais em conta do que um cancelamento.' },
+      { tom: 'Sem nova data definida ainda', texto: 'Sem problema, não precisamos travar a nova data agora. Podemos manter o vínculo com pagamentos mensais enquanto vocês decidem, e assim que tiverem uma data, já fazemos a alteração formal.' }
+    ]
+  }
+];
+
+/* -------------------------------------------------------------------------
    3. DIAGNÓSTICO
    ------------------------------------------------------------------------- */
 const DIAGNOSTICO_CHECKLIST = [
@@ -725,6 +767,43 @@ function buildMotivoResult(m) {
   return card;
 }
 
+function buildProcedimentoResult(p) {
+  const card = el('div', { class: 'card motivo-result' });
+  card.appendChild(el('div', { class: 'topic-result-head' }, [
+    el('span', { class: 'm-icon', text: p.icone }),
+    el('h3', { text: p.titulo })
+  ]));
+  card.appendChild(el('p', { class: 'topic-result-desc', text: p.desc }));
+  card.appendChild(labelPara('Quando usar', p.quandoUsar));
+
+  if (p.mensagens && p.mensagens.length) {
+    card.appendChild(el('h4', { text: 'Textos prontos para usar (' + p.mensagens.length + ' opções)' }));
+    p.mensagens.forEach(msg => card.appendChild(buildMensagemBubble(msg)));
+  }
+  if (p.passoAPasso && p.passoAPasso.length) {
+    const wrap = el('div');
+    wrap.appendChild(el('h4', { text: 'Passo a passo' }));
+    const ol = el('ol', { class: 'passo-a-passo' });
+    p.passoAPasso.forEach(step => ol.appendChild(el('li', { text: step })));
+    wrap.appendChild(ol);
+    card.appendChild(wrap);
+  }
+  if (p.perguntas && p.perguntas.length) {
+    card.appendChild(el('h4', { text: 'O que perguntar / verificar' }));
+    const ul = el('ul', { class: 'topic-perguntas' });
+    p.perguntas.forEach(q => ul.appendChild(el('li', { text: q })));
+    card.appendChild(ul);
+  }
+  if (p.alternativas && p.alternativas.length) {
+    card.appendChild(el('h4', { text: 'Liberações relacionadas (clique para ver o detalhe)' }));
+    card.appendChild(buildRCodeChipsRow(extractRCodesFromAlternativas(p.alternativas)));
+  }
+  if (p.erros && p.erros.length) {
+    card.appendChild(sectionBlock('Erros a evitar', p.erros));
+  }
+  return card;
+}
+
 function buildEscadaCompletaBlock() {
   const wrap = el('div', { class: 'card bundle-card' });
   wrap.appendChild(el('h3', { text: 'Escada de Liberações · R-01 → R-09' }));
@@ -925,6 +1004,16 @@ MOTIVOS.forEach(m => {
   });
 });
 
+PROCEDIMENTOS.forEach(p => {
+  SEARCH_INDEX.push({
+    id: 'procedimento-' + p.id,
+    type: 'Procedimento pós-venda',
+    title: p.titulo,
+    keywords: normalize(p.titulo + ' ' + p.desc + ' ' + p.id + ' ' + (p.sinonimos || []).join(' ')),
+    render: () => buildProcedimentoResult(p)
+  });
+});
+
 RSTEPS.forEach(r => {
   SEARCH_INDEX.push({
     id: 'rstep-' + r.id,
@@ -1024,9 +1113,15 @@ function initSearch() {
   }
 
   if (chipsWrap) {
+    chipsWrap.appendChild(el('span', { class: 'chip-divider', text: 'Motivos de Cancelamento' }));
     MOTIVOS.forEach(m => {
       const entry = SEARCH_INDEX.find(e => e.id === 'motivo-' + m.id);
       chipsWrap.appendChild(buildChip(m.icone + ' ' + m.titulo, entry));
+    });
+    chipsWrap.appendChild(el('span', { class: 'chip-divider', text: 'Procedimentos Pós-Venda' }));
+    PROCEDIMENTOS.forEach(p => {
+      const entry = SEARCH_INDEX.find(e => e.id === 'procedimento-' + p.id);
+      chipsWrap.appendChild(buildChip(p.icone + ' ' + p.titulo, entry));
     });
     chipsWrap.appendChild(el('span', { class: 'chip-divider', text: 'Outros temas' }));
     [
