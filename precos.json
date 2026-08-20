@@ -6,12 +6,39 @@
       "titulo": "Alteração de Data",
       "icone": "📅",
       "desc": "Percentuais de taxa para alteração de data, conforme a antecedência até a data original contratada.",
-      "sinonimos": ["taxa de alteracao", "remarcar", "trocar data", "valor da alteracao de data", "quanto custa remarcar"],
-      "colunas": ["Margem inicial", "Mínimo"],
+      "sinonimos": [
+        "taxa de alteracao",
+        "remarcar",
+        "trocar data",
+        "valor da alteracao de data",
+        "quanto custa remarcar"
+      ],
+      "colunas": [
+        "Margem inicial",
+        "Mínimo"
+      ],
       "itens": [
-        { "nome": "Curto Prazo (inferior a 180 dias)", "valores": ["50,00%", "25,00%"] },
-        { "nome": "Longo Prazo (superior a 180 dias)", "valores": ["20,00%", "10,00%"] },
-        { "nome": "Juros de Parcelamento", "valores": ["1,29%", "0,65%"] }
+        {
+          "nome": "Curto Prazo (inferior a 180 dias)",
+          "valores": [
+            "50,00%",
+            "25,00%"
+          ]
+        },
+        {
+          "nome": "Longo Prazo (superior a 180 dias)",
+          "valores": [
+            "20,00%",
+            "10,00%"
+          ]
+        },
+        {
+          "nome": "Juros de Parcelamento",
+          "valores": [
+            "1,29%",
+            "0,65%"
+          ]
+        }
       ],
       "observacao": "Estes valores substituem a regra anterior (taxa mín. 20% curto prazo / isenção mínima longo prazo) que vinha de outro documento e estava desatualizada em relação a esta planilha. \"Margem inicial\" é o valor de abertura da negociação; \"Mínimo\" é o piso até onde dá para negociar sem escalar para a gestão."
     },
@@ -20,14 +47,47 @@
       "titulo": "Taxas para Serviços Terceirizados",
       "icone": "🧾",
       "desc": "Taxa cobrada quando o cliente opta por terceirizar um serviço específico em vez de contratar da Indaiá.",
-      "sinonimos": ["taxa", "taxas", "bartender", "servico terceirizado", "valor da taxa"],
-      "colunas": ["Valor da taxa"],
+      "sinonimos": [
+        "taxa",
+        "taxas",
+        "bartender",
+        "servico terceirizado",
+        "valor da taxa"
+      ],
+      "colunas": [
+        "Valor da taxa"
+      ],
       "itens": [
-        { "nome": "Bartender", "valores": ["R$ 700,00"] },
-        { "nome": "Lanche da Madrugada", "valores": ["R$ 1.000,00"] },
-        { "nome": "Serviços de café", "valores": ["R$ 250,00"] },
-        { "nome": "Água Saborizada", "valores": ["R$ 250,00"] },
-        { "nome": "Mesa de Frios", "valores": ["R$ 1.000,00"] }
+        {
+          "nome": "Bartender",
+          "valores": [
+            "R$ 700,00"
+          ]
+        },
+        {
+          "nome": "Lanche da Madrugada",
+          "valores": [
+            "R$ 1.000,00"
+          ]
+        },
+        {
+          "nome": "Serviços de café",
+          "valores": [
+            "R$ 250,00"
+          ]
+        },
+        {
+          "nome": "Água Saborizada",
+          "valores": [
+            "R$ 250,00"
+          ]
+        },
+        {
+          "nome": "Mesa de Frios",
+          "valores": [
+            "R$ 1.000,00"
+          ]
+        }
       ],
       "observacao": "Serviços não listados devem ser consultados sobre a possibilidade de terceirização e possíveis taxas."
     },
@@ -36,37 +96,3589 @@
       "titulo": "Consumação (Bebidas)",
       "icone": "🍹",
       "desc": "Valor padrão por bebida no cardápio de consumação.",
-      "sinonimos": ["bebida", "bebidas", "drink", "preco de bebida", "valor de bebida", "cardapio de bebidas", "vinho", "whisky", "vodka", "gin", "espumante", "cerveja"],
-      "colunas": ["Categoria", "Valor"],
+      "sinonimos": [
+        "bebida",
+        "bebidas",
+        "drink",
+        "preco de bebida",
+        "valor de bebida",
+        "cardapio de bebidas",
+        "vinho",
+        "whisky",
+        "vodka",
+        "gin",
+        "espumante",
+        "cerveja"
+      ],
+      "colunas": [
+        "Categoria",
+        "Valor"
+      ],
       "itens": [
-        { "nome": "Coca-Cola", "valores": ["Soft", "R$ 12,00"] },
-        { "nome": "Coca-Cola zero", "valores": ["Soft", "R$ 12,00"] },
-        { "nome": "Guaraná Antarctica", "valores": ["Soft", "R$ 12,00"] },
-        { "nome": "Guaraná Antarctica zero", "valores": ["Soft", "R$ 12,00"] },
-        { "nome": "Água com gás", "valores": ["Soft", "R$ 12,00"] },
-        { "nome": "Água sem gás", "valores": ["Soft", "R$ 12,00"] },
-        { "nome": "Água Tônica", "valores": ["Soft", "R$ 12,00"] },
-        { "nome": "Suco de Laranja", "valores": ["Soft", "R$ 13,00"] },
-        { "nome": "Heineken Zero", "valores": ["Sem álcool", "R$ 16,00"] },
-        { "nome": "Espumante sem álcool (Aurora)", "valores": ["Sem álcool", "R$ 117,00"] },
-        { "nome": "Red Bull", "valores": ["Energéticos", "R$ 19,00"] },
-        { "nome": "Red Bull Tropical", "valores": ["Energéticos", "R$ 19,00"] },
-        { "nome": "Heineken", "valores": ["Cervejas", "R$ 16,00"] },
-        { "nome": "Budweiser", "valores": ["Cervejas", "R$ 16,00"] },
-        { "nome": "Smirnoff", "valores": ["Vodka", "R$ 182,00"] },
-        { "nome": "Absolut", "valores": ["Vodka", "R$ 234,00"] },
-        { "nome": "Passport", "valores": ["Whisky", "R$ 208,00"] },
-        { "nome": "J.W. Red Label", "valores": ["Whisky", "R$ 234,00"] },
-        { "nome": "J.W. Black Label", "valores": ["Whisky", "R$ 364,00"] },
-        { "nome": "Seagers", "valores": ["Gin", "R$ 182,00"] },
-        { "nome": "Tanqueray", "valores": ["Gin", "R$ 338,00"] },
-        { "nome": "Perini Moscatel", "valores": ["Espumantes", "R$ 130,00"] },
-        { "nome": "Perini Brut", "valores": ["Espumantes", "R$ 130,00"] },
-        { "nome": "Chandon Passion Rose", "valores": ["Espumantes", "R$ 208,00"] },
-        { "nome": "Chandon Brut", "valores": ["Espumantes", "R$ 208,00"] },
-        { "nome": "Veuve Clicquot Brut", "valores": ["Espumantes", "R$ 780,00"] },
-        { "nome": "Macaw Merlot (tinto)", "valores": ["Vinhos", "R$ 104,00"] },
-        { "nome": "Macaw Moscato (branco)", "valores": ["Vinhos", "R$ 104,00"] }
+        {
+          "nome": "Coca-Cola",
+          "valores": [
+            "Soft",
+            "R$ 12,00"
+          ]
+        },
+        {
+          "nome": "Coca-Cola zero",
+          "valores": [
+            "Soft",
+            "R$ 12,00"
+          ]
+        },
+        {
+          "nome": "Guaraná Antarctica",
+          "valores": [
+            "Soft",
+            "R$ 12,00"
+          ]
+        },
+        {
+          "nome": "Guaraná Antarctica zero",
+          "valores": [
+            "Soft",
+            "R$ 12,00"
+          ]
+        },
+        {
+          "nome": "Água com gás",
+          "valores": [
+            "Soft",
+            "R$ 12,00"
+          ]
+        },
+        {
+          "nome": "Água sem gás",
+          "valores": [
+            "Soft",
+            "R$ 12,00"
+          ]
+        },
+        {
+          "nome": "Água Tônica",
+          "valores": [
+            "Soft",
+            "R$ 12,00"
+          ]
+        },
+        {
+          "nome": "Suco de Laranja",
+          "valores": [
+            "Soft",
+            "R$ 13,00"
+          ]
+        },
+        {
+          "nome": "Heineken Zero",
+          "valores": [
+            "Sem álcool",
+            "R$ 16,00"
+          ]
+        },
+        {
+          "nome": "Espumante sem álcool (Aurora)",
+          "valores": [
+            "Sem álcool",
+            "R$ 117,00"
+          ]
+        },
+        {
+          "nome": "Red Bull",
+          "valores": [
+            "Energéticos",
+            "R$ 19,00"
+          ]
+        },
+        {
+          "nome": "Red Bull Tropical",
+          "valores": [
+            "Energéticos",
+            "R$ 19,00"
+          ]
+        },
+        {
+          "nome": "Heineken",
+          "valores": [
+            "Cervejas",
+            "R$ 16,00"
+          ]
+        },
+        {
+          "nome": "Budweiser",
+          "valores": [
+            "Cervejas",
+            "R$ 16,00"
+          ]
+        },
+        {
+          "nome": "Smirnoff",
+          "valores": [
+            "Vodka",
+            "R$ 182,00"
+          ]
+        },
+        {
+          "nome": "Absolut",
+          "valores": [
+            "Vodka",
+            "R$ 234,00"
+          ]
+        },
+        {
+          "nome": "Passport",
+          "valores": [
+            "Whisky",
+            "R$ 208,00"
+          ]
+        },
+        {
+          "nome": "J.W. Red Label",
+          "valores": [
+            "Whisky",
+            "R$ 234,00"
+          ]
+        },
+        {
+          "nome": "J.W. Black Label",
+          "valores": [
+            "Whisky",
+            "R$ 364,00"
+          ]
+        },
+        {
+          "nome": "Seagers",
+          "valores": [
+            "Gin",
+            "R$ 182,00"
+          ]
+        },
+        {
+          "nome": "Tanqueray",
+          "valores": [
+            "Gin",
+            "R$ 338,00"
+          ]
+        },
+        {
+          "nome": "Perini Moscatel",
+          "valores": [
+            "Espumantes",
+            "R$ 130,00"
+          ]
+        },
+        {
+          "nome": "Perini Brut",
+          "valores": [
+            "Espumantes",
+            "R$ 130,00"
+          ]
+        },
+        {
+          "nome": "Chandon Passion Rose",
+          "valores": [
+            "Espumantes",
+            "R$ 208,00"
+          ]
+        },
+        {
+          "nome": "Chandon Brut",
+          "valores": [
+            "Espumantes",
+            "R$ 208,00"
+          ]
+        },
+        {
+          "nome": "Veuve Clicquot Brut",
+          "valores": [
+            "Espumantes",
+            "R$ 780,00"
+          ]
+        },
+        {
+          "nome": "Macaw Merlot (tinto)",
+          "valores": [
+            "Vinhos",
+            "R$ 104,00"
+          ]
+        },
+        {
+          "nome": "Macaw Moscato (branco)",
+          "valores": [
+            "Vinhos",
+            "R$ 104,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "produtora-essencial-pacote-completos",
+      "titulo": "Pacote Completos",
+      "icone": "🎁",
+      "desc": "Pacotes e itens da Produtora Essencial — Pacote Completos.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Assesoria e cerimonial - Essencial",
+          "valores": [
+            "R$ 5.000,00",
+            "R$ 2.700,00",
+            "R$ 3.000,00"
+          ]
+        },
+        {
+          "nome": "Decoração - Essencial Permanente",
+          "valores": [
+            "R$ 5.000,00",
+            "R$ 5.000,00",
+            "R$ 5.000,00"
+          ]
+        },
+        {
+          "nome": "Decoração - Essencial Natural",
+          "valores": [
+            "R$ 16.000,00",
+            "R$ 12.000,00",
+            "R$ 14.000,00"
+          ]
+        },
+        {
+          "nome": "Doces Essencial - Tradicionais - Por Und",
+          "valores": [
+            "R$ 4,50",
+            "R$ 3,50",
+            "R$ 4,00"
+          ]
+        },
+        {
+          "nome": "Doces Essencial - Doces Gourmet - Por Und",
+          "valores": [
+            "R$ 7,50",
+            "R$ 6,00",
+            "R$ 6,50"
+          ]
+        },
+        {
+          "nome": "Doces Essencial - Doces Finos - Por Und",
+          "valores": [
+            "R$ 5,50",
+            "R$ 4,50",
+            "R$ 5,00"
+          ]
+        },
+        {
+          "nome": "Doces Essencial - Finos Especiais - Por Und",
+          "valores": [
+            "R$ 10,00",
+            "R$ 8,50",
+            "R$ 9,00"
+          ]
+        },
+        {
+          "nome": "Doces Indaiá - Menu Superior",
+          "valores": [
+            "R$ 79,90",
+            "R$ 39,95",
+            "R$ 47,94"
+          ]
+        },
+        {
+          "nome": "Doces Indaiá - Menu Superior II",
+          "valores": [
+            "R$ 89,90",
+            "R$ 44,95",
+            "R$ 53,94"
+          ]
+        },
+        {
+          "nome": "Doces Indaiá - Menu Premium",
+          "valores": [
+            "R$ 99,90",
+            "R$ 49,95",
+            "R$ 59,94"
+          ]
+        },
+        {
+          "nome": "Doces Indaiá - Menu Privilege",
+          "valores": [
+            "R$ 129,90",
+            "R$ 64,95",
+            "R$ 77,94"
+          ]
+        },
+        {
+          "nome": "Doces Indaiá - Menu Excellence",
+          "valores": [
+            "R$ 159,90",
+            "R$ 79,95",
+            "R$ 95,94"
+          ]
+        },
+        {
+          "nome": "Bolo de Corte (50 Fatias)",
+          "valores": [
+            "R$ 1.400,00",
+            "R$ 1.100,00",
+            "R$ 1.250,00"
+          ]
+        },
+        {
+          "nome": "Bem Casados",
+          "valores": [
+            "R$ 10,00",
+            "R$ 9,00",
+            "R$ 9,50"
+          ]
+        },
+        {
+          "nome": "DJ Essencial - Segunda a Quinta",
+          "valores": [
+            "R$ 10.000,00",
+            "R$ 4.000,00",
+            "R$ 5.000,00"
+          ]
+        },
+        {
+          "nome": "DJ Essencial - Sexta a Domingo",
+          "valores": [
+            "R$ 10.000,00",
+            "R$ 5.000,00",
+            "R$ 6.500,00"
+          ]
+        },
+        {
+          "nome": "DJ Essencial - Somente Estrutura",
+          "valores": [
+            "R$ 7.000,00",
+            "R$ 2.500,00",
+            "R$ 4.000,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "produtora-essencial-pacotes-florais-novos",
+      "titulo": "Pacotes Florais Novos",
+      "icone": "🎁",
+      "desc": "Pacotes e itens da Produtora Essencial — Pacotes Florais Novos.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Decoração Floral - Mini Wedding",
+          "valores": [
+            "R$ 8.000,00",
+            "R$ 5.500,00",
+            "R$ 6.000,00"
+          ]
+        },
+        {
+          "nome": "Decoração Floral - Beauty Wedding",
+          "valores": [
+            "R$ 12.000,00",
+            "R$ 7.000,00",
+            "R$ 8.000,00"
+          ]
+        },
+        {
+          "nome": "Decoração Floral - Boho",
+          "valores": [
+            "R$ 15.000,00",
+            "R$ 9.000,00",
+            "R$ 10.000,00"
+          ]
+        },
+        {
+          "nome": "Decoração Floral - Colors Party",
+          "valores": [
+            "R$ 12.000,00",
+            "R$ 6.500,00",
+            "R$ 7.500,00"
+          ]
+        },
+        {
+          "nome": "Pacote Cristal - (Somente Itens)",
+          "valores": [
+            "R$ 25.000,00",
+            "R$ 18.000,00",
+            "R$ 20.000,00"
+          ]
+        },
+        {
+          "nome": "Pacote Cristal - (Itens + Floral)",
+          "valores": [
+            "R$ 32.000,00",
+            "R$ 22.000,00",
+            "R$ 25.000,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "cardapios-menu",
+      "titulo": "MENU",
+      "icone": "🍽️",
+      "desc": "Cardápios — MENU.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Menu Superior I",
+          "valores": [
+            "R$ 149,90",
+            "R$ 119,90",
+            "R$ 127,40"
+          ]
+        },
+        {
+          "nome": "Menu Superior II",
+          "valores": [
+            "R$ 169,90",
+            "R$ 135,90",
+            "R$ 144,40"
+          ]
+        },
+        {
+          "nome": "Menu Premium",
+          "valores": [
+            "R$ 179,90",
+            "R$ 143,90",
+            "R$ 152,90"
+          ]
+        },
+        {
+          "nome": "Menu Privilege",
+          "valores": [
+            "R$ 249,90",
+            "R$ 199,90",
+            "R$ 212,40"
+          ]
+        },
+        {
+          "nome": "Menu Excellence",
+          "valores": [
+            "R$ 279,90",
+            "R$ 223,90",
+            "R$ 237,90"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "cardapios-buffet",
+      "titulo": "BUFFET",
+      "icone": "🍽️",
+      "desc": "Cardápios — BUFFET.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Buffet Superior",
+          "valores": [
+            "R$ 149,90",
+            "R$ 119,90",
+            "R$ 127,40"
+          ]
+        },
+        {
+          "nome": "Buffet Extra Superior",
+          "valores": [
+            "R$ 169,90",
+            "R$ 135,90",
+            "R$ 144,40"
+          ]
+        },
+        {
+          "nome": "Buffet Premium",
+          "valores": [
+            "R$ 179,90",
+            "R$ 143,90",
+            "R$ 152,90"
+          ]
+        },
+        {
+          "nome": "Buffet Extra Premium",
+          "valores": [
+            "R$ 199,90",
+            "R$ 159,90",
+            "R$ 169,90"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "cardapios-open-bar",
+      "titulo": "OPEN BAR",
+      "icone": "🍽️",
+      "desc": "Cardápios — OPEN BAR.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Open bar 1",
+          "valores": [
+            "R$ 65,90",
+            "R$ 52,70",
+            "R$ 56,00"
+          ]
+        },
+        {
+          "nome": "Open bar 2",
+          "valores": [
+            "R$ 79,90",
+            "R$ 54,90",
+            "R$ 57,90"
+          ]
+        },
+        {
+          "nome": "Open bar 3",
+          "valores": [
+            "R$ 105,90",
+            "R$ 84,70",
+            "R$ 90,00"
+          ]
+        },
+        {
+          "nome": "Open bar 4",
+          "valores": [
+            "R$ 155,90",
+            "R$ 124,70",
+            "R$ 132,50"
+          ]
+        },
+        {
+          "nome": "Open bar 5",
+          "valores": [
+            "R$ 239,90",
+            "R$ 191,90",
+            "R$ 203,90"
+          ]
+        },
+        {
+          "nome": "Open bar 6",
+          "valores": [
+            "R$ 280,90",
+            "R$ 224,70",
+            "R$ 238,80"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "cardapios-coquetel",
+      "titulo": "COQUETEL",
+      "icone": "🍽️",
+      "desc": "Cardápios — COQUETEL.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Coquetel Superior",
+          "valores": [
+            "R$ 99,90",
+            "R$ 79,90",
+            "R$ 84,90"
+          ]
+        },
+        {
+          "nome": "Coquetel Extra Superior",
+          "valores": [
+            "R$ 119,90",
+            "R$ 95,90",
+            "R$ 101,90"
+          ]
+        },
+        {
+          "nome": "Coquetel Premium",
+          "valores": [
+            "R$ 139,90",
+            "R$ 111,90",
+            "R$ 118,90"
+          ]
+        },
+        {
+          "nome": "Coquetel Extra Premium",
+          "valores": [
+            "R$ 149,90",
+            "R$ 119,90",
+            "R$ 127,40"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "cardapios-coffee-break",
+      "titulo": "COFFEE BREAK",
+      "icone": "🍽️",
+      "desc": "Cardápios — COFFEE BREAK.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Welcome Coffee",
+          "valores": [
+            "R$ 39,90",
+            "R$ 33,90",
+            "R$ 35,90"
+          ]
+        },
+        {
+          "nome": "Coffee Standard",
+          "valores": [
+            "R$ 49,90",
+            "R$ 42,40",
+            "R$ 44,00"
+          ]
+        },
+        {
+          "nome": "Coffee Superior",
+          "valores": [
+            "R$ 69,90",
+            "R$ 59,40",
+            "R$ 62,90"
+          ]
+        },
+        {
+          "nome": "Fit Coffee",
+          "valores": [
+            "R$ 69,90",
+            "R$ 59,40",
+            "R$ 62,90"
+          ]
+        },
+        {
+          "nome": "Coffee Extra Superior",
+          "valores": [
+            "R$ 109,90",
+            "R$ 93,40",
+            "R$ 98,90"
+          ]
+        },
+        {
+          "nome": "Coffee Extra Premium",
+          "valores": [
+            "R$ 129,90",
+            "R$ 110,40",
+            "R$ 116,90"
+          ]
+        },
+        {
+          "nome": "Coffee Super Premium",
+          "valores": [
+            "R$ 149,90",
+            "R$ 127,40",
+            "R$ 134,90"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "cardapios-brunch",
+      "titulo": "BRUNCH",
+      "icone": "🍽️",
+      "desc": "Cardápios — BRUNCH.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Brunch Essencial",
+          "valores": [
+            "R$ 89,90",
+            "R$ 76,70",
+            "R$ 80,90"
+          ]
+        },
+        {
+          "nome": "Brunch Clássico",
+          "valores": [
+            "R$ 109,90",
+            "R$ 93,40",
+            "R$ 98,90"
+          ]
+        },
+        {
+          "nome": "Brunch Indaiá",
+          "valores": [
+            "R$ 129,90",
+            "R$ 110,40",
+            "R$ 116,90"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "cardapios-aperitivos",
+      "titulo": "APERITIVOS",
+      "icone": "🍽️",
+      "desc": "Cardápios — APERITIVOS.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Aperitivos - Pacote 1",
+          "valores": [
+            "R$ 35,00",
+            "R$ 20,00",
+            "R$ 25,00"
+          ]
+        },
+        {
+          "nome": "Aperitivos - Pacote 2",
+          "valores": [
+            "R$ 45,00",
+            "R$ 30,00",
+            "R$ 35,00"
+          ]
+        },
+        {
+          "nome": "Aperitivos - Pacote 3",
+          "valores": [
+            "R$ 55,00",
+            "R$ 40,00",
+            "R$ 45,00"
+          ]
+        },
+        {
+          "nome": "Aperitivos - Pacote 4",
+          "valores": [
+            "R$ 65,00",
+            "R$ 45,00",
+            "R$ 55,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "cardapios-finger-food",
+      "titulo": "FINGER FOOD",
+      "icone": "🍽️",
+      "desc": "Cardápios — FINGER FOOD.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Finger Foods 1",
+          "valores": [
+            "R$ 90,00",
+            "R$ 81,00",
+            "R$ 85,50"
+          ]
+        },
+        {
+          "nome": "Finger Foods 2",
+          "valores": [
+            "R$ 120,00",
+            "R$ 108,00",
+            "R$ 114,00"
+          ]
+        },
+        {
+          "nome": "Finger Foods 3",
+          "valores": [
+            "R$ 140,00",
+            "R$ 126,00",
+            "R$ 133,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "cardapios-finger-foods-infantil",
+      "titulo": "FINGER FOODS (INFANTIL)",
+      "icone": "🍽️",
+      "desc": "Cardápios — FINGER FOODS (INFANTIL).",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Finger Foods Infantil 1",
+          "valores": [
+            "R$ 79,90",
+            "R$ 67,90",
+            "R$ 71,90"
+          ]
+        },
+        {
+          "nome": "Finger Foods Infantil 2",
+          "valores": [
+            "R$ 89,90",
+            "R$ 76,40",
+            "R$ 80,90"
+          ]
+        },
+        {
+          "nome": "Finger Foods Infantil 3",
+          "valores": [
+            "R$ 119,90",
+            "R$ 101,90",
+            "R$ 107,90"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "cardapios-carrinho-de-fondue",
+      "titulo": "CARRINHO DE FONDUE",
+      "icone": "🍽️",
+      "desc": "Cardápios — CARRINHO DE FONDUE.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Fondue 1",
+          "valores": [
+            "R$ 39,90",
+            "R$ 23,94",
+            "R$ 27,93"
+          ]
+        },
+        {
+          "nome": "Fondue 2",
+          "valores": [
+            "R$ 49,90",
+            "R$ 29,94",
+            "R$ 34,93"
+          ]
+        },
+        {
+          "nome": "Fondue 3",
+          "valores": [
+            "R$ 59,90",
+            "R$ 41,93",
+            "R$ 44,93"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "cardapios-lanche-da-madrugada",
+      "titulo": "LANCHE DA MADRUGADA",
+      "icone": "🍽️",
+      "desc": "Cardápios — LANCHE DA MADRUGADA.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Lanche da Madrugada 1",
+          "valores": [
+            "R$ 40,00",
+            "R$ 20,00",
+            "R$ 30,00"
+          ]
+        },
+        {
+          "nome": "Lanche da Madrugada 2",
+          "valores": [
+            "R$ 50,00",
+            "R$ 30,00",
+            "R$ 40,00"
+          ]
+        },
+        {
+          "nome": "Lanche da Madrugada 3",
+          "valores": [
+            "R$ 60,00",
+            "R$ 40,00",
+            "R$ 50,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "cardapios-mesa-mediterranea",
+      "titulo": "MESA MEDITERRÂNEA",
+      "icone": "🍽️",
+      "desc": "Cardápios — MESA MEDITERRÂNEA.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Mesa Mediterrânea",
+          "valores": [
+            "R$ 90,00",
+            "R$ 70,00",
+            "R$ 80,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "cardapios-tabua-de-frios-mediterranea",
+      "titulo": "TABÚA DE FRIOS MEDITERRÂNEA",
+      "icone": "🍽️",
+      "desc": "Cardápios — TABÚA DE FRIOS MEDITERRÂNEA.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Tabúa Frios (un)",
+          "valores": [
+            "R$ 400,00",
+            "R$ 250,00",
+            "R$ 300,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "cardapios-sobremesa",
+      "titulo": "SOBREMESA",
+      "icone": "🍽️",
+      "desc": "Cardápios — SOBREMESA.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Brownie Bliss",
+          "valores": [
+            "R$ 18,00",
+            "R$ 10,00",
+            "R$ 15,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "cardapios-ilha-gourmet-e-mesa-de-boas-vindas",
+      "titulo": "ILHA GOURMET e Mesa de boas Vindas",
+      "icone": "🍽️",
+      "desc": "Cardápios — ILHA GOURMET e Mesa de boas Vindas.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Ilha Gourmet",
+          "valores": [
+            "R$ 150,00",
+            "R$ 75,00",
+            "R$ 90,00"
+          ]
+        },
+        {
+          "nome": "Mesa de Boas Vindas",
+          "valores": [
+            "R$ 49,90",
+            "—",
+            "R$ 34,90"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "cardapios-rolhas",
+      "titulo": "ROLHAS",
+      "icone": "🍽️",
+      "desc": "Cardápios — ROLHAS.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor"
+      ],
+      "itens": [
+        {
+          "nome": "Rolha Destilado (und)",
+          "valores": [
+            "R$ 104,00"
+          ]
+        },
+        {
+          "nome": "Rolha Espumante (und)",
+          "valores": [
+            "R$ 64,00"
+          ]
+        },
+        {
+          "nome": "Rolha Chopp (50L)",
+          "valores": [
+            "R$ 700,00"
+          ]
+        },
+        {
+          "nome": "Rolha Energético (1L)",
+          "valores": [
+            "R$ 15,00"
+          ]
+        },
+        {
+          "nome": "Rolha Energético (250 ml)",
+          "valores": [
+            "R$ 5,00"
+          ]
+        },
+        {
+          "nome": "Rolha Tônica (lata)",
+          "valores": [
+            "R$ 3,00"
+          ]
+        },
+        {
+          "nome": "Rolha Suco (1L)",
+          "valores": [
+            "R$ 10,00"
+          ]
+        },
+        {
+          "nome": "Rolha Água de Coco(1L)",
+          "valores": [
+            "R$ 5,00"
+          ]
+        },
+        {
+          "nome": "Rolha Cerveja (600 ml)",
+          "valores": [
+            "R$ 8,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "cardapios-open-de-drinks-plus",
+      "titulo": "OPEN DE DRINKS PLUS",
+      "icone": "🍽️",
+      "desc": "Cardápios — OPEN DE DRINKS PLUS.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Open Drinks Classic - Consumação",
+          "valores": [
+            "R$ 119,00",
+            "R$ 69,90",
+            "R$ 89,30"
+          ]
+        },
+        {
+          "nome": "Open Drinks Classic - Open Bar 1",
+          "valores": [
+            "R$ 109,00",
+            "R$ 59,90",
+            "R$ 81,80"
+          ]
+        },
+        {
+          "nome": "Open Drinks Classic - Open Bar 2",
+          "valores": [
+            "R$ 99,00",
+            "R$ 52,00",
+            "R$ 74,30"
+          ]
+        },
+        {
+          "nome": "Open Drinks Classic - Open Bar 3",
+          "valores": [
+            "R$ 89,00",
+            "R$ 45,90",
+            "R$ 66,80"
+          ]
+        },
+        {
+          "nome": "Open Drinks Classic - Open Bar 4",
+          "valores": [
+            "R$ 79,00",
+            "R$ 39,90",
+            "R$ 59,30"
+          ]
+        },
+        {
+          "nome": "Open Drinks Premium - Consumação",
+          "valores": [
+            "R$ 129,00",
+            "R$ 75,90",
+            "R$ 96,80"
+          ]
+        },
+        {
+          "nome": "Open Drinks Premium- Open Bar 1",
+          "valores": [
+            "R$ 119,00",
+            "R$ 65,90",
+            "R$ 89,30"
+          ]
+        },
+        {
+          "nome": "Open Drinks Premium- Open Bar 2",
+          "valores": [
+            "R$ 109,00",
+            "R$ 59,90",
+            "R$ 81,80"
+          ]
+        },
+        {
+          "nome": "Open Drinks Premium-  Open Bar 3",
+          "valores": [
+            "R$ 99,00",
+            "R$ 52,90",
+            "R$ 74,30"
+          ]
+        },
+        {
+          "nome": "Open Drinks Premium - Open Bar 4",
+          "valores": [
+            "R$ 89,00",
+            "R$ 45,90",
+            "R$ 66,80"
+          ]
+        },
+        {
+          "nome": "Open Drinks Premium - Open Bar 5",
+          "valores": [
+            "R$ 25,90",
+            "R$ 12,90",
+            "R$ 19,40"
+          ]
+        },
+        {
+          "nome": "Open Drinks Premium - Open Bar 6",
+          "valores": [
+            "R$ 20,90",
+            "R$ 8,90",
+            "R$ 19,40"
+          ]
+        },
+        {
+          "nome": "Open Drinks Extra Premium - Consumação",
+          "valores": [
+            "R$ 139,00",
+            "R$ 89,90",
+            "R$ 104,30"
+          ]
+        },
+        {
+          "nome": "Open Drinks Extra Premium - Open Bar 1",
+          "valores": [
+            "R$ 129,00",
+            "R$ 82,90",
+            "R$ 96,80"
+          ]
+        },
+        {
+          "nome": "Open Drinks Extra Premium - Open Bar 2",
+          "valores": [
+            "R$ 119,00",
+            "R$ 75,90",
+            "R$ 89,30"
+          ]
+        },
+        {
+          "nome": "Open Drinks Extra Premium -  Open Bar 3",
+          "valores": [
+            "R$ 109,00",
+            "R$ 65,90",
+            "R$ 81,80"
+          ]
+        },
+        {
+          "nome": "Open Drinks Extra Premium - Open Bar 4",
+          "valores": [
+            "R$ 99,00",
+            "R$ 59,90",
+            "R$ 74,30"
+          ]
+        },
+        {
+          "nome": "Open Drinks Extra Premium - Open Bar 5",
+          "valores": [
+            "R$ 45,90",
+            "R$ 25,90",
+            "R$ 34,40"
+          ]
+        },
+        {
+          "nome": "Open Drinks Luxo - Consumação",
+          "valores": [
+            "R$ 149,00",
+            "R$ 99,90",
+            "R$ 111,80"
+          ]
+        },
+        {
+          "nome": "Open Drinks Luxo - Open Bar 1",
+          "valores": [
+            "R$ 139,00",
+            "R$ 85,90",
+            "R$ 104,30"
+          ]
+        },
+        {
+          "nome": "Open Drinks Luxo - Open Bar 2",
+          "valores": [
+            "R$ 129,00",
+            "R$ 75,90",
+            "R$ 96,80"
+          ]
+        },
+        {
+          "nome": "Open Drinks Luxo -  Open Bar 3",
+          "valores": [
+            "R$ 119,00",
+            "R$ 69,90",
+            "R$ 89,30"
+          ]
+        },
+        {
+          "nome": "Open Drinks Luxo - Open Bar 4",
+          "valores": [
+            "R$ 109,00",
+            "R$ 65,90",
+            "R$ 81,80"
+          ]
+        },
+        {
+          "nome": "Open Drinks Luxo - Open Bar 5",
+          "valores": [
+            "R$ 59,90",
+            "R$ 32,90",
+            "R$ 44,90"
+          ]
+        },
+        {
+          "nome": "Open Drinks Luxo - Open Bar 6",
+          "valores": [
+            "R$ 39,90",
+            "R$ 24,90",
+            "R$ 29,90"
+          ]
+        },
+        {
+          "nome": "Open Drinks (Sem Alcool) - Consumação",
+          "valores": [
+            "R$ 109,90",
+            "R$ 69,90",
+            "R$ 89,30"
+          ]
+        },
+        {
+          "nome": "Open Drinks (Sem Alcool) - Open bar",
+          "valores": [
+            "R$ 89,90",
+            "R$ 45,90",
+            "R$ 59,90"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "cardapios-open-caipirinha",
+      "titulo": "OPEN CAIPIRINHA",
+      "icone": "🍽️",
+      "desc": "Cardápios — OPEN CAIPIRINHA.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Open de Caipirinha - Clássic - Sem Open Contratado (Consumação)",
+          "valores": [
+            "R$ 60,00",
+            "R$ 50,00",
+            "R$ 55,00"
+          ]
+        },
+        {
+          "nome": "Open de Caipirinha - Clássic - Com Open Bar Contratado e sem Open de Drinks",
+          "valores": [
+            "R$ 40,00",
+            "R$ 30,00",
+            "R$ 35,00"
+          ]
+        },
+        {
+          "nome": "Open de Caipirinha - Clássic - Com Open Bar e Open de Drinks Contratado",
+          "valores": [
+            "R$ 20,00",
+            "R$ 10,00",
+            "R$ 15,00"
+          ]
+        },
+        {
+          "nome": "Open de Caipirinha - Premium - Sem Open Contratado (Consumação)",
+          "valores": [
+            "R$ 70,00",
+            "R$ 60,00",
+            "R$ 65,00"
+          ]
+        },
+        {
+          "nome": "Open de Caipirinha - Premium - Com Open Bar Contratado e sem Open de Drinks",
+          "valores": [
+            "R$ 50,00",
+            "R$ 40,00",
+            "R$ 45,00"
+          ]
+        },
+        {
+          "nome": "Open de Caipirinha - Premium - Com Open Bar e Open de Drinks Contratado",
+          "valores": [
+            "R$ 30,00",
+            "R$ 20,00",
+            "R$ 25,00"
+          ]
+        },
+        {
+          "nome": "Open de Caipirinha - Extra Premium - Sem Open Contratado (Consumação)",
+          "valores": [
+            "R$ 80,00",
+            "R$ 70,00",
+            "R$ 75,00"
+          ]
+        },
+        {
+          "nome": "Open de Caipirinha - Extra Premium - Com Open Bar Contratado e sem Open de Drinks",
+          "valores": [
+            "R$ 60,00",
+            "R$ 50,00",
+            "R$ 55,00"
+          ]
+        },
+        {
+          "nome": "Open de Caipirinha - Extra Premium - Com Open Bar e Open de Drinks Contratado",
+          "valores": [
+            "R$ 40,00",
+            "R$ 30,00",
+            "R$ 35,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "cardapios-coffee",
+      "titulo": "COFFEE",
+      "icone": "🍽️",
+      "desc": "Cardápios — COFFEE.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Coffee Simple",
+          "valores": [
+            "R$ 1.200,00",
+            "R$ 300,00",
+            "R$ 500,00"
+          ]
+        },
+        {
+          "nome": "Open Coffee",
+          "valores": [
+            "R$ 1.800,00",
+            "R$ 400,00",
+            "R$ 750,00"
+          ]
+        },
+        {
+          "nome": "Open Coffee - Premium",
+          "valores": [
+            "R$ 40,00",
+            "R$ 32,00",
+            "R$ 34,00"
+          ]
+        },
+        {
+          "nome": "Open Coffee - Plus",
+          "valores": [
+            "R$ 50,00",
+            "R$ 40,00",
+            "R$ 42,50"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "cardapios-agua-saborizada",
+      "titulo": "ÁGUA SABORIZADA",
+      "icone": "🍽️",
+      "desc": "Cardápios — ÁGUA SABORIZADA.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Água Saborizada",
+          "valores": [
+            "R$ 1.200,00",
+            "R$ 300,00",
+            "R$ 500,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "cardapios-pacote-cascata-de-negroni",
+      "titulo": "Pacote Cascata de Negroni",
+      "icone": "🍽️",
+      "desc": "Cardápios — Pacote Cascata de Negroni.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Cascata de Negroni - Premium - Sem Open Contratado (Consumação)",
+          "valores": [
+            "R$ 70,00",
+            "R$ 60,00",
+            "R$ 65,00"
+          ]
+        },
+        {
+          "nome": "Cascata de Negroni - Premium - Com Open Bar Contratado e sem Open de Drinks",
+          "valores": [
+            "R$ 50,00",
+            "R$ 40,00",
+            "R$ 45,00"
+          ]
+        },
+        {
+          "nome": "Cascata de Negroni - Premium - Com Open Bar e Open de Drinks Contratado",
+          "valores": [
+            "R$ 30,00",
+            "R$ 20,00",
+            "R$ 25,00"
+          ]
+        },
+        {
+          "nome": "Cascata de Negroni - Extra Premium - Sem Open Contratado (Consumação)",
+          "valores": [
+            "R$ 90,00",
+            "R$ 70,00",
+            "R$ 80,00"
+          ]
+        },
+        {
+          "nome": "Cascata de Negroni - Extra Premium - Com Open Bar Contratado e sem Open de Drinks",
+          "valores": [
+            "R$ 75,00",
+            "R$ 50,00",
+            "R$ 65,00"
+          ]
+        },
+        {
+          "nome": "Cascata de Negroni - Extra Premium - Com Open Bar e Open de Drinks Contratado",
+          "valores": [
+            "R$ 60,00",
+            "R$ 45,00",
+            "R$ 55,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "cardapios-torre-de-espumantes",
+      "titulo": "TORRE DE ESPUMANTES",
+      "icone": "🍽️",
+      "desc": "Cardápios — TORRE DE ESPUMANTES.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Torre de Espumante",
+          "valores": [
+            "R$ 1.500,00",
+            "R$ 800,00",
+            "R$ 1.000,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "cardapios-welcome-drink",
+      "titulo": "WELCOME DRINK",
+      "icone": "🍽️",
+      "desc": "Cardápios — WELCOME DRINK.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Welcome Drink",
+          "valores": [
+            "R$ 19,90",
+            "R$ 8,00",
+            "R$ 12,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "cardapios-adicionais-de-cardapio-para-buffet",
+      "titulo": "ADICIONAIS DE CARDÁPIO PARA BUFFET",
+      "icone": "🍽️",
+      "desc": "Cardápios — ADICIONAIS DE CARDÁPIO PARA BUFFET.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Entrada Extra Superior",
+          "valores": [
+            "R$ 5,00",
+            "—",
+            "R$ 5,00"
+          ]
+        },
+        {
+          "nome": "Entrada Excellence",
+          "valores": [
+            "R$ 12,00",
+            "—",
+            "R$ 12,00"
+          ]
+        },
+        {
+          "nome": "Entrada Menu Premium",
+          "valores": [
+            "R$ 7,00",
+            "—",
+            "R$ 7,00"
+          ]
+        },
+        {
+          "nome": "Entrada Executivo Extra Premium",
+          "valores": [
+            "R$ 14,00",
+            "R$ 7,00",
+            "R$ 7,00"
+          ]
+        },
+        {
+          "nome": "Batata Frita ( Buffet )",
+          "valores": [
+            "R$ 10,00",
+            "R$ 7,00",
+            "R$ 7,00"
+          ]
+        },
+        {
+          "nome": "Carne medalhão",
+          "valores": [
+            "R$ 12,00",
+            "—",
+            "R$ 12,00"
+          ]
+        },
+        {
+          "nome": "Troca de Strogonoff para Carne medalhão",
+          "valores": [
+            "R$ 10,00",
+            "—",
+            "R$ 10,00"
+          ]
+        },
+        {
+          "nome": "Troca de Strogonoff p/ Carne ao Molho Madeira",
+          "valores": [
+            "R$ 12,00",
+            "R$ 8,00",
+            "R$ 8,00"
+          ]
+        },
+        {
+          "nome": "Salmão",
+          "valores": [
+            "R$ 12,00",
+            "—",
+            "R$ 12,00"
+          ]
+        },
+        {
+          "nome": "Camarão",
+          "valores": [
+            "R$ 15,00",
+            "—",
+            "R$ 15,00"
+          ]
+        },
+        {
+          "nome": "Carré de Cordeiro",
+          "valores": [
+            "R$ 15,00",
+            "—",
+            "R$ 15,00"
+          ]
+        },
+        {
+          "nome": "Mignon",
+          "valores": [
+            "R$ 20,00",
+            "R$ 15,00",
+            "R$ 15,00"
+          ]
+        },
+        {
+          "nome": "Gnocchi",
+          "valores": [
+            "R$ 6,00",
+            "—",
+            "R$ 6,00"
+          ]
+        },
+        {
+          "nome": "Caneloni",
+          "valores": [
+            "R$ 8,00",
+            "—",
+            "R$ 8,00"
+          ]
+        },
+        {
+          "nome": "Paella de Frutos do Mar",
+          "valores": [
+            "R$ 8,00",
+            "—",
+            "R$ 8,00"
+          ]
+        },
+        {
+          "nome": "Saladas",
+          "valores": [
+            "R$ 6,00",
+            "—",
+            "R$ 6,00"
+          ]
+        },
+        {
+          "nome": "Arroz",
+          "valores": [
+            "R$ 7,00",
+            "R$ 3,00",
+            "R$ 5,00"
+          ]
+        },
+        {
+          "nome": "Empratado Adicional",
+          "valores": [
+            "R$ 50,00",
+            "R$ 30,00",
+            "R$ 30,00"
+          ]
+        },
+        {
+          "nome": "Batata Palha",
+          "valores": [
+            "R$ 6,00",
+            "—",
+            "R$ 6,00"
+          ]
+        },
+        {
+          "nome": "Carpaccio de Carne",
+          "valores": [
+            "R$ 1,00",
+            "—",
+            "R$ 1,00"
+          ]
+        },
+        {
+          "nome": "Salada Menu Privilege",
+          "valores": [
+            "R$ 50,00",
+            "R$ 30,00",
+            "R$ 30,00"
+          ]
+        },
+        {
+          "nome": "Carpaccio de Carne",
+          "valores": [
+            "R$ 20,00",
+            "R$ 15,00",
+            "R$ 15,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "cardapios-alteracoes-para-open-bar",
+      "titulo": "ALTERAÇÕES PARA OPEN BAR",
+      "icone": "🍽️",
+      "desc": "Cardápios — ALTERAÇÕES PARA OPEN BAR.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Open bar Budweiser (Litro)",
+          "valores": [
+            "R$ 20,00",
+            "R$ 14,00",
+            "R$ 16,00"
+          ]
+        },
+        {
+          "nome": "Open bar Heineken (Long Neck)",
+          "valores": [
+            "R$ 42,00",
+            "R$ 29,40",
+            "R$ 33,60"
+          ]
+        },
+        {
+          "nome": "Brahma p/ Stella (Long)",
+          "valores": [
+            "R$ 42,00",
+            "R$ 29,40",
+            "R$ 33,60"
+          ]
+        },
+        {
+          "nome": "Smirnoff p/ Absolut",
+          "valores": [
+            "R$ 20,00",
+            "R$ 14,00",
+            "R$ 16,00"
+          ]
+        },
+        {
+          "nome": "Passport p/ Red Label",
+          "valores": [
+            "R$ 32,00",
+            "R$ 22,40",
+            "R$ 25,60"
+          ]
+        },
+        {
+          "nome": "Passport p/ Black Label",
+          "valores": [
+            "R$ 46,00",
+            "R$ 32,20",
+            "R$ 36,80"
+          ]
+        },
+        {
+          "nome": "Red Label p/ Black Label",
+          "valores": [
+            "R$ 26,00",
+            "R$ 18,20",
+            "R$ 20,80"
+          ]
+        },
+        {
+          "nome": "Bally p/ Red Bull",
+          "valores": [
+            "R$ 35,00",
+            "R$ 24,50",
+            "R$ 28,00"
+          ]
+        },
+        {
+          "nome": "Open bar Suco de Laranja",
+          "valores": [
+            "R$ 20,00",
+            "R$ 14,00",
+            "R$ 16,00"
+          ]
+        },
+        {
+          "nome": "Troca da Jarra p/ Latas",
+          "valores": [
+            "R$ 35,00",
+            "R$ 24,50",
+            "R$ 28,00"
+          ]
+        },
+        {
+          "nome": "Open bar de Energético Baly",
+          "valores": [
+            "R$ 20,00",
+            "R$ 14,00",
+            "R$ 16,00"
+          ]
+        },
+        {
+          "nome": "Open bar de Energético Red Bull",
+          "valores": [
+            "R$ 46,00",
+            "R$ 32,20",
+            "R$ 36,80"
+          ]
+        },
+        {
+          "nome": "Open bar de Vodka Smirnoff",
+          "valores": [
+            "R$ 26,00",
+            "R$ 18,20",
+            "R$ 20,80"
+          ]
+        },
+        {
+          "nome": "Open bar de Vodka Absolut",
+          "valores": [
+            "R$ 40,00",
+            "R$ 28,00",
+            "R$ 32,00"
+          ]
+        },
+        {
+          "nome": "Open bar de Whisky Passport",
+          "valores": [
+            "R$ 26,00",
+            "R$ 18,20",
+            "R$ 20,80"
+          ]
+        },
+        {
+          "nome": "Open bar de Whisky Red Label",
+          "valores": [
+            "R$ 40,00",
+            "R$ 28,00",
+            "R$ 32,00"
+          ]
+        },
+        {
+          "nome": "Open bar de Whisky Black Label",
+          "valores": [
+            "R$ 52,00",
+            "R$ 36,40",
+            "R$ 41,60"
+          ]
+        },
+        {
+          "nome": "Open Bar de Vinho",
+          "valores": [
+            "R$ 46,00",
+            "R$ 32,20",
+            "R$ 36,80"
+          ]
+        },
+        {
+          "nome": "Open bar de Espumante",
+          "valores": [
+            "R$ 71,00",
+            "R$ 49,70",
+            "R$ 56,80"
+          ]
+        },
+        {
+          "nome": "Gelo (kg)",
+          "valores": [
+            "R$ 15,00",
+            "R$ 10,50",
+            "R$ 12,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "decoracoes-pacotes-decorativos",
+      "titulo": "PACOTES DECORATIVOS",
+      "icone": "🎈",
+      "desc": "Decorações — PACOTES DECORATIVOS.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Troca Mini para Beauty  - Sexta",
+          "valores": [
+            "R$ 4.000,00",
+            "R$ 1.000,00",
+            "R$ 1.500,00"
+          ]
+        },
+        {
+          "nome": "Troca Mini para Beauty  - Sáb/Dom",
+          "valores": [
+            "R$ 4.500,00",
+            "R$ 1.000,00",
+            "R$ 1.500,00"
+          ]
+        },
+        {
+          "nome": "Troca Mini para Boho  - Sexta",
+          "valores": [
+            "R$ 5.000,00",
+            "R$ 1.400,00",
+            "R$ 2.000,00"
+          ]
+        },
+        {
+          "nome": "Troca Mini para Boho  - Sáb/Dom",
+          "valores": [
+            "R$ 5.500,00",
+            "R$ 1.400,00",
+            "R$ 2.000,00"
+          ]
+        },
+        {
+          "nome": "Troca Beauty para Boho  - Sexta",
+          "valores": [
+            "R$ 1.500,00",
+            "R$ 500,00",
+            "R$ 750,00"
+          ]
+        },
+        {
+          "nome": "Troca Beauty para Boho  - Sáb/Dom",
+          "valores": [
+            "R$ 1.500,00",
+            "R$ 500,00",
+            "R$ 750,00"
+          ]
+        },
+        {
+          "nome": "Decoração troca para Sáb/Dom/Véspera de Feriado e Feriado",
+          "valores": [
+            "R$ 7.000,00",
+            "R$ 4.500,00",
+            "R$ 5.500,00"
+          ]
+        },
+        {
+          "nome": "Pacote Decoração Beauty Wedding",
+          "valores": [
+            "R$ 12.000,00",
+            "R$ 2.500,00",
+            "R$ 4.000,00"
+          ]
+        },
+        {
+          "nome": "Pacote Decoração Mini Wedding",
+          "valores": [
+            "R$ 7.000,00",
+            "R$ 2.000,00",
+            "R$ 2.500,00"
+          ]
+        },
+        {
+          "nome": "Pacote Decoração Boho",
+          "valores": [
+            "R$ 13.000,00",
+            "R$ 3.500,00",
+            "R$ 4.500,00"
+          ]
+        },
+        {
+          "nome": "Troca do Mini Fifteen para o Colors Party",
+          "valores": [
+            "R$ 5.000,00",
+            "R$ 3.500,00",
+            "R$ 4.000,00"
+          ]
+        },
+        {
+          "nome": "Troca do Happy Fifteen para o Colors Party",
+          "valores": [
+            "R$ 4.000,00",
+            "R$ 2.500,00",
+            "R$ 3.000,00"
+          ]
+        },
+        {
+          "nome": "Pacote Decoração Aniversário Adulto",
+          "valores": [
+            "R$ 6.000,00",
+            "R$ 3.000,00",
+            "R$ 3.500,00"
+          ]
+        },
+        {
+          "nome": "Pacote Decoração Aniversário Infantil",
+          "valores": [
+            "R$ 6.000,00",
+            "R$ 3.000,00",
+            "R$ 3.500,00"
+          ]
+        },
+        {
+          "nome": "Pacote Decoração Chá de Bebê",
+          "valores": [
+            "R$ 6.000,00",
+            "R$ 3.000,00",
+            "R$ 3.500,00"
+          ]
+        },
+        {
+          "nome": "Pacote Decoração Chá Revelação",
+          "valores": [
+            "R$ 6.000,00",
+            "R$ 3.000,00",
+            "R$ 3.500,00"
+          ]
+        },
+        {
+          "nome": "Pacote Decoração Formatura",
+          "valores": [
+            "R$ 6.000,00",
+            "R$ 3.000,00",
+            "R$ 3.500,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "decoracoes-pecas-decorativas",
+      "titulo": "PEÇAS DECORATIVAS",
+      "icone": "🎈",
+      "desc": "Decorações — PEÇAS DECORATIVAS.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Aparador Dourado",
+          "valores": [
+            "R$ 390,00",
+            "R$ 120,00",
+            "R$ 150,00"
+          ]
+        },
+        {
+          "nome": "Armário de Lembrancinhas",
+          "valores": [
+            "R$ 600,00",
+            "R$ 200,00",
+            "R$ 300,00"
+          ]
+        },
+        {
+          "nome": "Bar de Led",
+          "valores": [
+            "R$ 950,00",
+            "R$ 400,00",
+            "R$ 550,00"
+          ]
+        },
+        {
+          "nome": "Bar Simples",
+          "valores": [
+            "R$ 600,00",
+            "R$ 300,00",
+            "R$ 400,00"
+          ]
+        },
+        {
+          "nome": "Bastões em LED",
+          "valores": [
+            "R$ 30,00",
+            "R$ 15,00",
+            "R$ 20,00"
+          ]
+        },
+        {
+          "nome": "Cadeira de Madeira",
+          "valores": [
+            "R$ 10,00",
+            "R$ 3,00",
+            "R$ 5,00"
+          ]
+        },
+        {
+          "nome": "Cadeira Medalhão",
+          "valores": [
+            "R$ 100,00",
+            "R$ 40,00",
+            "R$ 50,00"
+          ]
+        },
+        {
+          "nome": "Candelabro",
+          "valores": [
+            "R$ 220,00",
+            "R$ 70,00",
+            "R$ 100,00"
+          ]
+        },
+        {
+          "nome": "Cenário Better Together",
+          "valores": [
+            "R$ 1.700,00",
+            "R$ 500,00",
+            "R$ 700,00"
+          ]
+        },
+        {
+          "nome": "Cenário Jardim Preservado",
+          "valores": [
+            "R$ 1.700,00",
+            "R$ 500,00",
+            "R$ 700,00"
+          ]
+        },
+        {
+          "nome": "Cenário Latânias",
+          "valores": [
+            "R$ 1.700,00",
+            "R$ 500,00",
+            "R$ 700,00"
+          ]
+        },
+        {
+          "nome": "Céu de Balões - 120 unidades",
+          "valores": [
+            "R$ 3.000,00",
+            "R$ 1.900,00",
+            "R$ 2.500,00"
+          ]
+        },
+        {
+          "nome": "Cordão de Luzes",
+          "valores": [
+            "R$ 800,00",
+            "R$ 300,00",
+            "R$ 400,00"
+          ]
+        },
+        {
+          "nome": "Cortina de LED",
+          "valores": [
+            "R$ 350,00",
+            "R$ 80,00",
+            "R$ 180,00"
+          ]
+        },
+        {
+          "nome": "Decor Elegance",
+          "valores": [
+            "R$ 850,00",
+            "R$ 250,00",
+            "R$ 350,00"
+          ]
+        },
+        {
+          "nome": "Espelho Imperial",
+          "valores": [
+            "R$ 250,00",
+            "R$ 70,00",
+            "R$ 180,00"
+          ]
+        },
+        {
+          "nome": "Floreira",
+          "valores": [
+            "R$ 75,00",
+            "R$ 30,00",
+            "R$ 50,00"
+          ]
+        },
+        {
+          "nome": "Guardanapos",
+          "valores": [
+            "R$ 10,00",
+            "R$ 2,00",
+            "R$ 5,00"
+          ]
+        },
+        {
+          "nome": "Kit Imperial (Indisponível no Canto da lagoa)",
+          "valores": [
+            "R$ 2.000,00",
+            "R$ 800,00",
+            "R$ 1.200,00"
+          ]
+        },
+        {
+          "nome": "Lágrimas de Led (SE e BLU)",
+          "valores": [
+            "R$ 650,00",
+            "R$ 250,00",
+            "R$ 450,00"
+          ]
+        },
+        {
+          "nome": "Letreiro Let's Party Branco",
+          "valores": [
+            "R$ 600,00",
+            "R$ 300,00",
+            "R$ 380,00"
+          ]
+        },
+        {
+          "nome": "Letreiro Let's Party Rosa",
+          "valores": [
+            "R$ 600,00",
+            "R$ 300,00",
+            "R$ 380,00"
+          ]
+        },
+        {
+          "nome": "Love Luminoso (branco)",
+          "valores": [
+            "R$ 800,00",
+            "R$ 350,00",
+            "R$ 500,00"
+          ]
+        },
+        {
+          "nome": "Love Luminoso (madeira)",
+          "valores": [
+            "R$ 800,00",
+            "R$ 350,00",
+            "R$ 500,00"
+          ]
+        },
+        {
+          "nome": "Lustre Paris (ME, SE E JO)",
+          "valores": [
+            "R$ 4.000,00",
+            "R$ 800,00",
+            "R$ 1.200,00"
+          ]
+        },
+        {
+          "nome": "Luz Cênica",
+          "valores": [
+            "R$ 80,00",
+            "R$ 20,00",
+            "R$ 35,00"
+          ]
+        },
+        {
+          "nome": "Luzes Star Heaven (ME)",
+          "valores": [
+            "R$ 600,00",
+            "R$ 150,00",
+            "R$ 260,00"
+          ]
+        },
+        {
+          "nome": "Mesa Bistrô",
+          "valores": [
+            "R$ 250,00",
+            "R$ 80,00",
+            "R$ 120,00"
+          ]
+        },
+        {
+          "nome": "Mesa Bistrô c/ 2 Banqueta",
+          "valores": [
+            "R$ 350,00",
+            "R$ 150,00",
+            "R$ 180,00"
+          ]
+        },
+        {
+          "nome": "Mesa de Bolo Dourada",
+          "valores": [
+            "R$ 400,00",
+            "R$ 120,00",
+            "R$ 180,00"
+          ]
+        },
+        {
+          "nome": "Mesa de Bolo Espelhada",
+          "valores": [
+            "R$ 450,00",
+            "R$ 160,00",
+            "R$ 250,00"
+          ]
+        },
+        {
+          "nome": "Mesa Demolição Doces",
+          "valores": [
+            "R$ 300,00",
+            "R$ 100,00",
+            "R$ 150,00"
+          ]
+        },
+        {
+          "nome": "Mesa Demolição Noivos",
+          "valores": [
+            "R$ 200,00",
+            "R$ 80,00",
+            "R$ 110,00"
+          ]
+        },
+        {
+          "nome": "Mesa demolição quadrada",
+          "valores": [
+            "R$ 400,00",
+            "R$ 150,00",
+            "R$ 180,00"
+          ]
+        },
+        {
+          "nome": "Mesa Espelhada Doces",
+          "valores": [
+            "R$ 450,00",
+            "R$ 200,00",
+            "R$ 260,00"
+          ]
+        },
+        {
+          "nome": "Mesa Espelhada Noivos",
+          "valores": [
+            "R$ 350,00",
+            "R$ 130,00",
+            "R$ 180,00"
+          ]
+        },
+        {
+          "nome": "Pedestal em Cuba",
+          "valores": [
+            "R$ 90,00",
+            "R$ 30,00",
+            "R$ 55,00"
+          ]
+        },
+        {
+          "nome": "Pista de LED",
+          "valores": [
+            "R$ 2.500,00",
+            "R$ 699,90",
+            "R$ 999,90"
+          ]
+        },
+        {
+          "nome": "Kit Poltronas + Namoradeira",
+          "valores": [
+            "R$ 800,00",
+            "R$ 300,00",
+            "R$ 450,00"
+          ]
+        },
+        {
+          "nome": "Sofá Bege",
+          "valores": [
+            "R$ 375,00",
+            "R$ 150,00",
+            "R$ 180,00"
+          ]
+        },
+        {
+          "nome": "Sousplat",
+          "valores": [
+            "R$ 7,00",
+            "R$ 2,50",
+            "R$ 4,00"
+          ]
+        },
+        {
+          "nome": "Kit Suporte de Doces (10und)",
+          "valores": [
+            "R$ 350,00",
+            "R$ 120,00",
+            "R$ 180,00"
+          ]
+        },
+        {
+          "nome": "Taças Especiais (und)",
+          "valores": [
+            "R$ 9,00",
+            "R$ 4,50",
+            "R$ 6,00"
+          ]
+        },
+        {
+          "nome": "Tapete de Espelho",
+          "valores": [
+            "R$ 1.400,00",
+            "R$ 399,00",
+            "R$ 499,00"
+          ]
+        },
+        {
+          "nome": "Tapete Decorativo (Bege)",
+          "valores": [
+            "R$ 250,00",
+            "R$ 120,00",
+            "R$ 150,00"
+          ]
+        },
+        {
+          "nome": "Toalha para Mesa (und)",
+          "valores": [
+            "R$ 40,00",
+            "R$ 40,00",
+            "R$ 40,00"
+          ]
+        },
+        {
+          "nome": "Trilho para Cerimônia",
+          "valores": [
+            "R$ 200,00",
+            "R$ 80,00",
+            "R$ 100,00"
+          ]
+        },
+        {
+          "nome": "Túnel de LED (Mezanino e Joinville)",
+          "valores": [
+            "R$ 550,00",
+            "R$ 250,00",
+            "R$ 300,00"
+          ]
+        },
+        {
+          "nome": "Túnel de LED (15 anos)",
+          "valores": [
+            "R$ 2.200,00",
+            "R$ 499,90",
+            "R$ 699,90"
+          ]
+        },
+        {
+          "nome": "Vaso Abóbora",
+          "valores": [
+            "R$ 80,00",
+            "R$ 30,00",
+            "R$ 45,00"
+          ]
+        },
+        {
+          "nome": "Vaso Firenze",
+          "valores": [
+            "R$ 120,00",
+            "R$ 50,00",
+            "R$ 70,00"
+          ]
+        },
+        {
+          "nome": "Vaso para Ambiente",
+          "valores": [
+            "R$ 120,00",
+            "R$ 50,00",
+            "R$ 70,00"
+          ]
+        },
+        {
+          "nome": "Vela Decorativa",
+          "valores": [
+            "R$ 60,00",
+            "R$ 20,00",
+            "R$ 30,00"
+          ]
+        },
+        {
+          "nome": "Velas Sparkles",
+          "valores": [
+            "R$ 15,00",
+            "R$ 8,00",
+            "R$ 10,00"
+          ]
+        },
+        {
+          "nome": "Cadeira Tiffany",
+          "valores": [
+            "R$ 40,00",
+            "R$ 25,00",
+            "R$ 30,00"
+          ]
+        },
+        {
+          "nome": "Estante Rústica",
+          "valores": [
+            "R$ 1.700,00",
+            "R$ 800,00",
+            "R$ 1.000,00"
+          ]
+        },
+        {
+          "nome": "Balcão Rustico",
+          "valores": [
+            "R$ 1.700,00",
+            "R$ 800,00",
+            "R$ 1.000,00"
+          ]
+        },
+        {
+          "nome": "Adicional de balão - 10 unidades",
+          "valores": [
+            "R$ 200,00",
+            "R$ 200,00",
+            "R$ 200,00"
+          ]
+        },
+        {
+          "nome": "Pista de RGB",
+          "valores": [
+            "R$ 4.000,00",
+            "R$ 1.800,00",
+            "R$ 2.500,00"
+          ]
+        },
+        {
+          "nome": "Borboleta de Led (Und)",
+          "valores": [
+            "R$ 800,00",
+            "R$ 250,00",
+            "R$ 450,00"
+          ]
+        },
+        {
+          "nome": "Borboleta de led - Bate as Asas (Und)",
+          "valores": [
+            "R$ 1.000,00",
+            "R$ 400,00",
+            "R$ 600,00"
+          ]
+        },
+        {
+          "nome": "Estante de Velas / DF",
+          "valores": [
+            "R$ 4.000,00",
+            "R$ 1.500,00",
+            "R$ 2.500,00"
+          ]
+        },
+        {
+          "nome": "Jardim de LED / DF",
+          "valores": [
+            "R$ 7.000,00",
+            "R$ 2.000,00",
+            "R$ 2.500,00"
+          ]
+        },
+        {
+          "nome": "Combo Mesa Orgânica Completa / DF",
+          "valores": [
+            "R$ 6.000,00",
+            "R$ 3.800,00",
+            "R$ 5.000,00"
+          ]
+        },
+        {
+          "nome": "Combo Mesa Doces Espelhada com Vidros de Agua e Vela / DF",
+          "valores": [
+            "R$ 6.000,00",
+            "R$ 4.000,00",
+            "R$ 5.500,00"
+          ]
+        },
+        {
+          "nome": "Mesa Italiana (completa) / DF",
+          "valores": [
+            "R$ 3.000,00",
+            "R$ 1.000,00",
+            "R$ 1.500,00"
+          ]
+        },
+        {
+          "nome": "Sofá Redondo com Arvore Francesa / DF",
+          "valores": [
+            "R$ 2.500,00",
+            "R$ 599,00",
+            "R$ 899,00"
+          ]
+        },
+        {
+          "nome": "Tecido Orgânico Suspenso no teto / DF",
+          "valores": [
+            "R$ 15.000,00",
+            "R$ 15.000,00",
+            "R$ 15.000,00"
+          ]
+        },
+        {
+          "nome": "Sofá Organico",
+          "valores": [
+            "R$ 3.000,00",
+            "R$ 3.000,00",
+            "R$ 3.000,00"
+          ]
+        },
+        {
+          "nome": "Mesa de Centro",
+          "valores": [
+            "R$ 150,00",
+            "R$ 150,00",
+            "R$ 150,00"
+          ]
+        },
+        {
+          "nome": "Tapete (Cores Clara)",
+          "valores": [
+            "R$ 250,00",
+            "R$ 250,00",
+            "R$ 250,00"
+          ]
+        },
+        {
+          "nome": "Mini Lounges (Mesinha e 2 poltronas)",
+          "valores": [
+            "R$ 1.500,00",
+            "R$ 1.500,00",
+            "R$ 1.500,00"
+          ]
+        },
+        {
+          "nome": "Mesa Italiana (só as mesas)",
+          "valores": [
+            "R$ 800,00",
+            "R$ 350,00",
+            "R$ 400,00"
+          ]
+        },
+        {
+          "nome": "Taça de Cristal  (un)",
+          "valores": [
+            "R$ 6,50",
+            "R$ 6,50",
+            "R$ 6,50"
+          ]
+        },
+        {
+          "nome": "Pratos em Porcelana com Filete de Ouro (un)",
+          "valores": [
+            "R$ 9,00",
+            "R$ 9,00",
+            "R$ 9,00"
+          ]
+        },
+        {
+          "nome": "Talheres Pesados (Jogo)",
+          "valores": [
+            "R$ 6,00",
+            "R$ 6,00",
+            "R$ 6,00"
+          ]
+        },
+        {
+          "nome": "Guardanapos de Linho / DF",
+          "valores": [
+            "R$ 4,50",
+            "R$ 4,50",
+            "R$ 4,50"
+          ]
+        },
+        {
+          "nome": "Rechauds de Prata (Conjunto)",
+          "valores": [
+            "R$ 5.000,00",
+            "R$ 5.000,00",
+            "R$ 5.000,00"
+          ]
+        },
+        {
+          "nome": "Bar Ripado",
+          "valores": [
+            "R$ 1.000,00",
+            "R$ 450,00",
+            "R$ 650,00"
+          ]
+        },
+        {
+          "nome": "Cilindros de vaso de vidro com vela - Kit com 10un",
+          "valores": [
+            "R$ 1.200,00",
+            "R$ 450,00",
+            "R$ 600,00"
+          ]
+        },
+        {
+          "nome": "Cilindros de vaso de vidro com vela - Kit com 20un",
+          "valores": [
+            "R$ 2.000,00",
+            "R$ 800,00",
+            "R$ 1.200,00"
+          ]
+        },
+        {
+          "nome": "Cilindros de vaso de vidro com vela - Kit com 30un",
+          "valores": [
+            "R$ 2.600,00",
+            "R$ 1.000,00",
+            "R$ 1.300,00"
+          ]
+        },
+        {
+          "nome": "Love Luminoso com flores permanentes",
+          "valores": [
+            "R$ 1.000,00",
+            "R$ 550,00",
+            "R$ 750,00"
+          ]
+        },
+        {
+          "nome": "Suporte para Bolo (Dourado)",
+          "valores": [
+            "R$ 600,00",
+            "R$ 350,00",
+            "R$ 400,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "servicos-horas-adicionais",
+      "titulo": "HORAS ADICIONAIS",
+      "icone": "🛎️",
+      "desc": "Serviços adicionais — HORAS ADICIONAIS.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Hora Extra com Open Bar",
+          "valores": [
+            "R$ 2.500,00",
+            "R$ 1.000,00",
+            "R$ 1.500,00"
+          ]
+        },
+        {
+          "nome": "Hora extra (Locação)",
+          "valores": [
+            "R$ 1.500,00",
+            "R$ 700,00",
+            "R$ 1.000,00"
+          ]
+        },
+        {
+          "nome": "Hora Extra (Open Bar)",
+          "valores": [
+            "R$ 1.000,00",
+            "R$ 500,00",
+            "R$ 800,00"
+          ]
+        },
+        {
+          "nome": "Hora Extra para ligar o ar condicionado",
+          "valores": [
+            "R$ 400,00",
+            "R$ 200,00",
+            "R$ 300,00"
+          ]
+        },
+        {
+          "nome": "Modificar a Hora de início do Open de Drinks de 5 horas",
+          "valores": [
+            "R$ 10,00",
+            "R$ 5,00",
+            "R$ 7,50"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "servicos-dia-da-noiva",
+      "titulo": "DIA DA NOIVA",
+      "icone": "🛎️",
+      "desc": "Serviços adicionais — DIA DA NOIVA.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Espaço dia da Noiva (NV, JO, SE, CL e BLU) - Pacote 1",
+          "valores": [
+            "R$ 2.000,00",
+            "R$ 500,00",
+            "R$ 1.000,00"
+          ]
+        },
+        {
+          "nome": "Espaço dia da Noiva (NV, JO, SE, CL e BLU) - Pacote 2",
+          "valores": [
+            "R$ 2.500,00",
+            "R$ 1.200,00",
+            "R$ 1.700,00"
+          ]
+        },
+        {
+          "nome": "Espaço dia da Noiva (NV, JO, SE, CL e BLU) - Pacote 3",
+          "valores": [
+            "R$ 4.000,00",
+            "R$ 2.500,00",
+            "R$ 3.300,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "servicos-hospedagem",
+      "titulo": "HOSPEDAGEM",
+      "icone": "🛎️",
+      "desc": "Serviços adicionais — HOSPEDAGEM.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Hospedagem NV (chalés) - Pacote 1",
+          "valores": [
+            "R$ 350,00",
+            "R$ 250,00",
+            "R$ 300,00"
+          ]
+        },
+        {
+          "nome": "Hospedagem NV (chalés)  - Pacote 2",
+          "valores": [
+            "R$ 450,00",
+            "R$ 350,00",
+            "R$ 380,00"
+          ]
+        },
+        {
+          "nome": "Hospedagem NV (chalés) - Pacote 3",
+          "valores": [
+            "R$ 500,00",
+            "R$ 400,00",
+            "R$ 420,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "servicos-espaco-kids",
+      "titulo": "Espaço Kids",
+      "icone": "🛎️",
+      "desc": "Serviços adicionais — Espaço Kids.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Espaço Kids - Classic",
+          "valores": [
+            "R$ 2.000,00",
+            "R$ 800,00",
+            "R$ 1.200,00"
+          ]
+        },
+        {
+          "nome": "Espaço Kids Harmony - Premium",
+          "valores": [
+            "R$ 3.000,00",
+            "R$ 1.400,00",
+            "R$ 1.800,00"
+          ]
+        },
+        {
+          "nome": "Espaço Kids Harmony - Extra Premium",
+          "valores": [
+            "R$ 4.000,00",
+            "R$ 2.300,00",
+            "R$ 2.800,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "servicos-taxas",
+      "titulo": "TAXAS",
+      "icone": "🛎️",
+      "desc": "Serviços adicionais — TAXAS.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Degustação",
+          "valores": [
+            "R$ 150,00",
+            "—",
+            "R$ 150,00"
+          ]
+        },
+        {
+          "nome": "Adicional de pratos na degustação",
+          "valores": [
+            "R$ 25,00",
+            "—",
+            "R$ 25,00"
+          ]
+        },
+        {
+          "nome": "Taxa de Utilização da Cozinha",
+          "valores": [
+            "R$ 8.500,00",
+            "R$ 8.500,00",
+            "R$ 8.500,00"
+          ]
+        },
+        {
+          "nome": "Taxa para Terceirizar Bebida",
+          "valores": [
+            "R$ 4.000,00",
+            "R$ 4.000,00",
+            "R$ 4.000,00"
+          ]
+        },
+        {
+          "nome": "Estacionamento Joinville",
+          "valores": [
+            "R$ 2.000,00",
+            "—",
+            "R$ 2.000,00"
+          ]
+        },
+        {
+          "nome": "Taxa para Terceirizar Café",
+          "valores": [
+            "R$ 100,00",
+            "—",
+            "R$ 100,00"
+          ]
+        },
+        {
+          "nome": "Taxa para Terceirizar Água Saborizada",
+          "valores": [
+            "R$ 100,00",
+            "—",
+            "R$ 100,00"
+          ]
+        },
+        {
+          "nome": "Troca para Sáb/Véspera de Feriado e Feriado (Beauty)",
+          "valores": [
+            "R$ 3.500,00",
+            "—",
+            "R$ 3.500,00"
+          ]
+        },
+        {
+          "nome": "Troca para Sáb/Véspera de Feriado e Feriado (Mini)",
+          "valores": [
+            "R$ 3.500,00",
+            "—",
+            "R$ 3.500,00"
+          ]
+        },
+        {
+          "nome": "Ilha de buffet adicional",
+          "valores": [
+            "R$ 2.000,00",
+            "R$ 2.000,00",
+            "R$ 2.000,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "servicos-equipe-adicional",
+      "titulo": "EQUIPE ADICIONAL",
+      "icone": "🛎️",
+      "desc": "Serviços adicionais — EQUIPE ADICIONAL.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Garçom Extra",
+          "valores": [
+            "R$ 400,00",
+            "R$ 300,00",
+            "R$ 350,00"
+          ]
+        },
+        {
+          "nome": "Auxiliar de cozinha",
+          "valores": [
+            "R$ 300,00",
+            "R$ 150,00",
+            "R$ 200,00"
+          ]
+        },
+        {
+          "nome": "Segurança",
+          "valores": [
+            "R$ 500,00",
+            "R$ 350,00",
+            "R$ 375,00"
+          ]
+        },
+        {
+          "nome": "Monitor adicional para o Espaço Kids",
+          "valores": [
+            "R$ 350,00",
+            "R$ 250,00",
+            "R$ 250,00"
+          ]
+        },
+        {
+          "nome": "Operador de Caixa",
+          "valores": [
+            "R$ 300,00",
+            "R$ 300,00",
+            "R$ 300,00"
+          ]
+        },
+        {
+          "nome": "Auxiliar de Limpeza",
+          "valores": [
+            "R$ 500,00",
+            "R$ 350,00",
+            "R$ 400,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "servicos-area-adicional",
+      "titulo": "ÁREA ADICIONAL",
+      "icone": "🛎️",
+      "desc": "Serviços adicionais — ÁREA ADICIONAL.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Ambiente Extra",
+          "valores": [
+            "R$ 10.000,00",
+            "R$ 6.000,00",
+            "R$ 9.000,00"
+          ]
+        },
+        {
+          "nome": "Cerimônia na Praia (Sáb/Vés/Fer)",
+          "valores": [
+            "R$ 7.500,00",
+            "R$ 7.500,00",
+            "R$ 7.500,00"
+          ]
+        },
+        {
+          "nome": "Cerimônia na Praia (Dom/Sex)",
+          "valores": [
+            "R$ 6.500,00",
+            "R$ 6.500,00",
+            "R$ 6.500,00"
+          ]
+        },
+        {
+          "nome": "Cerimônia Externa - Cascata Itapema (Sáb/Dom/Vés/Fer)",
+          "valores": [
+            "R$ 8.000,00",
+            "R$ 4.000,00",
+            "R$ 6.800,00"
+          ]
+        },
+        {
+          "nome": "Cerimônia Externa - Cascata Itapema (Seg a Sex)",
+          "valores": [
+            "R$ 6.000,00",
+            "R$ 3.000,00",
+            "R$ 4.500,00"
+          ]
+        },
+        {
+          "nome": "Cerimônia Externa - Espaço Cristal",
+          "valores": [
+            "R$ 2.500,00",
+            "R$ 1.000,00",
+            "R$ 1.500,00"
+          ]
+        },
+        {
+          "nome": "Cerimônia Externa - Castelo Blumenau",
+          "valores": [
+            "R$ 2.500,00",
+            "R$ 1.000,00",
+            "R$ 1.500,00"
+          ]
+        },
+        {
+          "nome": "Cerimônia Externa - Figueira Itapema",
+          "valores": [
+            "R$ 2.500,00",
+            "R$ 1.000,00",
+            "R$ 1.500,00"
+          ]
+        },
+        {
+          "nome": "Cerimônia Externa - Canto da Lagoa (Flutuante)",
+          "valores": [
+            "R$ 2.500,00",
+            "R$ 1.000,00",
+            "R$ 1.500,00"
+          ]
+        },
+        {
+          "nome": "Cerimônia Externa - Joinville Garden",
+          "valores": [
+            "R$ 2.500,00",
+            "R$ 1.000,00",
+            "R$ 1.500,00"
+          ]
+        },
+        {
+          "nome": "Cerimônia Externa - Lagoa Nova Veneza",
+          "valores": [
+            "R$ 2.500,00",
+            "R$ 1.000,00",
+            "R$ 1.500,00"
+          ]
+        },
+        {
+          "nome": "Cerimônia Externa - Nova Veneza",
+          "valores": [
+            "R$ 2.500,00",
+            "R$ 1.000,00",
+            "R$ 1.500,00"
+          ]
+        },
+        {
+          "nome": "Locação de Ambiente para Pré-wedding",
+          "valores": [
+            "R$ 800,00",
+            "R$ 400,00",
+            "R$ 700,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "servicos-estacionamento-canto-da-lagoa",
+      "titulo": "Estacionamento CANTO DA LAGOA",
+      "icone": "🛎️",
+      "desc": "Serviços adicionais — Estacionamento CANTO DA LAGOA.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor"
+      ],
+      "itens": [
+        {
+          "nome": "Estacionamento",
+          "valores": [
+            "R$ 1.500,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "servicos-servico-de-vallet-com-os-convidados-pagando",
+      "titulo": "Serviço de Vallet com os convidados pagando",
+      "icone": "🛎️",
+      "desc": "Serviços adicionais — Serviço de Vallet com os convidados pagando.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor"
+      ],
+      "itens": [
+        {
+          "nome": "Serviço de Vallet sem a cobrança dos convidados",
+          "valores": [
+            "R$ 1.500,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "floral-cerimonia",
+      "titulo": "CERIMÔNIA",
+      "icone": "💐",
+      "desc": "Itens de decoração floral — CERIMÔNIA.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Arco Extra Volumoso / DF",
+          "valores": [
+            "R$ 1.300,00",
+            "R$ 600,00",
+            "R$ 800,00"
+          ]
+        },
+        {
+          "nome": "Arco em aspiral / DF",
+          "valores": [
+            "R$ 2.500,00",
+            "R$ 1.000,00",
+            "R$ 1.500,00"
+          ]
+        },
+        {
+          "nome": "Porta de Madeira com Flores / DF",
+          "valores": [
+            "R$ 800,00",
+            "R$ 800,00",
+            "R$ 800,00"
+          ]
+        },
+        {
+          "nome": "Arranjos Altos para Cerimônia / DF",
+          "valores": [
+            "R$ 350,00",
+            "R$ 150,00",
+            "R$ 250,00"
+          ]
+        },
+        {
+          "nome": "Arranjo para a mesa da cerimônia / DF",
+          "valores": [
+            "R$ 100,00",
+            "R$ 100,00",
+            "R$ 100,00"
+          ]
+        },
+        {
+          "nome": "Arco em Espiral - Cor Branca / DF",
+          "valores": [
+            "R$ 1.500,00",
+            "R$ 800,00",
+            "R$ 1.200,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "floral-mesa-de-doces-adicionais-do-pacote-essencial",
+      "titulo": "MESA DE DOCES (ADICIONAIS DO PACOTE ESSENCIAL)",
+      "icone": "💐",
+      "desc": "Itens de decoração floral — MESA DE DOCES (ADICIONAIS DO PACOTE ESSENCIAL).",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Arranjo Grande Mesa de Doces / DF",
+          "valores": [
+            "R$ 500,00",
+            "R$ 250,00",
+            "R$ 350,00"
+          ]
+        },
+        {
+          "nome": "Arranjo Pequeno Mesa de Doces / DF",
+          "valores": [
+            "R$ 200,00",
+            "R$ 100,00",
+            "R$ 150,00"
+          ]
+        },
+        {
+          "nome": "Jardim Suspenso / DF",
+          "valores": [
+            "R$ 1.300,00",
+            "R$ 500,00",
+            "R$ 800,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "floral-mesa-de-convidados-adicionais-do-pacote-essencial",
+      "titulo": "MESA DE CONVIDADOS (ADICIONAIS DO PACOTE ESSENCIAL)",
+      "icone": "💐",
+      "desc": "Itens de decoração floral — MESA DE CONVIDADOS (ADICIONAIS DO PACOTE ESSENCIAL).",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Arranjos Altos Mesa de Convidados / DF",
+          "valores": [
+            "R$ 300,00",
+            "R$ 150,00",
+            "R$ 250,00"
+          ]
+        },
+        {
+          "nome": "Arranjos Baixo Mesa de Convidados  / DF",
+          "valores": [
+            "R$ 150,00",
+            "R$ 75,00",
+            "R$ 100,00"
+          ]
+        },
+        {
+          "nome": "Mini Arranjos / DF",
+          "valores": [
+            "R$ 20,00",
+            "R$ 20,00",
+            "R$ 20,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "floral-ambientes-variados",
+      "titulo": "AMBIENTES VARIADOS",
+      "icone": "💐",
+      "desc": "Itens de decoração floral — AMBIENTES VARIADOS.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo",
+        "Valor Praticado"
+      ],
+      "itens": [
+        {
+          "nome": "Arvore Francesa Branca",
+          "valores": [
+            "R$ 1.500,00",
+            "R$ 600,00",
+            "R$ 800,00"
+          ]
+        },
+        {
+          "nome": "Arvore Francesa Rosa Pink",
+          "valores": [
+            "R$ 1.500,00",
+            "R$ 600,00",
+            "R$ 800,00"
+          ]
+        },
+        {
+          "nome": "Arvore Francesa  Rosa Bebe",
+          "valores": [
+            "R$ 1.500,00",
+            "R$ 600,00",
+            "R$ 800,00"
+          ]
+        },
+        {
+          "nome": "Arvore Francesa Azul",
+          "valores": [
+            "R$ 1.500,00",
+            "R$ 600,00",
+            "R$ 800,00"
+          ]
+        },
+        {
+          "nome": "Arvore Francesa Vermelho",
+          "valores": [
+            "R$ 1.500,00",
+            "R$ 600,00",
+            "R$ 800,00"
+          ]
+        },
+        {
+          "nome": "Corrimão Floral / DF",
+          "valores": [
+            "R$ 1.500,00",
+            "R$ 400,00",
+            "R$ 600,00"
+          ]
+        },
+        {
+          "nome": "Painel Floral Instagramavel / DF",
+          "valores": [
+            "R$ 1.500,00",
+            "R$ 600,00",
+            "R$ 800,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "floral-hall-de-entrada",
+      "titulo": "HALL DE ENTRADA",
+      "icone": "💐",
+      "desc": "Itens de decoração floral — HALL DE ENTRADA.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor"
+      ],
+      "itens": [
+        {
+          "nome": "Patalas de rosas naturais - 20 Rosas",
+          "valores": [
+            "R$ 150,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "floral-mesa-posta-fina",
+      "titulo": "MESA POSTA FINA",
+      "icone": "💐",
+      "desc": "Itens de decoração floral — MESA POSTA FINA.",
+      "sinonimos": [],
+      "colunas": [
+        "Valor"
+      ],
+      "itens": [
+        {
+          "nome": "TAÇAS DE CRISTAL",
+          "valores": [
+            "R$ 6,50"
+          ]
+        },
+        {
+          "nome": "PRATOS EM PORCELANA COM FILETE DE OURO",
+          "valores": [
+            "R$ 9,00"
+          ]
+        },
+        {
+          "nome": "TALHERES PESADOS",
+          "valores": [
+            "R$ 6,00"
+          ]
+        },
+        {
+          "nome": "GUARDANAPOS DE LINHO",
+          "valores": [
+            "R$ 4,50"
+          ]
+        },
+        {
+          "nome": "RECHAUDS DE PRATA (CONJUNTO)",
+          "valores": [
+            "R$ 5.000,00"
+          ]
+        }
       ],
       "observacao": null
     }
