@@ -15,31 +15,43 @@ README.md    → este arquivo
 
 Todo o conteúdo textual (motivos, escada de liberações, casos reais, scripts, matriz, indicadores) vive em objetos JavaScript no topo do `script.js`. O HTML é montado automaticamente a partir desses dados — não é necessário editar HTML para atualizar conteúdo.
 
+## Como o portal funciona
+
+A página inicial é só um campo de busca (`#masterSearch`) e uma fileira de atalhos (`#quickChips`). Não há mais menu lateral nem seções fixas: tudo é um **banco de informações indexado** (`SEARCH_INDEX`, no fim da seção de dados do `script.js`). Cada entrada do índice tem `keywords` (texto normalizado usado no filtro) e uma função `render()` que monta o card daquele resultado. Ao digitar, o portal filtra `SEARCH_INDEX` por substring nas `keywords` e mostra **só** os cards que bateram — nada além disso fica visível.
+
+Um card de **motivo** já vem completo: textos prontos, perguntas, argumentação, liberações (clicáveis, expandem o detalhe do R-0X ali mesmo, sem sair do card) e o caso real relacionado embutido — tudo isso é montado por `buildMotivoResult()`.
+
 ## Como editar
 
 ### Adicionar ou alterar um motivo de cancelamento
 Edite o array `MOTIVOS` em `script.js`. Cada item aceita:
-- `titulo`, `icone`, `desc`
-- `comoIdentificar[]`, `perguntas[]`, `objetivo`, `argumentos[]`, `alternativas[]`, `erros[]`, `estagio`
+- `titulo`, `icone`, `desc`, `sinonimos[]` (termos alternativos que o consultor pode digitar para achar esse motivo — não mude a regra de negócio, só ajuda a busca)
+- `comoIdentificar[]`, `perguntas[]`, `argumentos[]`, `alternativas[]`, `erros[]`, `estagio`
+- `mensagens[]`: **sempre inclua mais de uma opção de texto** (`{ tom, texto }`) para o consultor escolher a que melhor encaixa na conversa — é o que aparece em destaque no resultado da busca, com botão de copiar.
 - `casoRealId`: o `id` de um item de `CASOS` para linkar um caso real, ou `null` se ainda não houver caso registrado. **Não invente um caso real** — deixe `null` até haver um registro de verdade.
 
+Novos motivos entram automaticamente na busca e ganham um chip — não precisa editar mais nada.
+
 ### Atualizar a escada de liberações (R-01 a R-09)
-Edite o array `RSTEPS`. Os percentuais, prazos e regras vieram do "Manual de Negociação — Protocolo R-09 · Retenção" fornecido pela gestão. **Não altere valores sem confirmação oficial** — se uma regra nova chegar, atualize o objeto correspondente e mantenha as demais intactas.
+Edite o array `RSTEPS`. Os percentuais, prazos e regras vieram do "Manual de Negociação — Protocolo R-09 · Retenção" fornecido pela gestão. **Não altere valores sem confirmação oficial** — se uma regra nova chegar, atualize o objeto correspondente e mantenha as demais intactas. O campo `sinonimos[]` só ajuda a busca (ex.: "multa" encontra R-08).
 
 ### Adicionar um novo caso real
 Edite o array `CASOS`. Campos: `nome`, `evento`, `categoria`, `status` (`cancelado` | `andamento` | `disputa`), `motivo`, `oferta`, `rcodes[]` (ids de `RSTEPS` usados no caso, ex.: `['r03','r08']`) e `tatica` (leitura tática — o que o caso ensina sobre a aderência à escada). Casos vêm do histórico do Indaiá Chat; ao adicionar um novo, confirme os fatos antes de publicar.
 
 ### Matriz de Liberações (alçada por cargo)
-A matriz (`MATRIZ`, derivada automaticamente de `RSTEPS`) hoje marca a alçada por cargo como **A DEFINIR**, porque a gestão ainda não confirmou o que cada nível (Consultor / Supervisor / Gerente / Diretoria) pode aprovar sozinho. Quando essa informação for fornecida, adicione os campos `consultor`, `supervisor`, `gerente`, `diretoria` a cada item de `RSTEPS` (valores sugeridos: `'autorizado'`, `'aprovacao'`, `'nao_autorizado'`) e ajuste `renderMatriz()` em `script.js` para exibir os ícones (✓ / ⚠ / ✕) em vez do badge "A DEFINIR".
+A matriz (`MATRIZ`, derivada automaticamente de `RSTEPS`) hoje marca a alçada por cargo como **A DEFINIR**, porque a gestão ainda não confirmou o que cada nível (Consultor / Supervisor / Gerente / Diretoria) pode aprovar sozinho. Quando essa informação for fornecida, adicione os campos `consultor`, `supervisor`, `gerente`, `diretoria` a cada item de `RSTEPS` e ajuste `buildMatrizBlock()` em `script.js` para exibir os ícones (✓ / ⚠ / ✕) em vez do badge "A DEFINIR".
 
-### Atualizar scripts de atendimento
-Edite o array `SCRIPTS`. Cada item tem `titulo`, `tom` e `texto` (mensagem de WhatsApp).
+### Atualizar scripts gerais
+Edite o array `SCRIPTS` — só os scripts que **não dependem do motivo** (ex.: primeiro contato, cliente não quer negociar) ficam aqui. Scripts específicos de um motivo vivem em `MOTIVOS[].mensagens`.
 
 ### Atualizar indicadores
-Os números em `#overview` (cards de estatística) e em `INDICADORES_DEMO` são **dados demonstrativos**, identificados como tal na tela. O bloco "Casos reais analisados" já é calculado automaticamente a partir de `CASOS` (contagem real por categoria). Quando houver uma fonte de dados real (planilha, banco, API), substitua os valores fixos por uma chamada que popule esses mesmos objetos antes da renderização — a função `renderOverviewStats()` e `renderIndicadores()` em `script.js` são os pontos de entrada.
+`INDICADORES_DEMO` são **dados demonstrativos**, identificados como tal na tela. O bloco "Casos reais analisados" é calculado automaticamente a partir de `CASOS` (contagem real por categoria) dentro de `buildIndicadoresBlock()`. Quando houver uma fonte de dados real, substitua `INDICADORES_DEMO` por uma chamada que popule esse array antes da renderização.
 
 ### Árvore de decisão
-Edite o objeto `ARVORE`. Cada ramo tem uma `pergunta` e um mapa de `opcoes`, onde cada opção define o `texto` da recomendação e os `rcodes` relacionados (para o botão de atalho que leva até a etapa correspondente na escada).
+Edite o objeto `ARVORE`. Cada ramo tem uma `pergunta` e um mapa de `opcoes`, onde cada opção define o `texto` da recomendação e os `rcodes` relacionados (chip que expande o detalhe da etapa correspondente ali mesmo).
+
+### Adicionar um novo "tema" de busca (fora dos motivos)
+Coisas como Matriz, Escada completa, Não fazer etc. são entradas manuais no `SEARCH_INDEX` (bloco `bundle-*`) com `keywords` e `render`. Para adicionar um tema novo, siga o mesmo padrão e, se quiser um atalho, adicione um chip na lista `outrosTemas` dentro de `initSearch()`.
 
 ## Publicar no GitHub Pages
 

@@ -1,8 +1,9 @@
 /* ==========================================================================
    Central de Retenção Comercial — Indaiá Eventos
-   Todo o conteúdo vive nos objetos abaixo. Para atualizar o portal,
-   edite estes dados — o HTML é montado automaticamente a partir deles.
-   Ver README.md para instruções de edição.
+   Banco de informações em formato de busca. Todo o conteúdo vive nos
+   objetos abaixo (seções 1-8). A partir da seção "ÍNDICE DE BUSCA" tudo é
+   montado dinamicamente conforme o que o consultor digita — não há mais
+   seções fixas na página. Ver README.md para instruções de edição.
    ========================================================================== */
 
 /* -------------------------------------------------------------------------
@@ -18,14 +19,16 @@ const RSTEPS = [
     acoes: [
       'Reduzir o valor das parcelas para o mínimo de R$ 500,00.',
       'Direcionar todo o valor restante para o Saldo Final.'
-    ]
+    ],
+    sinonimos: ['reduzir parcela', 'parcela minima', 'diminuir parcela']
   },
   {
     id: 'r02', codigo: 'R-02', nome: 'Cortesias', fase: 'I',
     intensidade: 1, label: 'Leve',
     desc: 'Encantar com um benefício desejado, preservando o vínculo com a experiência.',
     acoes: ['Oferecer a cortesia que o cliente deseja, limitada a 40% do contrato.'],
-    alerta: 'Acima de 40% — conversar com a gestão.'
+    alerta: 'Acima de 40% — conversar com a gestão.',
+    sinonimos: ['cortesia', 'brinde', 'bonus']
   },
   {
     id: 'r03', codigo: 'R-03', nome: 'Redução Contratual', fase: 'I',
@@ -34,7 +37,8 @@ const RSTEPS = [
     acoes: [
       'Isentar a multa da redução contratual.',
       'Permitir isenção superior a 20% do contrato.'
-    ]
+    ],
+    sinonimos: ['reduzir escopo', 'reduzir contrato', 'ajustar contrato']
   },
   {
     id: 'r04', codigo: 'R-04', nome: 'Congelamento de Parcelas', fase: 'II',
@@ -44,7 +48,8 @@ const RSTEPS = [
       { rotulo: 'Longo prazo · acima de 2 anos', valor: '4 meses' },
       { rotulo: 'Médio prazo · de 1 a 2 anos', valor: '3 meses' },
       { rotulo: 'Curto prazo · menos de 1 ano', valor: '2 meses' }
-    ]
+    ],
+    sinonimos: ['congelar parcela', 'pausar pagamento', 'pausar parcela']
   },
   {
     id: 'r05', codigo: 'R-05', nome: 'Alteração de Data', fase: 'II',
@@ -54,7 +59,8 @@ const RSTEPS = [
       { rotulo: 'Curto prazo', valor: 'taxa mín. 20%' },
       { rotulo: 'Longo prazo', valor: 'isenção mínima' }
     ],
-    alerta: 'Desconto maior na taxa — conversar com a gestão.'
+    alerta: 'Desconto maior na taxa — conversar com a gestão.',
+    sinonimos: ['remarcar', 'trocar data', 'mudar data', 'taxa de alteracao']
   },
   {
     id: 'r06', codigo: 'R-06', nome: 'Liberação de Data', fase: 'II',
@@ -64,7 +70,8 @@ const RSTEPS = [
       'Aplicável a cliente com evento superior a 1 ano.',
       'Liberar a data e combinar pagamentos mensais das parcelas.',
       'Em seguida, negociar a troca de data.'
-    ]
+    ],
+    sinonimos: ['liberar data', 'soltar data']
   },
   {
     id: 'r07', codigo: 'R-07', nome: 'Promissória', fase: 'III',
@@ -74,7 +81,8 @@ const RSTEPS = [
       'Valor já pago do contrato deve ser superior a 30% do total.',
       'Até o saldo final, quitar 70% do valor total do contrato.',
       'Os 30% restantes em até 4 meses após a realização do evento.'
-    ]
+    ],
+    sinonimos: ['promissoria', 'plano de pagamento pos cancelamento']
   },
   {
     id: 'r08', codigo: 'R-08', nome: 'Multa de Cancelamento', fase: 'III',
@@ -84,7 +92,8 @@ const RSTEPS = [
       { rotulo: 'Curto prazo', valor: 'multa mín. 40%' },
       { rotulo: 'Longo prazo', valor: 'multa mín. 25%' }
     ],
-    alerta: 'Desconto maior na multa — conversar com a gestão.'
+    alerta: 'Desconto maior na multa — conversar com a gestão.',
+    sinonimos: ['multa', 'penalidade', 'multa de cancelamento', 'clausula']
   },
   {
     id: 'r09', codigo: 'R-09', nome: 'Negociar a Multa & Manter o Evento Ativo', fase: 'III',
@@ -94,7 +103,8 @@ const RSTEPS = [
       'Após acordo sobre a multa, oferecer — a evento superior a 2 anos — manter o evento ativo.',
       'Cliente segue pagando as parcelas até atingir o percentual negociado.',
       'Ao atingir, o cliente decide: manter o evento ou cancelar.'
-    ]
+    ],
+    sinonimos: ['manter evento ativo', 'ultima tentativa de retencao']
   }
 ];
 
@@ -104,25 +114,18 @@ const FASES = {
   'III': 'Fase III · Encerramento Negociado'
 };
 
-/* Mapa didático Etapa 0-5 -> códigos R, para orientar quem está começando. */
-const ETAPAS = [
-  { num: 0, titulo: 'Diagnóstico', r: 'Nenhuma concessão — apenas entender o motivo real.' },
-  { num: 1, titulo: 'Solução sem concessão', r: 'Base para R-01 e R-02' },
-  { num: 2, titulo: '1ª alternativa comercial', r: 'R-03 e R-04' },
-  { num: 3, titulo: 'Retenção Supervisão', r: 'R-05 e R-06 — necessita autorização' },
-  { num: 4, titulo: 'Retenção Gerencial', r: 'R-07 e R-08 — não apresentar antes da liberação' },
-  { num: 5, titulo: 'Encerramento', r: 'R-09 quando aplicável, depois registro oficial' }
-];
-
 /* -------------------------------------------------------------------------
    2. MOTIVOS DE CANCELAMENTO
-   casoRealId liga o motivo a um card em CASOS (ver seção 4). Deixe null
-   quando ainda não houver caso real registrado — não inventar exemplo.
+   mensagens[] traz sempre mais de uma opção de texto por situação, para o
+   consultor escolher a que melhor se encaixa na conversa.
+   casoRealId liga o motivo a um card em CASOS (seção 4). Deixe null quando
+   ainda não houver caso real registrado — não inventar exemplo.
    ------------------------------------------------------------------------- */
 const MOTIVOS = [
   {
     id: 'financeiro', icone: '💰', titulo: 'Financeiro',
     desc: 'Dificuldade de pagamento, redução de renda, desemprego ou orçamento comprometido.',
+    sinonimos: ['dinheiro', 'parcela', 'desemprego', 'renda', 'pagamento', 'sem grana', 'orcamento'],
     comoIdentificar: ['Cliente menciona valor, parcela, renda ou desemprego antes de qualquer outro assunto.'],
     perguntas: [
       'O principal motivo hoje seria realmente financeiro?',
@@ -131,7 +134,6 @@ const MOTIVOS = [
       'Existe algum valor mensal que ficaria mais confortável?',
       'Existe algum serviço que poderíamos revisar antes de considerar o cancelamento?'
     ],
-    objetivo: 'Entender se existe uma dificuldade temporária de fluxo de caixa ou uma impossibilidade definitiva de manter o contrato.',
     argumentos: [
       'Antes de cancelar todo o planejamento já realizado, vale verificar possibilidades de reorganização.',
       'Explorar alteração de vencimentos, extensão de pagamento, revisão de serviços adicionais, redução de escopo, créditos e condições comerciais autorizadas.',
@@ -142,61 +144,68 @@ const MOTIVOS = [
     estagio: 'Etapa 1-2 · iniciar por R-01/R-04 antes de discutir R-08.',
     mensagens: [
       { tom: 'Abertura / diagnóstico', texto: 'Imagino que essa decisão não seja fácil depois de todo o planejamento até aqui. Antes de pensarmos em cancelar, me conta: a dificuldade está mais no valor das parcelas ou no valor total do contrato? Dependendo da resposta, talvez consigamos reorganizar as condições de pagamento sem precisar chegar ao cancelamento.' },
-      { tom: 'Se o problema é o valor mensal', texto: 'Consigo reduzir o valor da parcela para o mínimo e direcionar o restante para o saldo final — assim o mês a mês fica mais leve, sem mudar o valor total do contrato. Também dá para congelar as parcelas por um tempo, dependendo de quanto falta para o evento. Faz sentido explorarmos isso antes de pensar em cancelar?' }
+      { tom: 'Se o problema é o valor mensal', texto: 'Consigo reduzir o valor da parcela para o mínimo e direcionar o restante para o saldo final — assim o mês a mês fica mais leve, sem mudar o valor total do contrato. Também dá para congelar as parcelas por um tempo, dependendo de quanto falta para o evento. Faz sentido explorarmos isso antes de pensar em cancelar?' },
+      { tom: 'Se o problema é o valor total', texto: 'Nesse caso, talvez o caminho não seja mexer nas parcelas, e sim revisar o que está incluso no contrato. Consigo montar com você uma versão mais enxuta, cortando alguns itens, sem precisar cancelar tudo o que já foi planejado.' }
     ],
     casoRealId: 'gabriela'
   },
   {
     id: 'mudanca-planos', icone: '🔄', titulo: 'Mudança de planos',
     desc: 'Cliente decidiu alterar completamente o evento ou não pretende mais realizá-lo.',
+    sinonimos: ['desistiu', 'nao vai mais casar', 'mudou de ideia', 'cancelar tudo'],
     comoIdentificar: ['Fala em "não vamos mais fazer" em vez de "vamos adiar/reduzir".'],
     perguntas: ['O evento em si deixou de existir ou só o formato mudou?', 'Existe alguma versão menor ou diferente do evento que ainda faria sentido?'],
-    objetivo: 'Distinguir cancelamento definitivo de uma simples mudança de formato que o contrato ainda pode acomodar.',
     argumentos: ['Explorar se uma redução contratual (R-03) resolve antes de tratar como cancelamento total.'],
     alternativas: ['R-03 · Redução Contratual', 'R-06 · Liberação de Data (mantendo vínculo)'],
     erros: ['Tratar como cancelamento definitivo sem checar se algum formato menor resolveria.'],
     estagio: 'Etapa 1-2.',
     mensagens: [
-      { tom: 'Abertura / diagnóstico', texto: 'Entendo. Antes de tratarmos isso como um cancelamento, me conta: o evento em si não vai mais acontecer, ou é mais uma mudança de formato ou tamanho? Às vezes conseguimos adaptar o contrato para o novo formato sem precisar encerrar tudo.' }
+      { tom: 'Abertura / diagnóstico', texto: 'Entendo. Antes de tratarmos isso como um cancelamento, me conta: o evento em si não vai mais acontecer, ou é mais uma mudança de formato ou tamanho? Às vezes conseguimos adaptar o contrato para o novo formato sem precisar encerrar tudo.' },
+      { tom: 'Se o evento não vai mais existir', texto: 'Entendo. Se realmente não vai rolar o evento, quero te explicar com transparência como funciona o processo daqui pra frente, sem enrolação.' },
+      { tom: 'Se for mudança de formato', texto: 'Que bom que ainda pretendem celebrar, só de um jeito diferente! Me conta como vocês estão pensando agora, porque provavelmente dá para adaptar o contrato para o novo formato sem burocracia.' }
     ],
     casoRealId: null
   },
   {
     id: 'mudanca-data', icone: '📅', titulo: 'Mudança de data',
     desc: 'O evento continuará acontecendo, mas a data originalmente contratada não atende mais.',
+    sinonimos: ['remarcar', 'adiar', 'antecipar', 'nova data', 'trocar data'],
     comoIdentificar: ['Cliente fala em remarcar, adiar ou antecipar, não em cancelar.'],
     perguntas: ['Existe uma nova data já em mente?', 'O motivo da mudança é pontual (conflito de agenda) ou estrutural (financeiro, família)?'],
-    objetivo: 'Resolver via remarcação antes de qualquer discussão de cancelamento.',
     argumentos: ['Apresentar R-05 como solução direta: taxa proporcional à antecedência, podendo ser isenta em longo prazo.'],
     alternativas: ['R-05 · Alteração de Data', 'R-06 · Liberação de Data, se o evento for superior a 1 ano'],
     erros: ['Tratar pedido de remarcação como pedido de cancelamento.'],
     estagio: 'Etapa 2-3 · R-05 pode precisar de alinhamento com a gestão se o desconto na taxa for maior que o padrão.',
     mensagens: [
-      { tom: 'Abertura / diagnóstico', texto: 'Sem problema, remarcar é bem mais simples do que cancelar! Você já tem uma nova data em mente? Consigo verificar a disponibilidade e te passar as condições para a alteração — dependendo da antecedência, a taxa pode até ser isenta.' }
+      { tom: 'Abertura / diagnóstico', texto: 'Sem problema, remarcar é bem mais simples do que cancelar! Você já tem uma nova data em mente? Consigo verificar a disponibilidade e te passar as condições para a alteração — dependendo da antecedência, a taxa pode até ser isenta.' },
+      { tom: 'Sem nova data ainda', texto: 'Sem problema, não precisa ter a nova data fechada agora. Me dá uma faixa de período que vocês estão pensando que eu já vejo a disponibilidade e volto com opções.' },
+      { tom: 'Antecedência curta', texto: 'Como está mais próximo da data, pode ter uma taxa de alteração — mas ainda assim costuma sair bem mais em conta do que cancelar. Deixa eu calcular certinho para vocês.' }
     ],
     casoRealId: null
   },
   {
     id: 'reducao-convidados', icone: '👥', titulo: 'Redução de convidados',
     desc: 'O cliente percebe que o evento será menor e acredita que o contrato deixou de fazer sentido.',
+    sinonimos: ['menos convidados', 'diminuiu a lista', 'lista menor'],
     comoIdentificar: ['Cliente menciona lista de convidados encolhendo, não motivo financeiro ou pessoal.'],
     perguntas: ['O novo número de convidados ainda cabe no pacote atual?', 'O que motivou a redução — foi uma escolha ou uma limitação?'],
-    objetivo: 'Mostrar que redução de convidados não precisa significar cancelamento — o contrato pode ser ajustado.',
     argumentos: ['Apresentar redução contratual (R-03) como caminho natural antes de cogitar cancelamento.'],
     alternativas: ['R-03 · Redução Contratual'],
     erros: ['Assumir que menos convidados significa que o cliente quer cancelar — geralmente quer ajustar.'],
     estagio: 'Etapa 1-2.',
     mensagens: [
-      { tom: 'Abertura / diagnóstico', texto: 'Faz todo sentido ajustar para o novo número de convidados. Me conta quantas pessoas vocês estão projetando agora — na maioria dos casos conseguimos adequar o contrato ao novo tamanho, sem precisar cancelar.' }
+      { tom: 'Abertura / diagnóstico', texto: 'Faz todo sentido ajustar para o novo número de convidados. Me conta quantas pessoas vocês estão projetando agora — na maioria dos casos conseguimos adequar o contrato ao novo tamanho, sem precisar cancelar.' },
+      { tom: 'Redução grande', texto: 'Entendi, é uma redução bem significativa. Vamos rever juntos o que faz sentido manter — buffet, bebida, decoração — para deixar o contrato do tamanho certo para o novo número de convidados.' },
+      { tom: 'Cabendo no pacote atual', texto: 'Boa notícia: pelo que você me passou, esse número ainda cabe tranquilo no pacote atual, então nem precisamos mexer no contrato — só ajustar os detalhes operacionais.' }
     ],
     casoRealId: null
   },
   {
     id: 'insatisfacao-atendimento', icone: '💬', titulo: 'Insatisfação com atendimento',
     desc: 'Cliente relata problemas de comunicação, demora, atendimento ou experiência durante a jornada.',
+    sinonimos: ['reclamacao', 'enganado', 'mal atendido', 'sumiu', 'demora'],
     comoIdentificar: ['Cliente reclama de ter sido "enganado", de falta de aviso, de trocas de atendente ou de não ter sido informado sobre alguma cobrança.'],
     perguntas: ['O que especificamente aconteceu e quando?', 'Isso já foi reportado antes?', 'O que resolveria essa situação além do cancelamento?'],
-    objetivo: 'Priorizar escuta genuína e reparo antes de qualquer argumentação comercial — a confiança precisa ser reconstruída primeiro.',
     argumentos: [
       'Reconhecer o problema sem minimizar.',
       'Explicar com transparência total qualquer cobrança ou condição que gerou a sensação de surpresa.',
@@ -207,97 +216,108 @@ const MOTIVOS = [
     estagio: 'Etapa 1 · resolver na base antes de qualquer escalonamento.',
     mensagens: [
       { tom: 'Escuta / acolhimento', texto: 'Sinto muito que isso tenha acontecido, e quero entender exatamente o que houve para conseguir resolver da forma certa. Pode me contar com calma o que aconteceu? Antes de falar em cancelamento, quero ver o que está ao meu alcance para reparar isso com vocês.' },
-      { tom: 'Após entender o problema', texto: 'Peço desculpas por isso — não é o padrão que a gente busca ter com vocês. Deixa eu já te trazer uma solução concreta, e não só um pedido de desculpas.' }
+      { tom: 'Após entender o problema', texto: 'Peço desculpas por isso — não é o padrão que a gente busca ter com vocês. Deixa eu já te trazer uma solução concreta, e não só um pedido de desculpas.' },
+      { tom: 'Reforço de compromisso', texto: 'Quero que isso não se repita. Vou acompanhar pessoalmente os próximos passos do seu atendimento para garantir que tudo corra do jeito que deveria ter sido desde o início.' }
     ],
     casoRealId: 'eduarda'
   },
   {
     id: 'insatisfacao-servico', icone: '🏛️', titulo: 'Insatisfação com serviço ou estrutura',
     desc: 'Cliente demonstra insegurança relacionada ao espaço, serviços, fornecedores ou estrutura contratada.',
+    sinonimos: ['espaco', 'estrutura', 'fornecedor', 'cardapio', 'buffet ruim'],
     comoIdentificar: ['Reclama do espaço, cardápio, fornecedor ou de alguma entrega específica do contrato.'],
     perguntas: ['O que especificamente não atendeu à expectativa?', 'Existe uma alternativa dentro da nossa estrutura que resolveria?'],
-    objetivo: 'Verificar se um ajuste de escopo resolve antes de tratar como cancelamento.',
     argumentos: ['Apresentar alternativas de espaço, fornecedor ou serviço equivalentes antes de discutir saída do contrato.'],
     alternativas: ['R-03 · Redução Contratual', 'R-02 · Cortesias, como reparação pontual'],
     erros: ['Ignorar a reclamação técnica e ir direto para a negociação financeira.'],
     estagio: 'Etapa 1-2.',
     mensagens: [
-      { tom: 'Abertura / diagnóstico', texto: 'Entendo a preocupação. Me conta com mais detalhes o que te deixou inseguro(a) em relação ao espaço ou serviço — quero verificar com o time se existe uma alternativa dentro da nossa estrutura que resolva isso antes de pensarmos em qualquer outra coisa.' }
+      { tom: 'Abertura / diagnóstico', texto: 'Entendo a preocupação. Me conta com mais detalhes o que te deixou inseguro(a) em relação ao espaço ou serviço — quero verificar com o time se existe uma alternativa dentro da nossa estrutura que resolva isso antes de pensarmos em qualquer outra coisa.' },
+      { tom: 'Oferecendo alternativa', texto: 'Consigo te mostrar uma outra opção dentro da nossa estrutura que talvez resolva exatamente o que te incomodou — antes de pensarmos em qualquer outra coisa, vale a pena dar uma olhada?' },
+      { tom: 'Pedindo detalhe técnico', texto: 'Para eu te ajudar da forma certa, me conta especificamente o que te deixou inseguro(a): foi o espaço, o cardápio, algum fornecedor? Assim eu já verifico com o time responsável.' }
     ],
     casoRealId: null
   },
   {
     id: 'concorrencia', icone: '⚖️', titulo: 'Comparação com concorrência',
     desc: 'Cliente encontrou uma proposta aparentemente mais barata ou diferente em outra empresa.',
+    sinonimos: ['concorrente', 'outro buffet', 'outro espaco', 'mais barato', 'achou mais barato'],
     comoIdentificar: ['Cliente cita outro fornecedor ou menciona "encontramos algo mais em conta".'],
     perguntas: ['O que mais chamou sua atenção na outra proposta?', 'Foi principalmente o valor?', 'Existe algum serviço diferente?', 'A estrutura é equivalente?', 'O que vocês consideram indispensável para o evento?'],
-    objetivo: 'Mostrar valor antes de discutir preço, sem nunca falar mal do concorrente.',
     argumentos: ['Comparar estrutura, serviços, segurança contratual, equipe, operação, experiência, entregas incluídas e possíveis custos extras da outra proposta.'],
     alternativas: ['R-02 · Cortesias, se fizer sentido reforçar valor percebido'],
     erros: ['Falar mal do concorrente.', 'Entrar direto em queda de preço sem antes reforçar diferenciais.'],
     estagio: 'Etapa 1.',
     mensagens: [
-      { tom: 'Comparativo, sem atacar o concorrente', texto: 'Que bom que vocês estão pesquisando com cuidado, isso mostra o quanto esse dia é importante. Pode me contar o que mais chamou atenção na outra proposta? Assim consigo te mostrar com clareza o que está incluso aqui e o que normalmente pega os casais de surpresa em propostas mais baratas.' }
+      { tom: 'Comparativo, sem atacar o concorrente', texto: 'Que bom que vocês estão pesquisando com cuidado, isso mostra o quanto esse dia é importante. Pode me contar o que mais chamou atenção na outra proposta? Assim consigo te mostrar com clareza o que está incluso aqui e o que normalmente pega os casais de surpresa em propostas mais baratas.' },
+      { tom: 'Reforçando diferenciais', texto: 'Uma coisa que muitos casais só percebem depois é que aqui tudo está centralizado num único contrato — buffet, decoração, cerimonial, audiovisual — sem precisar correr atrás de fornecedor separado. Isso costuma pesar bastante na decisão final.' },
+      { tom: 'Se for só preço', texto: 'Entendo que o valor pesa bastante. Antes de eu te falar sobre qualquer condição, me conta: tirando o preço, teve algo na outra proposta que vocês preferiram, ou é só uma questão de valor mesmo?' }
     ],
     casoRealId: null
   },
   {
     id: 'separacao', icone: '💔', titulo: 'Separação do casal',
     desc: 'Cancelamento relacionado ao término do relacionamento.',
+    sinonimos: ['terminaram', 'rompeu', 'separaram', 'brigaram', 'noivado desfeito'],
     comoIdentificar: ['Um ou ambos os contratantes comunicam o fim do relacionamento.'],
     perguntas: ['Existe decisão conjunta sobre o encerramento?', 'Como preferem que a comunicação e o registro sejam feitos, considerando os dois nomes no contrato?'],
-    objetivo: 'Conduzir com máxima sensibilidade — não é um momento para argumentação comercial.',
     argumentos: ['Não insistir em retenção. Focar em explicar o processo com respeito e clareza.'],
     alternativas: ['R-07 · Promissória, se fizer sentido financeiramente', 'R-08 · Multa de Cancelamento'],
     erros: ['Tentar reter emocionalmente ou fazer perguntas invasivas sobre o relacionamento.'],
     estagio: 'Etapa 4-5 · normalmente segue direto para encerramento.',
     mensagens: [
-      { tom: 'Respeitoso, sem argumentação comercial', texto: 'Sinto muito por isso. Vou te explicar com calma como funciona o processo a partir daqui, e fico à disposição para qualquer dúvida — pode ficar tranquilo(a) que vamos conduzir tudo com respeito ao momento de vocês.' }
+      { tom: 'Respeitoso, sem argumentação comercial', texto: 'Sinto muito por isso. Vou te explicar com calma como funciona o processo a partir daqui, e fico à disposição para qualquer dúvida — pode ficar tranquilo(a) que vamos conduzir tudo com respeito ao momento de vocês.' },
+      { tom: 'Se pedirem orientação prática', texto: 'Posso te explicar com calma quais são os próximos passos e o que precisa ser formalizado entre vocês dois — sem pressa, no tempo que for melhor para vocês.' }
     ],
     casoRealId: null
   },
   {
     id: 'familiar', icone: '🏠', titulo: 'Problemas familiares ou pessoais',
     desc: 'Questões familiares ou situações particulares que impactam a realização do evento.',
+    sinonimos: ['doenca', 'luto', 'saude', 'falecimento', 'problema de saude'],
     comoIdentificar: ['Cliente menciona doença, luto ou situação pessoal delicada.'],
     perguntas: ['A situação é temporária ou muda definitivamente os planos?', 'Existe uma data futura em que faria mais sentido retomar?'],
-    objetivo: 'Acolher primeiro, negociar depois — com muita sensibilidade.',
     argumentos: ['Se temporário, priorizar congelamento (R-04) ou alteração de data (R-05) antes de falar em cancelamento.', 'Se definitivo, conduzir o encerramento com empatia, buscando a isenção de multa quando cabível.'],
     alternativas: ['R-04 · Congelamento de Parcelas', 'R-05 · Alteração de Data', 'R-08 · Multa de Cancelamento, com isenção quando aplicável'],
     erros: ['Insistir comercialmente diante de um motivo de saúde ou luto.', 'Pular etapas leves e ir direto para a negociação de multa sem tentar acolher com alternativas de tempo.'],
     estagio: 'Etapa 2 antes da Etapa 4 — não pular direto para a multa.',
     mensagens: [
-      { tom: 'Acolhimento, com muita sensibilidade', texto: 'Sinto muito por tudo que estão passando. Antes de falarmos em cancelar, quero entender: é algo que muda os planos por um tempo ou definitivamente? Se for algo temporário, talvez consigamos pausar ou remarcar sem precisar encerrar o contrato.' }
+      { tom: 'Acolhimento, com muita sensibilidade', texto: 'Sinto muito por tudo que estão passando. Antes de falarmos em cancelar, quero entender: é algo que muda os planos por um tempo ou definitivamente? Se for algo temporário, talvez consigamos pausar ou remarcar sem precisar encerrar o contrato.' },
+      { tom: 'Se for temporário', texto: 'Que bom que ainda existe a vontade de celebrar. Podemos pausar as parcelas por um tempo ou remarcar para uma data mais tranquila, sem precisar encerrar o contrato agora.' },
+      { tom: 'Se for definitivo', texto: 'Entendo perfeitamente, e quero te acompanhar da forma mais leve possível nesse processo. Vou verificar com a gestão as condições de encerramento mais justas para esse momento que vocês estão vivendo.' }
     ],
     casoRealId: 'fabiola'
   },
   {
     id: 'mudanca-cidade', icone: '🧳', titulo: 'Mudança de cidade',
     desc: 'Cliente mudou ou pretende mudar de cidade e considera inviável manter o evento.',
+    sinonimos: ['mudou de cidade', 'se mudou', 'vai morar fora'],
     comoIdentificar: ['Cliente menciona mudança de endereço, emprego em outra cidade ou dificuldade logística para os convidados.'],
     perguntas: ['A mudança é definitiva?', 'Faria sentido transferir o evento para uma unidade Indaiá mais próxima da nova cidade?'],
-    objetivo: 'Verificar se a rede de unidades resolve antes de tratar como cancelamento.',
     argumentos: ['Apresentar unidades Indaiá na nova região, se existir, como alternativa à saída do contrato.'],
     alternativas: ['R-06 · Liberação de Data, mantendo vínculo por pagamentos mensais', 'R-05 · Alteração de Data'],
     erros: ['Não considerar transferência de unidade antes de tratar como perda do cliente.'],
     estagio: 'Etapa 2-3.',
     mensagens: [
-      { tom: 'Abertura / diagnóstico', texto: 'Entendo perfeitamente. Antes de tratarmos isso como um cancelamento, deixa eu verificar se temos alguma unidade Indaiá na região para onde vocês estão indo — às vezes dá para transferir o evento em vez de encerrar o contrato.' }
+      { tom: 'Abertura / diagnóstico', texto: 'Entendo perfeitamente. Antes de tratarmos isso como um cancelamento, deixa eu verificar se temos alguma unidade Indaiá na região para onde vocês estão indo — às vezes dá para transferir o evento em vez de encerrar o contrato.' },
+      { tom: 'Se tiver unidade na nova cidade', texto: 'Boa notícia: temos unidade Indaiá aí perto de vocês! Posso te conectar com o time de lá para dar continuidade ao planejamento sem perder nada do que já foi construído até aqui.' },
+      { tom: 'Se não tiver unidade próxima', texto: 'Entendo que a logística fica bem mais difícil de longe. Mesmo assim, antes de tratarmos como cancelamento, deixa eu ver com a gestão se existe alguma forma de manter o vínculo à distância.' }
     ],
     casoRealId: null
   },
   {
     id: 'outro', icone: '❓', titulo: 'Outro motivo',
     desc: 'Motivo que não se encaixa nas categorias acima — usar o diagnóstico geral.',
+    sinonimos: ['nao sei', 'nao informou', 'motivo desconhecido'],
     comoIdentificar: ['Nenhum dos padrões acima se aplica claramente.'],
     perguntas: ['Se conseguíssemos resolver este ponto, você teria interesse em permanecer conosco?'],
-    objetivo: 'Diagnosticar com calma antes de classificar — não forçar o motivo em uma categoria errada.',
     argumentos: ['Usar o checklist de diagnóstico geral antes de qualquer proposta.'],
     alternativas: ['Definido conforme o diagnóstico revelar.'],
     erros: ['Avançar para uma liberação comercial sem entender o motivo real.'],
     estagio: 'Etapa 0 · sempre começar pelo diagnóstico.',
     mensagens: [
-      { tom: 'Acolhedor + investigativo + comercial', texto: 'Entendi. Antes de seguirmos com o processo de cancelamento, queria entender um pouco melhor o que levou vocês a essa decisão. Dependendo do motivo, talvez exista alguma alternativa que possamos analisar juntos antes de encerrarmos o contrato.' }
+      { tom: 'Acolhedor + investigativo + comercial', texto: 'Entendi. Antes de seguirmos com o processo de cancelamento, queria entender um pouco melhor o que levou vocês a essa decisão. Dependendo do motivo, talvez exista alguma alternativa que possamos analisar juntos antes de encerrarmos o contrato.' },
+      { tom: 'Pergunta-chave, se ainda não achou o motivo', texto: 'Só para eu te ajudar direitinho: hoje, se a gente conseguisse resolver o principal ponto que está pesando nessa decisão, vocês teriam interesse em continuar com o planejamento?' }
     ],
     casoRealId: 'diego'
   }
@@ -400,6 +420,8 @@ const CASOS = [
     tatica: 'Mesmo padrão do caso Sergio: um acordo de cancelamento mal documentado gerou atrito anos depois. Todo encerramento (R-07, R-08, R-09) precisa terminar com um termo formal e claro sobre o que fica quitado — não apenas uma promessa verbal.'
   }
 ];
+const STATUS_LABEL = { cancelado: 'Cancelado', andamento: 'Em andamento', disputa: 'Disputa pós-cancelamento' };
+const STATUS_CLASS = { cancelado: 'status-cancelado', andamento: 'status-andamento', disputa: 'status-disputa' };
 
 /* -------------------------------------------------------------------------
    5. MATRIZ DE LIBERAÇÕES
@@ -415,419 +437,11 @@ const MATRIZ = RSTEPS.map(r => ({
   observacao: r.alerta ? r.alerta : 'Sem sinalização explícita de escalonamento no manual — alçada por cargo a definir com a gestão.'
 }));
 
-/* ==========================================================================
-   RENDER
-   ========================================================================== */
-document.addEventListener('DOMContentLoaded', () => {
-  renderOverviewStats();
-  renderMotivos();
-  renderDiagnostico();
-  renderEscada();
-  renderMatriz();
-  renderCasos();
-  renderScripts();
-  initArvore();
-  renderIndicadores();
-  initNav();
-  initSearch();
-  initBackToTop();
-  initTopicFinder();
-});
-
-function el(tag, opts = {}, children = []) {
-  const node = document.createElement(tag);
-  if (opts.class) node.className = opts.class;
-  if (opts.html !== undefined) node.innerHTML = opts.html;
-  if (opts.text !== undefined) node.textContent = opts.text;
-  if (opts.attrs) Object.entries(opts.attrs).forEach(([k, v]) => node.setAttribute(k, v));
-  children.forEach(c => c && node.appendChild(c));
-  return node;
-}
-
-/* ---------- Overview ---------- */
-function renderOverviewStats() {
-  const real = document.getElementById('realCounts');
-  if (!real) return;
-  const porCategoria = {};
-  CASOS.forEach(c => { porCategoria[c.categoria] = (porCategoria[c.categoria] || 0) + 1; });
-  real.innerHTML = '';
-  Object.entries(porCategoria).forEach(([cat, count]) => {
-    real.appendChild(el('div', { class: 'stat-card' }, [
-      el('div', { class: 'stat-value', text: String(count) }),
-      el('div', { class: 'stat-label', text: cat })
-    ]));
-  });
-}
-
-/* ---------- Motivos ---------- */
-function renderMotivos() {
-  const grid = document.getElementById('motivosGrid');
-  if (!grid) return;
-  MOTIVOS.forEach(m => {
-    const caso = CASOS.find(c => c.id === m.casoRealId);
-    const details = el('details', { class: 'card motivo-card', attrs: { id: 'motivo-' + m.id, 'data-search': (m.titulo + ' ' + m.desc).toLowerCase() } });
-    const summary = el('summary', {}, [
-      el('span', { class: 'm-icon', text: m.icone }),
-      el('span', { class: 'm-title', text: m.titulo }),
-      el('span', { class: 'm-desc', text: m.desc }),
-      el('span', { class: 'm-caret', text: '▾' })
-    ]);
-    details.appendChild(summary);
-
-    const body = el('div', { class: 'motivo-body' });
-    if (m.mensagens && m.mensagens.length) {
-      const h4 = el('h4', { text: 'Textos prontos para usar' });
-      body.appendChild(h4);
-      m.mensagens.forEach(msg => body.appendChild(buildMensagemBubble(msg)));
-    }
-    body.appendChild(sectionBlock('Como identificar', m.comoIdentificar));
-    body.appendChild(sectionBlock('Perguntas para diagnóstico', m.perguntas));
-    body.appendChild(labelPara('Objetivo da argumentação', m.objetivo));
-    body.appendChild(sectionBlock('Argumentação recomendada', m.argumentos));
-    body.appendChild(sectionBlock('Alternativas / liberações aplicáveis', m.alternativas));
-    body.appendChild(sectionBlock('Erros a evitar', m.erros));
-    body.appendChild(labelPara('Estágio de liberação recomendado', m.estagio));
-
-    if (caso) {
-      const link = el('a', { class: 'm-linkcase', text: '→ Ver caso real: ' + caso.nome, attrs: { href: '#caso-' + caso.id } });
-      body.appendChild(link);
-    } else {
-      body.appendChild(el('p', { class: 'm-nocase', text: 'Nenhum caso real registrado ainda para este motivo no Indaiá Chat.' }));
-    }
-    details.appendChild(body);
-    grid.appendChild(details);
-  });
-}
-
-function buildMensagemBubble(msg) {
-  const wrap = el('div', { attrs: { style: 'margin-bottom:10px' } });
-  const tomRow = el('div', { class: 's-tom', attrs: { style: 'display:flex;justify-content:space-between;align-items:center;gap:8px' } });
-  tomRow.appendChild(el('span', { text: msg.tom }));
-  const copyBtn = el('button', { class: 'copy-btn', text: '📋 Copiar', attrs: { type: 'button' } });
-  copyBtn.addEventListener('click', () => copyToClipboard(msg.texto, copyBtn));
-  tomRow.appendChild(copyBtn);
-  wrap.appendChild(tomRow);
-  wrap.appendChild(el('div', { class: 'whats-bubble', text: msg.texto }));
-  return wrap;
-}
-
-function copyToClipboard(text, btn) {
-  const done = () => {
-    const original = btn.textContent;
-    btn.textContent = '✓ Copiado';
-    btn.classList.add('copied');
-    setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 1600);
-  };
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(text).then(done).catch(done);
-  } else {
-    const ta = document.createElement('textarea');
-    ta.value = text;
-    ta.style.position = 'fixed';
-    ta.style.opacity = '0';
-    document.body.appendChild(ta);
-    ta.select();
-    try { document.execCommand('copy'); } catch (e) {}
-    document.body.removeChild(ta);
-    done();
-  }
-}
-
-function sectionBlock(titulo, itens) {
-  const wrap = el('div');
-  wrap.appendChild(el('h4', { text: titulo }));
-  const ul = el('ul');
-  itens.forEach(i => ul.appendChild(el('li', { text: i })));
-  wrap.appendChild(ul);
-  return wrap;
-}
-function labelPara(titulo, texto) {
-  const wrap = el('div');
-  wrap.appendChild(el('h4', { text: titulo }));
-  wrap.appendChild(el('p', { text: texto }));
-  return wrap;
-}
-
-/* ---------- Buscador de motivo (página inicial) ----------
-   Sinônimos ampliam o que o consultor pode digitar além do título oficial
-   do motivo — não alteram nenhuma regra de negócio, só ajudam a busca. */
-const TOPIC_SYNONYMS = {
-  financeiro: ['dinheiro', 'parcela', 'desemprego', 'renda', 'pagamento', 'sem grana', 'orçamento'],
-  'mudanca-planos': ['desistiu', 'não vai mais casar', 'mudou de ideia', 'cancelar tudo'],
-  'mudanca-data': ['remarcar', 'adiar', 'antecipar', 'nova data', 'trocar data'],
-  'reducao-convidados': ['menos convidados', 'diminuiu a lista', 'lista menor'],
-  'insatisfacao-atendimento': ['reclamação', 'enganado', 'mal atendido', 'sumiu', 'demora'],
-  'insatisfacao-servico': ['espaço', 'estrutura', 'fornecedor', 'cardápio', 'buffet ruim'],
-  concorrencia: ['concorrente', 'outro buffet', 'outro espaço', 'mais barato', 'achou mais barato'],
-  separacao: ['terminaram', 'rompeu', 'separaram', 'brigaram', 'noivado desfeito'],
-  familiar: ['doença', 'luto', 'saúde', 'falecimento', 'problema de saúde'],
-  'mudanca-cidade': ['mudou de cidade', 'se mudou', 'vai morar fora'],
-  outro: ['não sei', 'não informou']
-};
-
-function normalizeTopic(s) {
-  return (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim();
-}
-
-function matchMotivos(query) {
-  const q = normalizeTopic(query);
-  if (!q) return [];
-  return MOTIVOS.filter(m => {
-    const hay = normalizeTopic(m.titulo + ' ' + m.desc + ' ' + m.id + ' ' + (TOPIC_SYNONYMS[m.id] || []).join(' '));
-    return hay.includes(q);
-  });
-}
-
-function initTopicFinder() {
-  const chipsWrap = document.getElementById('topicChips');
-  const input = document.getElementById('topicSearch');
-  const suggestWrap = document.getElementById('topicSuggestions');
-  const resultWrap = document.getElementById('topicResult');
-  if (!chipsWrap || !input || !resultWrap) return;
-
-  MOTIVOS.forEach(m => {
-    const chip = el('button', { class: 'topic-chip', attrs: { type: 'button', id: 'chip-' + m.id } }, [
-      el('span', { text: m.icone }),
-      el('span', { text: m.titulo })
-    ]);
-    chip.addEventListener('click', () => selectMotivoTopic(m.id));
-    chipsWrap.appendChild(chip);
-  });
-
-  input.addEventListener('input', () => {
-    const q = input.value;
-    if (!q.trim()) { suggestWrap.hidden = true; suggestWrap.innerHTML = ''; return; }
-    const matches = matchMotivos(q).slice(0, 6);
-    suggestWrap.innerHTML = '';
-    if (!matches.length) {
-      suggestWrap.appendChild(el('div', { class: 'sr-empty', text: 'Nenhum motivo encontrado para "' + q + '". Veja os botões abaixo.' }));
-    } else {
-      matches.forEach(m => {
-        const item = el('button', { class: 'topic-suggestion', attrs: { type: 'button' } }, [
-          el('span', { text: m.icone }),
-          el('span', { text: m.titulo })
-        ]);
-        item.addEventListener('click', () => { input.value = ''; suggestWrap.hidden = true; selectMotivoTopic(m.id); });
-        suggestWrap.appendChild(item);
-      });
-    }
-    suggestWrap.hidden = false;
-  });
-
-  input.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      const matches = matchMotivos(input.value);
-      if (matches.length) { selectMotivoTopic(matches[0].id); input.value = ''; suggestWrap.hidden = true; }
-    }
-  });
-
-  document.addEventListener('click', (e) => {
-    if (!suggestWrap.contains(e.target) && e.target !== input) suggestWrap.hidden = true;
-  });
-
-  document.addEventListener('click', (e) => {
-    const a = e.target.closest('a[href^="#motivo-"]');
-    if (!a) return;
-    e.preventDefault();
-    const id = a.getAttribute('href').slice(1);
-    const details = document.getElementById(id);
-    if (details) { details.open = true; jumpToAndHighlight(id); }
-  });
-}
-
-function selectMotivoTopic(id) {
-  const m = MOTIVOS.find(x => x.id === id);
-  if (!m) return;
-
-  document.querySelectorAll('.topic-chip').forEach(c => c.classList.toggle('active', c.id === 'chip-' + id));
-
-  const resultWrap = document.getElementById('topicResult');
-  resultWrap.innerHTML = '';
-  resultWrap.classList.add('show');
-
-  resultWrap.appendChild(el('div', { class: 'topic-result-head' }, [
-    el('span', { class: 'm-icon', text: m.icone }),
-    el('h3', { text: m.titulo }),
-    el('span', { class: 'pill pill-alert', text: m.estagio.split('·')[0].trim() })
-  ]));
-  resultWrap.appendChild(el('p', { class: 'topic-result-desc', text: m.desc }));
-
-  if (m.mensagens && m.mensagens.length) {
-    resultWrap.appendChild(el('h4', { text: 'Textos prontos para usar' }));
-    m.mensagens.forEach(msg => resultWrap.appendChild(buildMensagemBubble(msg)));
-  }
-
-  if (m.perguntas && m.perguntas.length) {
-    resultWrap.appendChild(el('h4', { text: 'Perguntas-chave' }));
-    const ul = el('ul', { class: 'topic-perguntas' });
-    m.perguntas.slice(0, 4).forEach(p => ul.appendChild(el('li', { text: p })));
-    resultWrap.appendChild(ul);
-  }
-
-  if (m.alternativas && m.alternativas.length) {
-    resultWrap.appendChild(el('h4', { text: 'Liberações aplicáveis' }));
-    const row = el('div', { class: 'caso-rcodes' });
-    m.alternativas.forEach(a => {
-      const codeMatch = a.match(/R-0\d/);
-      const chip = el('button', { class: 'rcode-chip', text: a, attrs: { type: 'button' } });
-      if (codeMatch) {
-        const rid = 'r' + codeMatch[0].slice(2);
-        chip.addEventListener('click', () => jumpToAndHighlight('step-' + rid));
-      } else {
-        chip.disabled = true;
-      }
-      row.appendChild(chip);
-    });
-    resultWrap.appendChild(row);
-  }
-
-  const caso = CASOS.find(c => c.id === m.casoRealId);
-  const linksRow = el('div', { class: 'topic-result-links' });
-  linksRow.appendChild(el('a', { text: 'Ver ficha completa deste motivo ↓', attrs: { href: '#motivo-' + m.id } }));
-  if (caso) {
-    linksRow.appendChild(el('a', { text: 'Ver caso real: ' + caso.nome + ' ↓', attrs: { href: '#caso-' + caso.id } }));
-  }
-  resultWrap.appendChild(linksRow);
-
-  resultWrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-}
-
-/* ---------- Diagnóstico ---------- */
-function renderDiagnostico() {
-  const list = document.getElementById('diagnosticoChecklist');
-  if (!list) return;
-  DIAGNOSTICO_CHECKLIST.forEach(item => list.appendChild(el('li', { text: item })));
-}
-
-/* ---------- Escada / Etapas ---------- */
-function renderEscada() {
-  const mapWrap = document.getElementById('etapasMap');
-  if (mapWrap) {
-    ETAPAS.forEach(e => {
-      mapWrap.appendChild(el('div', { class: 'etapa-mini' }, [
-        el('div', { class: 'e-num', text: 'Etapa ' + e.num }),
-        el('div', { class: 'e-title', text: e.titulo }),
-        el('div', { class: 'e-r', text: e.r })
-      ]));
-    });
-  }
-
-  const list = document.getElementById('escadaList');
-  if (!list) return;
-  let currentFase = null;
-  RSTEPS.forEach(r => {
-    if (r.fase !== currentFase) {
-      currentFase = r.fase;
-      list.appendChild(el('div', { class: 'fase-label', text: FASES[currentFase] }));
-    }
-    const card = el('div', { class: 'rcard', attrs: { id: 'step-' + r.id, 'data-search': (r.codigo + ' ' + r.nome + ' ' + r.desc).toLowerCase() } });
-    card.appendChild(el('div', { class: 'r-num', text: r.codigo.replace('R-', '') }));
-
-    const right = el('div');
-    const head = el('div', { class: 'r-head' }, [
-      el('span', { class: 'r-code', text: r.codigo + ' · ' + r.nome }),
-      el('span', { class: 'r-dots', text: '●'.repeat(r.intensidade) + '○'.repeat(5 - r.intensidade) }),
-      el('span', { class: 'r-intensidade', text: r.label })
-    ]);
-    right.appendChild(head);
-    right.appendChild(el('p', { class: 'r-desc', text: r.desc }));
-
-    if (r.acoes) {
-      const ul = el('ul');
-      r.acoes.forEach(a => ul.appendChild(el('li', { text: a })));
-      right.appendChild(ul);
-    }
-    if (r.prazos) {
-      const row = el('div', { class: 'r-table' });
-      r.prazos.forEach(p => {
-        const span = el('span');
-        span.innerHTML = p.rotulo + ' &nbsp;<b>' + p.valor + '</b>';
-        row.appendChild(span);
-      });
-      right.appendChild(row);
-    }
-    if (r.alerta) {
-      right.appendChild(el('span', { class: 'r-alert', text: '⚠ ' + r.alerta }));
-    }
-    card.appendChild(right);
-    list.appendChild(card);
-  });
-}
-
-/* ---------- Matriz ---------- */
-function renderMatriz() {
-  const body = document.getElementById('matrizBody');
-  if (!body) return;
-  MATRIZ.forEach(row => {
-    const tr = el('tr');
-    tr.appendChild(el('td', { html: '<b>' + row.codigo + '</b> · ' + row.nome }));
-    tr.appendChild(el('td', { text: row.fase }));
-    tr.appendChild(el('td', { text: row.intensidade }));
-    const obsTd = el('td');
-    const isFlag = row.observacao.indexOf('conversar com a gestão') !== -1;
-    obsTd.appendChild(el('span', { class: isFlag ? 'badge-flag' : 'badge-definir', text: isFlag ? row.observacao : 'A DEFINIR' }));
-    if (!isFlag) {
-      obsTd.appendChild(el('div', { html: row.observacao, attrs: { style: 'margin-top:6px;font-size:.78rem;color:var(--ink-faint)' } }));
-    }
-    tr.appendChild(obsTd);
-    body.appendChild(tr);
-  });
-}
-
-/* ---------- Casos reais ---------- */
-const STATUS_LABEL = { cancelado: 'Cancelado', andamento: 'Em andamento', disputa: 'Disputa pós-cancelamento' };
-const STATUS_CLASS = { cancelado: 'status-cancelado', andamento: 'status-andamento', disputa: 'status-disputa' };
-
-function renderCasos() {
-  const grid = document.getElementById('casosGrid');
-  if (!grid) return;
-  CASOS.forEach(c => {
-    const card = el('div', { class: 'card caso-card', attrs: { id: 'caso-' + c.id, 'data-search': (c.nome + ' ' + c.categoria + ' ' + c.motivo).toLowerCase() } });
-    card.appendChild(el('div', { class: 'caso-head' }, [
-      el('div', {}, [
-        el('div', { class: 'caso-nome', text: c.nome }),
-        el('div', { class: 'caso-evento', text: c.evento + ' · ' + c.categoria })
-      ]),
-      el('span', { class: 'caso-status ' + STATUS_CLASS[c.status], text: STATUS_LABEL[c.status] })
-    ]));
-    card.appendChild(labelPara('Motivo alegado', c.motivo));
-    card.appendChild(labelPara('O que a empresa ofereceu', c.oferta));
-
-    if (c.rcodes.length) {
-      const h4 = el('h4', { text: 'Liberações usadas' });
-      const chipRow = el('div', { class: 'caso-rcodes' });
-      c.rcodes.forEach(rid => {
-        const r = RSTEPS.find(x => x.id === rid);
-        const chip = el('button', { class: 'rcode-chip', text: r.codigo, attrs: { type: 'button', 'data-jump': 'step-' + rid } });
-        chipRow.appendChild(chip);
-      });
-      card.appendChild(h4);
-      card.appendChild(chipRow);
-    }
-
-    card.appendChild(el('div', { class: 'caso-tatica', html: '<b>Leitura tática:</b> ' + c.tatica }));
-    grid.appendChild(card);
-  });
-
-  grid.addEventListener('click', (e) => {
-    const btn = e.target.closest('[data-jump]');
-    if (!btn) return;
-    jumpToAndHighlight(btn.getAttribute('data-jump'));
-  });
-}
-
-function jumpToAndHighlight(targetId) {
-  const target = document.getElementById(targetId);
-  if (!target) return;
-  target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  target.classList.add('highlight');
-  setTimeout(() => target.classList.remove('highlight'), 2200);
-}
-
-/* ---------- Scripts de atendimento ----------
-   Scripts específicos por motivo agora vivem em MOTIVOS[].mensagens e
-   aparecem na busca da página inicial. Aqui ficam só os de uso geral,
-   que não dependem de já saber o motivo. */
+/* -------------------------------------------------------------------------
+   6. SCRIPTS GERAIS
+   Scripts específicos por motivo vivem em MOTIVOS[].mensagens. Aqui ficam
+   só os de uso geral, que não dependem de já saber o motivo.
+   ------------------------------------------------------------------------- */
 const SCRIPTS = [
   {
     id: 'primeiro-contato', titulo: 'Primeiro contato', tom: 'Acolhedor + investigativo + comercial',
@@ -839,19 +453,9 @@ const SCRIPTS = [
   }
 ];
 
-function renderScripts() {
-  const list = document.getElementById('scriptsList');
-  if (!list) return;
-  SCRIPTS.forEach(s => {
-    const card = el('div', { class: 'card script-card', attrs: { id: 'script-' + s.id, 'data-search': (s.titulo + ' ' + s.texto).toLowerCase() } });
-    card.appendChild(el('h3', { text: s.titulo }));
-    card.appendChild(el('div', { class: 's-tom', text: 'Tom: ' + s.tom }));
-    card.appendChild(el('div', { class: 'whats-bubble', text: s.texto }));
-    list.appendChild(card);
-  });
-}
-
-/* ---------- Árvore de decisão ---------- */
+/* -------------------------------------------------------------------------
+   7. ÁRVORE DE DECISÃO
+   ------------------------------------------------------------------------- */
 const ARVORE = {
   financeiro: {
     pergunta: 'O problema é o valor total ou o valor mensal?',
@@ -903,67 +507,9 @@ const ARVORE = {
   }
 };
 
-function initArvore() {
-  const root = document.getElementById('arvoreRoot');
-  if (!root) return;
-  renderArvoreStep1();
-}
-
-function renderArvoreStep1() {
-  const root = document.getElementById('arvoreRoot');
-  root.innerHTML = '';
-  root.appendChild(el('div', { class: 'arvore-pergunta', text: 'Por que o cliente quer cancelar?' }));
-  const opcoes = el('div', { class: 'arvore-opcoes' });
-  const labels = { financeiro: 'Financeiro', data: 'Data', insatisfacao: 'Insatisfação', concorrencia: 'Concorrência', reducao: 'Redução do evento', pessoal: 'Motivo pessoal', outro: 'Outro' };
-  Object.entries(labels).forEach(([key, label]) => {
-    const btn = el('button', { text: label, attrs: { type: 'button' } });
-    btn.addEventListener('click', () => renderArvoreStep2(key, btn));
-    opcoes.appendChild(btn);
-  });
-  root.appendChild(opcoes);
-  root.appendChild(el('div', { class: 'arvore-resultado', attrs: { id: 'arvoreResultado' } }));
-}
-
-function renderArvoreStep2(key, chosenBtn) {
-  chosenBtn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('chosen'));
-  chosenBtn.classList.add('chosen');
-  const node = ARVORE[key];
-  const resultado = document.getElementById('arvoreResultado');
-  resultado.className = 'arvore-resultado show';
-  resultado.innerHTML = '';
-  resultado.appendChild(el('div', { class: 'arvore-pergunta', text: node.pergunta, attrs: { style: 'font-size:1rem;margin-bottom:10px' } }));
-  const opcoes = el('div', { class: 'arvore-opcoes' });
-  Object.entries(node.opcoes).forEach(([label, resultObj]) => {
-    const btn = el('button', { text: label, attrs: { type: 'button' } });
-    btn.addEventListener('click', () => {
-      opcoes.querySelectorAll('button').forEach(b => b.classList.remove('chosen'));
-      btn.classList.add('chosen');
-      let final = document.getElementById('arvoreFinal');
-      if (!final) {
-        final = el('div', { attrs: { id: 'arvoreFinal', style: 'margin-top:12px' } });
-        resultado.appendChild(final);
-      }
-      final.innerHTML = '<p><strong>Próxima ação recomendada:</strong> ' + resultObj.texto + '</p>';
-      if (resultObj.rcodes.length) {
-        const chipRow = el('div', { class: 'caso-rcodes' });
-        resultObj.rcodes.forEach(rid => {
-          const r = RSTEPS.find(x => x.id === rid);
-          const chip = el('button', { class: 'rcode-chip', text: r.codigo, attrs: { type: 'button', 'data-jump': 'step-' + rid } });
-          chip.addEventListener('click', () => jumpToAndHighlight('step-' + rid));
-          chipRow.appendChild(chip);
-        });
-        final.appendChild(chipRow);
-      }
-    });
-    opcoes.appendChild(btn);
-  });
-  resultado.appendChild(opcoes);
-  const restart = el('button', { class: 'arvore-restart', text: '↺ Recomeçar diagnóstico' });
-  restart.addEventListener('click', renderArvoreStep1);
-  resultado.appendChild(restart);
-}
-
-/* ---------- Indicadores (demonstrativos) ---------- */
+/* -------------------------------------------------------------------------
+   8. INDICADORES (DEMONSTRATIVOS)
+   ------------------------------------------------------------------------- */
 const INDICADORES_DEMO = [
   { label: 'Financeiro', valor: 38 },
   { label: 'Insatisfação com atendimento', valor: 19 },
@@ -974,45 +520,559 @@ const INDICADORES_DEMO = [
   { label: 'Outros', valor: 6 }
 ];
 
-function renderIndicadores() {
-  const wrap = document.getElementById('indicDemo');
-  if (!wrap) return;
+/* ==========================================================================
+   HELPERS DE DOM
+   ========================================================================== */
+function el(tag, opts = {}, children = []) {
+  const node = document.createElement(tag);
+  if (opts.class) node.className = opts.class;
+  if (opts.html !== undefined) node.innerHTML = opts.html;
+  if (opts.text !== undefined) node.textContent = opts.text;
+  if (opts.attrs) Object.entries(opts.attrs).forEach(([k, v]) => node.setAttribute(k, v));
+  children.forEach(c => c && node.appendChild(c));
+  return node;
+}
+
+function sectionBlock(titulo, itens) {
+  const wrap = el('div');
+  wrap.appendChild(el('h4', { text: titulo }));
+  const ul = el('ul');
+  itens.forEach(i => ul.appendChild(el('li', { text: i })));
+  wrap.appendChild(ul);
+  return wrap;
+}
+function labelPara(titulo, texto) {
+  const wrap = el('div');
+  wrap.appendChild(el('h4', { text: titulo }));
+  wrap.appendChild(el('p', { text: texto }));
+  return wrap;
+}
+
+function normalize(s) {
+  return (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim();
+}
+
+function buildMensagemBubble(msg) {
+  const wrap = el('div', { attrs: { style: 'margin-bottom:10px' } });
+  const tomRow = el('div', { class: 's-tom', attrs: { style: 'display:flex;justify-content:space-between;align-items:center;gap:8px' } });
+  tomRow.appendChild(el('span', { text: msg.tom }));
+  const copyBtn = el('button', { class: 'copy-btn', text: '📋 Copiar', attrs: { type: 'button' } });
+  copyBtn.addEventListener('click', () => copyToClipboard(msg.texto, copyBtn));
+  tomRow.appendChild(copyBtn);
+  wrap.appendChild(tomRow);
+  wrap.appendChild(el('div', { class: 'whats-bubble', text: msg.texto }));
+  return wrap;
+}
+
+function copyToClipboard(text, btn) {
+  const done = () => {
+    const original = btn.textContent;
+    btn.textContent = '✓ Copiado';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 1600);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(done).catch(done);
+  } else {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+    done();
+  }
+}
+
+/* Chips de liberação que expandem o detalhe da etapa R-0X ali mesmo,
+   sem sair do card (nada de navegar para outra seção). */
+function buildRCodeChipsRow(codes) {
+  const wrap = document.createElement('div');
+  const chipRow = el('div', { class: 'caso-rcodes' });
+  const slot = el('div', { class: 'inline-rstep-slot' });
+  let active = null;
+  codes.forEach(c => {
+    const chip = el('button', { class: 'rcode-chip', text: c.label, attrs: { type: 'button' } });
+    if (!c.rid) {
+      chip.disabled = true;
+    } else {
+      chip.addEventListener('click', () => {
+        if (active === c.rid) { slot.innerHTML = ''; active = null; chip.classList.remove('active'); return; }
+        chipRow.querySelectorAll('.rcode-chip').forEach(x => x.classList.remove('active'));
+        chip.classList.add('active');
+        slot.innerHTML = '';
+        const r = RSTEPS.find(x => x.id === c.rid);
+        if (r) slot.appendChild(buildRStepCard(r));
+        active = c.rid;
+      });
+    }
+    chipRow.appendChild(chip);
+  });
+  wrap.appendChild(chipRow);
+  wrap.appendChild(slot);
+  return wrap;
+}
+
+function extractRCodesFromAlternativas(alternativas) {
+  return alternativas.map(a => {
+    const match = a.match(/R-0\d/);
+    return { rid: match ? 'r' + match[0].slice(2) : null, label: a };
+  });
+}
+
+/* ==========================================================================
+   BUILDERS — cada um monta um bloco de resultado autocontido
+   ========================================================================== */
+function buildRStepCard(r) {
+  const card = el('div', { class: 'rcard' });
+  card.appendChild(el('div', { class: 'r-num', text: r.codigo.replace('R-', '') }));
+  const right = el('div');
+  right.appendChild(el('div', { class: 'r-head' }, [
+    el('span', { class: 'r-code', text: r.codigo + ' · ' + r.nome }),
+    el('span', { class: 'r-dots', text: '●'.repeat(r.intensidade) + '○'.repeat(5 - r.intensidade) }),
+    el('span', { class: 'r-intensidade', text: r.label })
+  ]));
+  right.appendChild(el('p', { class: 'r-desc', text: r.desc }));
+  if (r.acoes) {
+    const ul = el('ul');
+    r.acoes.forEach(a => ul.appendChild(el('li', { text: a })));
+    right.appendChild(ul);
+  }
+  if (r.prazos) {
+    const row = el('div', { class: 'r-table' });
+    r.prazos.forEach(p => {
+      const span = el('span');
+      span.innerHTML = p.rotulo + ' &nbsp;<b>' + p.valor + '</b>';
+      row.appendChild(span);
+    });
+    right.appendChild(row);
+  }
+  if (r.alerta) right.appendChild(el('span', { class: 'r-alert', text: '⚠ ' + r.alerta }));
+  card.appendChild(right);
+  return card;
+}
+
+function buildCasoCard(c) {
+  const card = el('div', { class: 'card caso-card' });
+  card.appendChild(el('div', { class: 'caso-head' }, [
+    el('div', {}, [
+      el('div', { class: 'caso-nome', text: c.nome }),
+      el('div', { class: 'caso-evento', text: c.evento + ' · ' + c.categoria })
+    ]),
+    el('span', { class: 'caso-status ' + STATUS_CLASS[c.status], text: STATUS_LABEL[c.status] })
+  ]));
+  card.appendChild(labelPara('Motivo alegado', c.motivo));
+  card.appendChild(labelPara('O que a empresa ofereceu', c.oferta));
+  if (c.rcodes.length) {
+    card.appendChild(el('h4', { text: 'Liberações usadas (clique para ver o detalhe)' }));
+    const codes = c.rcodes.map(rid => { const r = RSTEPS.find(x => x.id === rid); return { rid, label: r.codigo }; });
+    card.appendChild(buildRCodeChipsRow(codes));
+  }
+  card.appendChild(el('div', { class: 'caso-tatica', html: '<b>Leitura tática:</b> ' + c.tatica }));
+  return card;
+}
+
+function buildScriptCard(s) {
+  const card = el('div', { class: 'card script-card' });
+  card.appendChild(el('h3', { text: s.titulo }));
+  card.appendChild(el('div', { class: 's-tom', text: 'Tom: ' + s.tom }));
+  card.appendChild(el('div', { class: 'whats-bubble', text: s.texto }));
+  const copyBtn = el('button', { class: 'copy-btn', text: '📋 Copiar', attrs: { type: 'button', style: 'margin-top:8px' } });
+  copyBtn.addEventListener('click', () => copyToClipboard(s.texto, copyBtn));
+  card.appendChild(copyBtn);
+  return card;
+}
+
+function buildMotivoResult(m) {
+  const card = el('div', { class: 'card motivo-result' });
+  card.appendChild(el('div', { class: 'topic-result-head' }, [
+    el('span', { class: 'm-icon', text: m.icone }),
+    el('h3', { text: m.titulo }),
+    el('span', { class: 'pill pill-alert', text: m.estagio.split('·')[0].trim() })
+  ]));
+  card.appendChild(el('p', { class: 'topic-result-desc', text: m.desc }));
+
+  if (m.mensagens && m.mensagens.length) {
+    card.appendChild(el('h4', { text: 'Textos prontos para usar (' + m.mensagens.length + ' opções)' }));
+    m.mensagens.forEach(msg => card.appendChild(buildMensagemBubble(msg)));
+  }
+  if (m.perguntas && m.perguntas.length) {
+    card.appendChild(el('h4', { text: 'Perguntas-chave' }));
+    const ul = el('ul', { class: 'topic-perguntas' });
+    m.perguntas.forEach(p => ul.appendChild(el('li', { text: p })));
+    card.appendChild(ul);
+  }
+  if (m.argumentos && m.argumentos.length) {
+    card.appendChild(sectionBlock('Como argumentar', m.argumentos));
+  }
+  if (m.alternativas && m.alternativas.length) {
+    card.appendChild(el('h4', { text: 'Liberações aplicáveis (clique para ver o detalhe)' }));
+    card.appendChild(buildRCodeChipsRow(extractRCodesFromAlternativas(m.alternativas)));
+  }
+  if (m.erros && m.erros.length) {
+    card.appendChild(sectionBlock('Erros a evitar', m.erros));
+  }
+
+  const caso = CASOS.find(c => c.id === m.casoRealId);
+  card.appendChild(el('h4', { text: 'Caso real relacionado' }));
+  if (caso) {
+    card.appendChild(buildCasoCard(caso));
+  } else {
+    card.appendChild(el('p', { class: 'm-nocase', text: 'Nenhum caso real registrado ainda para este motivo no Indaiá Chat.' }));
+  }
+  return card;
+}
+
+function buildEscadaCompletaBlock() {
+  const wrap = el('div', { class: 'card bundle-card' });
+  wrap.appendChild(el('h3', { text: 'Escada de Liberações · R-01 → R-09' }));
+  wrap.appendChild(el('p', { text: 'Percorra de cima para baixo; suba de nível apenas quando o passo anterior não bastar. Nunca começar pela maior concessão disponível.' }));
+  let currentFase = null;
+  RSTEPS.forEach(r => {
+    if (r.fase !== currentFase) { currentFase = r.fase; wrap.appendChild(el('div', { class: 'fase-label', text: FASES[currentFase] })); }
+    wrap.appendChild(buildRStepCard(r));
+  });
+  return wrap;
+}
+
+function buildMatrizBlock() {
+  const wrap = el('div', { class: 'card bundle-card' });
+  wrap.appendChild(el('h3', { text: 'Matriz de Liberações' }));
+  wrap.appendChild(el('p', { text: 'A alçada por cargo (Consultor / Supervisor / Gerente / Diretoria) ainda não foi confirmada pela gestão — marcada como A DEFINIR até essa informação ser fornecida. Os pontos já sinalizados pelo manual como "conversar com a gestão" aparecem destacados.' }));
+  const tableWrap = el('div', { class: 'table-wrap' });
+  const table = el('table', { class: 'matriz' });
+  table.appendChild(el('thead', { html: '<tr><th>Liberação</th><th>Fase</th><th>Intensidade</th><th>Alçada / observação</th></tr>' }));
+  const tbody = el('tbody');
+  MATRIZ.forEach(row => {
+    const tr = el('tr');
+    tr.appendChild(el('td', { html: '<b>' + row.codigo + '</b> · ' + row.nome }));
+    tr.appendChild(el('td', { text: row.fase }));
+    tr.appendChild(el('td', { text: row.intensidade }));
+    const obsTd = el('td');
+    const isFlag = row.observacao.indexOf('conversar com a gestão') !== -1;
+    obsTd.appendChild(el('span', { class: isFlag ? 'badge-flag' : 'badge-definir', text: isFlag ? row.observacao : 'A DEFINIR' }));
+    if (!isFlag) obsTd.appendChild(el('div', { html: row.observacao, attrs: { style: 'margin-top:6px;font-size:.78rem;color:var(--ink-faint)' } }));
+    tr.appendChild(obsTd);
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+  tableWrap.appendChild(table);
+  wrap.appendChild(tableWrap);
+  return wrap;
+}
+
+function buildDiagnosticoBlock() {
+  const wrap = el('div', { class: 'card bundle-card' });
+  wrap.appendChild(el('h3', { text: 'Diagnóstico do Cliente' }));
+  wrap.appendChild(el('p', { text: 'O consultor não deve apresentar desconto, condição especial ou alteração contratual antes de entender exatamente por que o cliente está considerando cancelar.' }));
+  const ul = el('ul', { class: 'checklist' });
+  DIAGNOSTICO_CHECKLIST.forEach(item => ul.appendChild(el('li', { text: item })));
+  wrap.appendChild(ul);
+  const kq = el('div', { class: 'key-question' });
+  kq.appendChild(el('p', { class: 'q', text: '"Se conseguíssemos resolver este ponto, você teria interesse em permanecer conosco?"' }));
+  kq.appendChild(el('p', { text: 'Essa pergunta ajuda a identificar se o motivo apresentado é realmente o principal impeditivo — ou se existe algo mais por trás da solicitação.' }));
+  wrap.appendChild(kq);
+  return wrap;
+}
+
+function buildNaoFazerBlock() {
+  const wrap = el('div', { class: 'card bundle-card' });
+  wrap.appendChild(el('h3', { text: 'O que não fazer' }));
+  const items = ['Oferecer desconto imediatamente', 'Discutir com o cliente', 'Minimizar o problema', 'Falar mal de concorrentes', 'Prometer condições sem autorização', 'Apresentar todas as liberações de uma só vez', 'Criar falsas urgências', 'Dificultar artificialmente o cancelamento', 'Esconder informações contratuais', 'Pressionar emocionalmente o cliente'];
+  const ul = el('ul', { class: 'naofazer-grid' });
+  items.forEach(i => ul.appendChild(el('li', { text: i })));
+  wrap.appendChild(ul);
+  wrap.appendChild(el('div', { class: 'callout danger', attrs: { style: 'margin-top:18px' }, html: '<strong>Retenção não significa impedir o cancelamento.</strong> Significa garantir que todas as soluções possíveis foram avaliadas antes da decisão final.' }));
+  return wrap;
+}
+
+function buildEncerramentoBlock() {
+  const wrap = el('div', { class: 'card bundle-card' });
+  wrap.appendChild(el('h3', { text: 'Encerramento' }));
+  wrap.appendChild(el('p', { text: 'Se todas as possibilidades foram corretamente exploradas e o cliente mantém a decisão:' }));
+  const items = ['Respeitar a decisão', 'Explicar o procedimento com clareza', 'Registrar o motivo real do cancelamento', 'Registrar todas as alternativas apresentadas', 'Formalizar por escrito o que foi acordado (valores, isenções, prazos)', 'Encaminhar para o processo oficial de cancelamento'];
+  const ul = el('ul', { class: 'encerramento-list' });
+  items.forEach(i => ul.appendChild(el('li', { text: i })));
+  wrap.appendChild(ul);
+  wrap.appendChild(el('div', { class: 'callout info', attrs: { style: 'margin-top:18px' }, html: '<strong>Por que isso importa:</strong> dois dos casos reais analisados (Sergio/Antônio Corrêa e Ronaldo Agostinho Costa) voltaram a gerar atrito meses ou anos depois — pedido de restituição e negativação indevida — exatamente por falta de um registro formal e claro do que foi combinado no momento do cancelamento.' }));
+  return wrap;
+}
+
+function buildCasosReaisBundle() {
+  const wrap = el('div', { class: 'card bundle-card' });
+  wrap.appendChild(el('h3', { text: 'Casos Reais de Cancelamento' }));
+  wrap.appendChild(el('p', { text: 'Casos extraídos do histórico real de atendimento (uso interno — não compartilhar externamente).' }));
+  const grid = el('div', { class: 'card-grid' });
+  CASOS.forEach(c => grid.appendChild(buildCasoCard(c)));
+  wrap.appendChild(grid);
+  return wrap;
+}
+
+function buildIndicadoresBlock() {
+  const wrap = el('div', { class: 'card bundle-card' });
+  wrap.appendChild(el('h3', { html: 'Cancelamentos por motivo <span class="pill pill-demo">demonstrativo</span>' }));
+  const bars = el('div');
   const max = Math.max(...INDICADORES_DEMO.map(d => d.valor));
   INDICADORES_DEMO.forEach(d => {
-    wrap.appendChild(el('div', { class: 'bar-row' }, [
+    bars.appendChild(el('div', { class: 'bar-row' }, [
       el('div', { class: 'bar-label', text: d.label }),
       el('div', { class: 'bar-track' }, [el('div', { class: 'bar-fill', attrs: { style: 'width:' + (d.valor / max * 100) + '%' } })]),
       el('div', { class: 'bar-value', text: d.valor + '%' })
     ]));
   });
+  wrap.appendChild(bars);
+
+  const real = el('div', { attrs: { style: 'margin-top:22px' } });
+  real.appendChild(el('h4', { text: 'Casos reais analisados neste playbook (dado real · Indaiá Chat)' }));
+  const statGrid = el('div', { class: 'stat-grid' });
+  const porCategoria = {};
+  CASOS.forEach(c => { porCategoria[c.categoria] = (porCategoria[c.categoria] || 0) + 1; });
+  Object.entries(porCategoria).forEach(([cat, count]) => {
+    statGrid.appendChild(el('div', { class: 'stat-card' }, [
+      el('div', { class: 'stat-value', text: String(count) }),
+      el('div', { class: 'stat-label', text: cat })
+    ]));
+  });
+  real.appendChild(statGrid);
+  wrap.appendChild(real);
+
+  wrap.appendChild(el('div', { class: 'callout info', attrs: { style: 'margin-top:18px' }, text: 'Gráficos adicionais previstos para versões futuras: solicitações por mês, retenção por consultor, retenção por unidade, valor financeiro recuperado e estágio (R-01 a R-09) que mais gera retenções.' }));
+  return wrap;
+}
+
+/* ---------- Árvore de decisão (autocontida, sem depender de IDs fixos) ---------- */
+function buildArvoreBlock() {
+  const wrap = el('div', { class: 'card bundle-card' });
+  wrap.appendChild(el('h3', { text: 'Árvore de Decisão' }));
+  wrap.appendChild(el('p', { text: 'Responda às perguntas para chegar à próxima ação recomendada.' }));
+  const box = el('div', { class: 'arvore-box' });
+  wrap.appendChild(box);
+  renderArvoreStep1(box);
+  return wrap;
+}
+
+function renderArvoreStep1(root) {
+  root.innerHTML = '';
+  root.appendChild(el('div', { class: 'arvore-pergunta', text: 'Por que o cliente quer cancelar?' }));
+  const opcoes = el('div', { class: 'arvore-opcoes' });
+  const labels = { financeiro: 'Financeiro', data: 'Data', insatisfacao: 'Insatisfação', concorrencia: 'Concorrência', reducao: 'Redução do evento', pessoal: 'Motivo pessoal', outro: 'Outro' };
+  const resultado = el('div', { class: 'arvore-resultado' });
+  Object.entries(labels).forEach(([key, label]) => {
+    const btn = el('button', { text: label, attrs: { type: 'button' } });
+    btn.addEventListener('click', () => renderArvoreStep2(root, resultado, key, btn));
+    opcoes.appendChild(btn);
+  });
+  root.appendChild(opcoes);
+  root.appendChild(resultado);
+}
+
+function renderArvoreStep2(root, resultado, key, chosenBtn) {
+  chosenBtn.parentElement.querySelectorAll('button').forEach(b => b.classList.remove('chosen'));
+  chosenBtn.classList.add('chosen');
+  const node = ARVORE[key];
+  resultado.className = 'arvore-resultado show';
+  resultado.innerHTML = '';
+  resultado.appendChild(el('div', { class: 'arvore-pergunta', text: node.pergunta, attrs: { style: 'font-size:1rem;margin-bottom:10px' } }));
+  const opcoes = el('div', { class: 'arvore-opcoes' });
+  Object.entries(node.opcoes).forEach(([label, resultObj]) => {
+    const btn = el('button', { text: label, attrs: { type: 'button' } });
+    btn.addEventListener('click', () => {
+      opcoes.querySelectorAll('button').forEach(b => b.classList.remove('chosen'));
+      btn.classList.add('chosen');
+      let final = resultado.querySelector('.arvore-final');
+      if (!final) { final = el('div', { class: 'arvore-final', attrs: { style: 'margin-top:12px' } }); resultado.appendChild(final); }
+      final.innerHTML = '<p><strong>Próxima ação recomendada:</strong> ' + resultObj.texto + '</p>';
+      if (resultObj.rcodes.length) {
+        const chipRow = el('div', { class: 'caso-rcodes' });
+        resultObj.rcodes.forEach(rid => {
+          const r = RSTEPS.find(x => x.id === rid);
+          const chip = el('button', { class: 'rcode-chip', text: r.codigo, attrs: { type: 'button' } });
+          chip.addEventListener('click', () => {
+            let slot = resultado.querySelector('.arvore-rstep-slot');
+            if (!slot) { slot = el('div', { class: 'arvore-rstep-slot', attrs: { style: 'margin-top:10px' } }); resultado.appendChild(slot); }
+            slot.innerHTML = '';
+            slot.appendChild(buildRStepCard(r));
+          });
+          chipRow.appendChild(chip);
+        });
+        final.appendChild(chipRow);
+      }
+    });
+    opcoes.appendChild(btn);
+  });
+  resultado.appendChild(opcoes);
+  const restart = el('button', { class: 'arvore-restart', text: '↺ Recomeçar diagnóstico' });
+  restart.addEventListener('click', () => renderArvoreStep1(root));
+  resultado.appendChild(restart);
 }
 
 /* ==========================================================================
-   NAVEGAÇÃO, SCROLLSPY, MENU MOBILE, BUSCA, BACK TO TOP
+   ÍNDICE DE BUSCA — banco de informações unificado
+   Cada entrada tem palavras-chave e uma função de renderização própria.
+   A busca filtra por substring nas palavras-chave: só aparece o que bate.
    ========================================================================== */
-function initNav() {
-  const toggle = document.getElementById('navToggle');
-  const nav = document.getElementById('sideNav');
-  const overlay = document.getElementById('navOverlay');
+const SEARCH_INDEX = [];
 
-  function closeNav() { nav.classList.remove('open'); overlay.classList.remove('show'); }
-  if (toggle) toggle.addEventListener('click', () => { nav.classList.toggle('open'); overlay.classList.toggle('show'); });
-  if (overlay) overlay.addEventListener('click', closeNav);
-  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+MOTIVOS.forEach(m => {
+  SEARCH_INDEX.push({
+    id: 'motivo-' + m.id,
+    type: 'Motivo de cancelamento',
+    title: m.titulo,
+    keywords: normalize(m.titulo + ' ' + m.desc + ' ' + m.id + ' ' + (m.sinonimos || []).join(' ')),
+    render: () => buildMotivoResult(m)
+  });
+});
 
-  const links = Array.from(nav.querySelectorAll('a'));
-  const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+RSTEPS.forEach(r => {
+  SEARCH_INDEX.push({
+    id: 'rstep-' + r.id,
+    type: 'Etapa de retenção',
+    title: r.codigo + ' · ' + r.nome,
+    keywords: normalize(r.codigo + ' ' + r.nome + ' ' + (r.sinonimos || []).join(' ')),
+    render: () => buildRStepCard(r)
+  });
+});
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = '#' + entry.target.id;
-        links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === id));
-      }
+CASOS.forEach(c => {
+  SEARCH_INDEX.push({
+    id: 'caso-' + c.id,
+    type: 'Caso real',
+    title: c.nome,
+    keywords: normalize(c.nome + ' ' + c.evento + ' ' + c.motivo),
+    render: () => buildCasoCard(c)
+  });
+});
+
+SCRIPTS.forEach(s => {
+  SEARCH_INDEX.push({
+    id: 'script-' + s.id,
+    type: 'Script geral',
+    title: s.titulo,
+    keywords: normalize(s.titulo + ' ' + s.texto + ' script mensagem whatsapp'),
+    render: () => buildScriptCard(s)
+  });
+});
+
+SEARCH_INDEX.push({
+  id: 'bundle-escada', type: 'Escada completa', title: 'Escada de Liberações (R-01 → R-09)',
+  keywords: normalize('escada liberacoes fluxo completo r-01 r-02 r-03 r-04 r-05 r-06 r-07 r-08 r-09 fase concessao'),
+  render: buildEscadaCompletaBlock
+});
+SEARCH_INDEX.push({
+  id: 'bundle-matriz', type: 'Matriz', title: 'Matriz de Liberações',
+  keywords: normalize('matriz liberacoes alcada aprovacao autorizacao consultor supervisor gerente diretoria'),
+  render: buildMatrizBlock
+});
+SEARCH_INDEX.push({
+  id: 'bundle-diagnostico', type: 'Diagnóstico', title: 'Diagnóstico do Cliente',
+  keywords: normalize('diagnostico checklist perguntas antes de argumentar'),
+  render: buildDiagnosticoBlock
+});
+SEARCH_INDEX.push({
+  id: 'bundle-naofazer', type: 'Alertas', title: 'O que não fazer',
+  keywords: normalize('o que nao fazer erros evitar alertas'),
+  render: buildNaoFazerBlock
+});
+SEARCH_INDEX.push({
+  id: 'bundle-encerramento', type: 'Encerramento', title: 'Encerramento',
+  keywords: normalize('encerramento cancelamento oficial registrar formalizar distrato'),
+  render: buildEncerramentoBlock
+});
+SEARCH_INDEX.push({
+  id: 'bundle-arvore', type: 'Árvore de decisão', title: 'Árvore de Decisão',
+  keywords: normalize('arvore de decisao interativo proxima acao'),
+  render: buildArvoreBlock
+});
+SEARCH_INDEX.push({
+  id: 'bundle-casos', type: 'Casos Reais', title: 'Todos os Casos Reais',
+  keywords: normalize('casos reais todos historico indaia chat'),
+  render: buildCasosReaisBundle
+});
+SEARCH_INDEX.push({
+  id: 'bundle-indicadores', type: 'Indicadores', title: 'Indicadores de Cancelamento',
+  keywords: normalize('indicadores dados grafico taxa de retencao demonstrativo painel'),
+  render: buildIndicadoresBlock
+});
+
+/* ==========================================================================
+   BUSCA — página inicial é só isto: input + chips + resultados filtrados
+   ========================================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+  initSearch();
+  initBackToTop();
+});
+
+function initSearch() {
+  const input = document.getElementById('masterSearch');
+  const chipsWrap = document.getElementById('quickChips');
+  const resultsArea = document.getElementById('searchResults');
+  if (!input || !resultsArea) return;
+
+  function buildChip(label, entry) {
+    const chip = el('button', { class: 'quick-chip', text: label, attrs: { type: 'button' } });
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('.quick-chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      input.value = entry.title;
+      resultsArea.classList.add('show');
+      renderResults([entry]);
+      resultsArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
-  }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+    return chip;
+  }
 
-  sections.forEach(s => observer.observe(s));
+  if (chipsWrap) {
+    MOTIVOS.forEach(m => {
+      const entry = SEARCH_INDEX.find(e => e.id === 'motivo-' + m.id);
+      chipsWrap.appendChild(buildChip(m.icone + ' ' + m.titulo, entry));
+    });
+    chipsWrap.appendChild(el('span', { class: 'chip-divider', text: 'Outros temas' }));
+    [
+      ['bundle-escada', '🪜 Escada completa'],
+      ['bundle-matriz', '📋 Matriz de Liberações'],
+      ['bundle-diagnostico', '🔎 Diagnóstico do Cliente'],
+      ['bundle-naofazer', '🚫 O que não fazer'],
+      ['bundle-encerramento', '✅ Encerramento'],
+      ['bundle-arvore', '🌳 Árvore de Decisão'],
+      ['bundle-casos', '🗂️ Casos Reais'],
+      ['bundle-indicadores', '📊 Indicadores']
+    ].forEach(([id, label]) => {
+      const entry = SEARCH_INDEX.find(e => e.id === id);
+      chipsWrap.appendChild(buildChip(label, entry));
+    });
+  }
+
+  function renderResults(entries) {
+    resultsArea.innerHTML = '';
+    if (!entries.length) {
+      resultsArea.appendChild(el('div', { class: 'no-results', text: 'Nenhum resultado para isso. Tente outro termo ou escolha um tema acima.' }));
+      return;
+    }
+    entries.forEach(entry => {
+      const block = el('div', { class: 'result-block' });
+      block.appendChild(el('div', { class: 'result-type', text: entry.type }));
+      block.appendChild(entry.render());
+      resultsArea.appendChild(block);
+    });
+  }
+
+  input.addEventListener('input', () => {
+    document.querySelectorAll('.quick-chip').forEach(c => c.classList.remove('active'));
+    const q = input.value;
+    if (!q.trim()) {
+      resultsArea.innerHTML = '';
+      resultsArea.classList.remove('show');
+      return;
+    }
+    resultsArea.classList.add('show');
+    const qn = normalize(q);
+    const matches = SEARCH_INDEX.filter(e => e.keywords.includes(qn));
+    renderResults(matches);
+  });
+
+  input.addEventListener('keydown', (e) => { if (e.key === 'Enter') e.preventDefault(); });
 }
 
 function initBackToTop() {
@@ -1022,54 +1082,4 @@ function initBackToTop() {
     btn.classList.toggle('show', window.scrollY > 500);
   });
   btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-}
-
-function initSearch() {
-  const input = document.getElementById('searchInput');
-  const results = document.getElementById('searchResults');
-  if (!input || !results) return;
-
-  function buildIndex() {
-    const nodes = document.querySelectorAll('[data-search]');
-    return Array.from(nodes).map(n => ({
-      id: n.id,
-      text: n.getAttribute('data-search'),
-      title: n.querySelector('.m-title, h3, .caso-nome, .r-code')?.textContent || n.id,
-      section: n.closest('section')?.id || ''
-    }));
-  }
-
-  const SECTION_LABEL = {
-    motivos: 'Motivo de cancelamento', escada: 'Etapa de retenção', casos: 'Caso real', scripts: 'Script de atendimento'
-  };
-
-  input.addEventListener('input', () => {
-    const q = input.value.trim().toLowerCase();
-    if (!q) { results.hidden = true; results.innerHTML = ''; return; }
-    const index = buildIndex();
-    const matches = index.filter(item => item.text.includes(q)).slice(0, 12);
-    results.innerHTML = '';
-    if (!matches.length) {
-      results.appendChild(el('div', { class: 'sr-empty', text: 'Nenhum resultado para "' + input.value + '".' }));
-    } else {
-      matches.forEach(m => {
-        const a = el('a', { attrs: { href: '#' + m.id } }, [
-          el('div', { class: 'sr-tag', text: SECTION_LABEL[m.section] || m.section }),
-          el('div', { class: 'sr-title', text: m.title })
-        ]);
-        a.addEventListener('click', (ev) => {
-          ev.preventDefault();
-          results.hidden = true;
-          input.value = '';
-          jumpToAndHighlight(m.id);
-        });
-        results.appendChild(a);
-      });
-    }
-    results.hidden = false;
-  });
-
-  document.addEventListener('click', (e) => {
-    if (!results.contains(e.target) && e.target !== input) results.hidden = true;
-  });
 }

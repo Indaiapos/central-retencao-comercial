@@ -4,237 +4,33 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Central de Retenção Comercial · Indaiá Eventos</title>
-<meta name="description" content="Playbook interno de cancelamentos, argumentação e liberações comerciais — equipe de Pós-Vendas Indaiá Eventos." />
+<meta name="description" content="Banco de informações de pós-vendas — cancelamentos, argumentação e liberações comerciais. Equipe Indaiá Eventos." />
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <header class="topbar">
-  <button id="navToggle" class="nav-toggle" aria-label="Abrir menu">☰</button>
   <div class="brand">
     <span class="brand-eyebrow">Indaiá Eventos · Pós-Vendas</span>
     <span class="brand-title">Central de Retenção Comercial</span>
   </div>
-  <div class="search-wrap">
-    <input id="searchInput" type="search" placeholder="Buscar: financeiro, desconto, multa, gerente..." aria-label="Pesquisa rápida" autocomplete="off" />
-    <div id="searchResults" class="search-results" hidden></div>
-  </div>
 </header>
 
-<div class="layout">
-  <nav id="sideNav" class="sidenav" aria-label="Navegação principal">
-    <ul>
-      <li><a href="#overview">Visão Geral</a></li>
-      <li><a href="#motivos">Motivos de Cancelamento</a></li>
-      <li><a href="#diagnostico">Diagnóstico do Cliente</a></li>
-      <li><a href="#escada">Etapas de Retenção</a></li>
-      <li><a href="#matriz">Matriz de Liberações</a></li>
-      <li><a href="#casos">Casos Reais</a></li>
-      <li><a href="#scripts">Scripts de Atendimento</a></li>
-      <li><a href="#naofazer">O que não fazer</a></li>
-      <li><a href="#encerramento">Encerramento</a></li>
-      <li><a href="#arvore">Árvore de Decisão</a></li>
-      <li><a href="#indicadores">Indicadores</a></li>
-    </ul>
-  </nav>
-  <div id="navOverlay" class="nav-overlay"></div>
+<main class="search-home">
+  <div class="search-hero">
+    <span class="eyebrow">Banco de informações</span>
+    <h1>O que você precisa saber agora?</h1>
+    <p>Digite o assunto — um motivo de cancelamento, um código de liberação, "matriz", "não fazer" — e aparece só o que está em pauta.</p>
 
-  <main class="content">
+    <div class="master-search-wrap">
+      <input id="masterSearch" type="search" placeholder="Digite o assunto: financeiro, multa, concorrência, não fazer…" aria-label="Buscar no banco de informações" autocomplete="off" />
+    </div>
 
-    <!-- 1. VISÃO GERAL / BUSCA DE MOTIVO -->
-    <section id="overview">
-      <div class="section-head">
-        <span class="eyebrow">Comece por aqui</span>
-        <h2>Qual é o motivo do cliente?</h2>
-        <p>Digite o motivo (ex.: <em>financeiro</em>, <em>concorrência</em>, <em>insatisfação</em>) ou clique numa opção abaixo. Vai aparecer na hora o texto pronto para usar com o cliente.</p>
-      </div>
+    <div class="quick-chips" id="quickChips"></div>
+  </div>
 
-      <div class="topic-finder">
-        <div class="topic-search-wrap">
-          <input id="topicSearch" type="search" placeholder="Digite o motivo do cliente…" aria-label="Buscar motivo de cancelamento" autocomplete="off" />
-          <div id="topicSuggestions" class="topic-suggestions" hidden></div>
-        </div>
-        <div class="topic-chips" id="topicChips"></div>
-        <div class="topic-result" id="topicResult"></div>
-      </div>
-
-      <details class="overview-context">
-        <summary>Ver o fluxo completo e os indicadores do time ▾</summary>
-
-        <div class="flow" style="margin-top:20px">
-          <div class="flow-step">Solicitação de Cancelamento</div>
-          <div class="flow-arrow">↓</div>
-          <div class="flow-step">Entender o Motivo</div>
-          <div class="flow-arrow">↓</div>
-          <div class="flow-step">Diagnosticar o Problema Real</div>
-          <div class="flow-arrow">↓</div>
-          <div class="flow-step">Argumentar</div>
-          <div class="flow-arrow">↓</div>
-          <div class="flow-step">Apresentar Alternativas</div>
-          <div class="flow-arrow">↓</div>
-          <div class="flow-step">Utilizar Liberações Comerciais (R-01 → R-09)</div>
-          <div class="flow-arrow">↓</div>
-          <div class="flow-step">Retenção ou Cancelamento</div>
-        </div>
-
-        <h3 style="margin-top:34px">Indicadores <span class="pill pill-demo">dados demonstrativos</span></h3>
-        <div class="stat-grid">
-          <div class="stat-card"><div class="stat-value">128</div><div class="stat-label">Solicitações de cancelamento (mês)</div></div>
-          <div class="stat-card"><div class="stat-value">54</div><div class="stat-label">Clientes recuperados</div></div>
-          <div class="stat-card"><div class="stat-value">42%</div><div class="stat-label">Taxa de retenção</div></div>
-          <div class="stat-card"><div class="stat-value">Financeiro</div><div class="stat-label">Principal motivo de cancelamento</div></div>
-          <div class="stat-card"><div class="stat-value">R$ 186 mil</div><div class="stat-label">Valor financeiro preservado</div></div>
-          <div class="stat-card"><div class="stat-value">74</div><div class="stat-label">Cancelamentos efetivados</div></div>
-        </div>
-
-        <h3 style="margin-top:34px">Casos reais analisados neste playbook <span class="pill pill-real">dado real · Indaiá Chat</span></h3>
-        <div class="stat-grid" id="realCounts"></div>
-      </details>
-    </section>
-
-    <!-- 2. MOTIVOS DE CANCELAMENTO -->
-    <section id="motivos">
-      <div class="section-head">
-        <span class="eyebrow">Biblioteca de motivos</span>
-        <h2>Qual é o motivo do cancelamento?</h2>
-        <p>Clique em um motivo para abrir como identificar, o que perguntar, como argumentar, quais alternativas oferecer e quais erros evitar.</p>
-      </div>
-      <div class="card-grid" id="motivosGrid"></div>
-    </section>
-
-    <!-- 3. DIAGNÓSTICO -->
-    <section id="diagnostico">
-      <div class="section-head">
-        <span class="eyebrow">Antes de argumentar, diagnostique</span>
-        <h2>O consultor não deve apresentar desconto, condição especial ou alteração contratual antes de entender exatamente por que o cliente está considerando cancelar.</h2>
-      </div>
-      <ul class="checklist" id="diagnosticoChecklist"></ul>
-      <div class="key-question">
-        <p class="q">"Se conseguíssemos resolver este ponto, você teria interesse em permanecer conosco?"</p>
-        <p style="margin:0">Essa pergunta ajuda a identificar se o motivo apresentado é realmente o principal impeditivo — ou se existe algo mais por trás da solicitação.</p>
-      </div>
-    </section>
-
-    <!-- ESCADA / ETAPAS DE RETENÇÃO -->
-    <section id="escada">
-      <div class="section-head">
-        <span class="eyebrow">Cadência graduada · R-01 → R-09</span>
-        <h2>Etapas de Retenção</h2>
-        <p>Percorra a escada de cima para baixo; suba de nível apenas quando o passo anterior não bastar. Nunca começar a negociação pela maior concessão disponível.</p>
-      </div>
-
-      <div class="etapas-map" id="etapasMap"></div>
-      <div id="escadaList"></div>
-    </section>
-
-    <!-- MATRIZ DE LIBERAÇÕES -->
-    <section id="matriz">
-      <div class="section-head">
-        <span class="eyebrow">Governança</span>
-        <h2>Matriz de Liberações</h2>
-        <p>A alçada por cargo (Consultor / Supervisor / Gerente / Diretoria) ainda não foi confirmada pela gestão para cada liberação — está marcada como <strong>A DEFINIR</strong> até essa informação ser fornecida. Os pontos já sinalizados pelo manual como "conversar com a gestão" aparecem destacados.</p>
-      </div>
-      <div class="table-wrap">
-        <table class="matriz">
-          <thead>
-            <tr><th>Liberação</th><th>Fase</th><th>Intensidade</th><th>Alçada / observação</th></tr>
-          </thead>
-          <tbody id="matrizBody"></tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- CASOS REAIS -->
-    <section id="casos">
-      <div class="section-head">
-        <span class="eyebrow">Indaiá Chat · histórico real</span>
-        <h2>Casos Reais de Cancelamento</h2>
-        <p>Casos extraídos do histórico real de atendimento (uso interno da equipe comercial — não compartilhar externamente). Cada card mostra o motivo alegado, o que a empresa ofereceu, quais liberações da escada R-01→R-09 foram usadas e uma leitura tática de como o caso se encaixa (ou não) no fluxo correto.</p>
-      </div>
-      <div class="card-grid" id="casosGrid"></div>
-    </section>
-
-    <!-- SCRIPTS -->
-    <section id="scripts">
-      <div class="section-head">
-        <span class="eyebrow">WhatsApp</span>
-        <h2>Scripts de Atendimento</h2>
-        <p>Modelos de mensagem por situação. Adapte o tom ao contexto real da conversa — nunca envie como resposta automática sem leitura.</p>
-      </div>
-      <div class="card-grid" id="scriptsList"></div>
-    </section>
-
-    <!-- O QUE NÃO FAZER -->
-    <section id="naofazer">
-      <div class="section-head">
-        <span class="eyebrow">Alertas</span>
-        <h2>O que não fazer</h2>
-      </div>
-      <ul class="naofazer-grid">
-        <li>Oferecer desconto imediatamente</li>
-        <li>Discutir com o cliente</li>
-        <li>Minimizar o problema</li>
-        <li>Falar mal de concorrentes</li>
-        <li>Prometer condições sem autorização</li>
-        <li>Apresentar todas as liberações de uma só vez</li>
-        <li>Criar falsas urgências</li>
-        <li>Dificultar artificialmente o cancelamento</li>
-        <li>Esconder informações contratuais</li>
-        <li>Pressionar emocionalmente o cliente</li>
-      </ul>
-      <div class="callout danger" style="margin-top:18px">
-        <strong>Retenção não significa impedir o cancelamento.</strong> Significa garantir que todas as soluções possíveis foram avaliadas antes da decisão final.
-      </div>
-    </section>
-
-    <!-- ENCERRAMENTO -->
-    <section id="encerramento">
-      <div class="section-head">
-        <span class="eyebrow">Etapa 5</span>
-        <h2>Encerramento</h2>
-        <p>Se todas as possibilidades foram corretamente exploradas e o cliente mantém a decisão:</p>
-      </div>
-      <ul class="encerramento-list">
-        <li>Respeitar a decisão</li>
-        <li>Explicar o procedimento com clareza</li>
-        <li>Registrar o motivo real do cancelamento</li>
-        <li>Registrar todas as alternativas apresentadas</li>
-        <li>Formalizar por escrito o que foi acordado (valores, isenções, prazos)</li>
-        <li>Encaminhar para o processo oficial de cancelamento</li>
-      </ul>
-      <div class="callout info" style="margin-top:18px">
-        <strong>Por que isso importa:</strong> dois dos casos reais analisados (Sergio/Antônio Corrêa e Ronaldo Agostinho Costa) voltaram a gerar atrito meses ou anos depois — pedido de restituição e negativação indevida — exatamente por falta de um registro formal e claro do que foi combinado no momento do cancelamento.
-      </div>
-    </section>
-
-    <!-- ÁRVORE DE DECISÃO -->
-    <section id="arvore">
-      <div class="section-head">
-        <span class="eyebrow">Interativo</span>
-        <h2>Árvore de Decisão</h2>
-        <p>Responda às perguntas para chegar à próxima ação recomendada.</p>
-      </div>
-      <div class="arvore-box" id="arvoreRoot"></div>
-    </section>
-
-    <!-- INDICADORES -->
-    <section id="indicadores">
-      <div class="section-head">
-        <span class="eyebrow">Painel</span>
-        <h2>Indicadores de Cancelamento</h2>
-        <p>Estrutura preparada para receber dados reais futuramente. Os valores abaixo são <strong>dados demonstrativos</strong> — ver README.md para como conectar dados reais.</p>
-      </div>
-      <div class="indic-block">
-        <h3>Cancelamentos por motivo <span class="pill pill-demo">demonstrativo</span></h3>
-        <div id="indicDemo"></div>
-      </div>
-      <div class="callout info">
-        Gráficos adicionais previstos para versões futuras: solicitações por mês, retenção por consultor, retenção por unidade, valor financeiro recuperado e estágio (R-01 a R-09) que mais gera retenções — a serem conectados quando houver fonte de dados consolidada.
-      </div>
-    </section>
-
-  </main>
-</div>
+  <div id="searchResults" class="search-results-area"></div>
+</main>
 
 <button id="backToTop" class="back-to-top" aria-label="Voltar ao topo">↑</button>
 
