@@ -40,7 +40,8 @@
           ]
         }
       ],
-      "observacao": "Estes valores substituem a regra anterior (taxa mín. 20% curto prazo / isenção mínima longo prazo) que vinha de outro documento e estava desatualizada em relação a esta planilha. \"Margem inicial\" é o valor de abertura da negociação; \"Mínimo\" é o piso até onde dá para negociar sem escalar para a gestão."
+      "observacao": "Estes valores substituem a regra anterior (taxa mín. 20% curto prazo / isenção mínima longo prazo) que vinha de outro documento e estava desatualizada em relação a esta planilha. \"Margem inicial\" é o valor de abertura da negociação; \"Mínimo\" é o piso até onde dá para negociar sem escalar para a gestão.",
+      "grupo": "Outros"
     },
     {
       "id": "taxas-terceirizados",
@@ -89,7 +90,8 @@
           ]
         }
       ],
-      "observacao": "Serviços não listados devem ser consultados sobre a possibilidade de terceirização e possíveis taxas."
+      "observacao": "Serviços não listados devem ser consultados sobre a possibilidade de terceirização e possíveis taxas.",
+      "grupo": "Outros"
     },
     {
       "id": "consumacao",
@@ -312,7 +314,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Outros"
     },
     {
       "id": "produtora-essencial-pacote-completos",
@@ -463,7 +466,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Produtora Essencial"
     },
     {
       "id": "produtora-essencial-pacotes-florais-novos",
@@ -526,7 +530,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Produtora Essencial"
     },
     {
       "id": "cardapios-menu",
@@ -581,7 +586,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Cardápios"
     },
     {
       "id": "cardapios-buffet",
@@ -628,7 +634,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Cardápios"
     },
     {
       "id": "cardapios-open-bar",
@@ -691,7 +698,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Cardápios"
     },
     {
       "id": "cardapios-coquetel",
@@ -738,7 +746,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Cardápios"
     },
     {
       "id": "cardapios-coffee-break",
@@ -809,7 +818,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Cardápios"
     },
     {
       "id": "cardapios-brunch",
@@ -848,7 +858,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Cardápios"
     },
     {
       "id": "cardapios-aperitivos",
@@ -895,7 +906,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Cardápios"
     },
     {
       "id": "cardapios-finger-food",
@@ -934,7 +946,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Cardápios"
     },
     {
       "id": "cardapios-finger-foods-infantil",
@@ -973,7 +986,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Cardápios"
     },
     {
       "id": "cardapios-carrinho-de-fondue",
@@ -1012,7 +1026,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Cardápios"
     },
     {
       "id": "cardapios-lanche-da-madrugada",
@@ -1051,7 +1066,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Cardápios"
     },
     {
       "id": "cardapios-mesa-mediterranea",
@@ -1074,7 +1090,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Cardápios"
     },
     {
       "id": "cardapios-tabua-de-frios-mediterranea",
@@ -1097,7 +1114,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Cardápios"
     },
     {
       "id": "cardapios-sobremesa",
@@ -1120,7 +1138,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Cardápios"
     },
     {
       "id": "cardapios-ilha-gourmet-e-mesa-de-boas-vindas",
@@ -1151,7 +1170,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Cardápios"
     },
     {
       "id": "cardapios-rolhas",
@@ -1218,7 +1238,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Cardápios"
     },
     {
       "id": "cardapios-open-de-drinks-plus",
@@ -1449,7 +1470,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Cardápios"
     },
     {
       "id": "cardapios-open-caipirinha",
@@ -1536,7 +1558,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Cardápios"
     },
     {
       "id": "cardapios-coffee",
@@ -1583,7 +1606,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Cardápios"
     },
     {
       "id": "cardapios-agua-saborizada",
@@ -1606,7 +1630,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Cardápios"
     },
     {
       "id": "cardapios-pacote-cascata-de-negroni",
@@ -1669,7 +1694,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Cardápios"
     },
     {
       "id": "cardapios-torre-de-espumantes",
@@ -1692,7 +1718,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Cardápios"
     },
     {
       "id": "cardapios-welcome-drink",
@@ -1715,7 +1742,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Cardápios"
     },
     {
       "id": "cardapios-adicionais-de-cardapio-para-buffet",
@@ -1906,7 +1934,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Cardápios"
     },
     {
       "id": "cardapios-alteracoes-para-open-bar",
@@ -2081,7 +2110,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Cardápios"
     },
     {
       "id": "decoracoes-pacotes-decorativos",
@@ -2232,7 +2262,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Decorações"
     },
     {
       "id": "decoracoes-pecas-decorativas",
@@ -2919,7 +2950,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Decorações"
     },
     {
       "id": "servicos-horas-adicionais",
@@ -2974,7 +3006,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Serviços"
     },
     {
       "id": "servicos-dia-da-noiva",
@@ -3013,7 +3046,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Serviços"
     },
     {
       "id": "servicos-hospedagem",
@@ -3052,7 +3086,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Serviços"
     },
     {
       "id": "servicos-espaco-kids",
@@ -3091,7 +3126,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Serviços"
     },
     {
       "id": "servicos-taxas",
@@ -3186,7 +3222,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Serviços"
     },
     {
       "id": "servicos-equipe-adicional",
@@ -3249,7 +3286,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Serviços"
     },
     {
       "id": "servicos-area-adicional",
@@ -3368,7 +3406,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Serviços"
     },
     {
       "id": "servicos-estacionamento-canto-da-lagoa",
@@ -3387,7 +3426,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Serviços"
     },
     {
       "id": "servicos-servico-de-vallet-com-os-convidados-pagando",
@@ -3406,7 +3446,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Serviços"
     },
     {
       "id": "floral-cerimonia",
@@ -3469,7 +3510,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Floral"
     },
     {
       "id": "floral-mesa-de-doces-adicionais-do-pacote-essencial",
@@ -3508,7 +3550,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Floral"
     },
     {
       "id": "floral-mesa-de-convidados-adicionais-do-pacote-essencial",
@@ -3547,7 +3590,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Floral"
     },
     {
       "id": "floral-ambientes-variados",
@@ -3618,7 +3662,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Floral"
     },
     {
       "id": "floral-hall-de-entrada",
@@ -3637,7 +3682,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Floral"
     },
     {
       "id": "floral-mesa-posta-fina",
@@ -3680,7 +3726,8 @@
           ]
         }
       ],
-      "observacao": null
+      "observacao": null,
+      "grupo": "Floral"
     }
   ]
 }
