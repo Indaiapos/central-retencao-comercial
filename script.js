@@ -510,7 +510,8 @@ const MATERIAIS = [
       { label: 'Gastronomia', url: 'https://cardapio-buffet-lime.vercel.app/' },
       { label: 'Doces', url: 'https://cardapio-doces-lemon.vercel.app' },
       { label: 'Open Bar', url: 'https://cardapio-buffet-lime.vercel.app/open-bar.html' },
-      { label: 'Open Bar de Drinks', url: 'https://open-drinks.vercel.app/' }
+      { label: 'Open Bar de Drinks', url: 'https://open-drinks.vercel.app/' },
+      { label: 'Doces (Confeitaria Indaiá)', url: 'https://confeitaria-indaia.vercel.app/' }
     ]
   },
   {
@@ -520,7 +521,8 @@ const MATERIAIS = [
       { label: 'Gastronomia', url: 'https://cardapio-15anos.vercel.app/gastronomia.html' },
       { label: 'Doces', url: 'https://doces-15anos.vercel.app/' },
       { label: 'Open Bar', url: 'https://cardapio-15anos.vercel.app/open-bar.html' },
-      { label: 'Open Bar de Drinks (sem álcool)', url: 'https://open-drinks-15anos.vercel.app/' }
+      { label: 'Open Bar de Drinks (sem álcool)', url: 'https://open-drinks-15anos.vercel.app/' },
+      { label: 'Doces (Confeitaria Indaiá)', url: 'https://confeitaria-indaia.vercel.app/' }
     ]
   },
   {
