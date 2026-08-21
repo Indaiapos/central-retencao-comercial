@@ -1192,7 +1192,7 @@ SCRIPTS.forEach(s => {
 });
 
 SEARCH_INDEX.push({
-  id: 'bundle-materiais', type: 'Materiais de Apresentação', scope: 'outros', title: 'Materiais de Apresentação (cardápios digitais)',
+  id: 'bundle-materiais', type: 'Materiais de Apresentação', scope: 'links', title: 'Materiais de Apresentação (cardápios digitais)',
   keywords: normalize('materiais cardapio cardapios digital link links apresentacao gastronomia doces open bar drinks casamento 15 anos quinze confeitaria ' +
     MATERIAIS.map(g => g.titulo + ' ' + g.links.map(l => l.label).join(' ')).join(' ')),
   render: buildMateriaisBlock
@@ -1278,7 +1278,8 @@ const SCOPES = [
   { id: 'cancelamento', label: '🚫 Cancelamento', placeholder: 'Buscar em Cancelamento: financeiro, insatisfação, mudança de data…' },
   { id: 'data', label: '📅 Alteração de Data', placeholder: 'Buscar em Alteração de Data…' },
   { id: 'valores', label: '💰 Tabela de Valores', placeholder: 'Buscar um item de valor: pista de led, menu superior, hora extra…' },
-  { id: 'outros', label: '🗂️ Outros Temas', placeholder: 'Buscar em Outros Temas: escada, matriz, casos, indicadores…' }
+  { id: 'outros', label: '🗂️ Outros Temas', placeholder: 'Buscar em Outros Temas: escada, matriz, casos, indicadores…' },
+  { id: 'links', label: '🔗 Links', placeholder: 'Buscar em Links: casamento, 15 anos, gastronomia, doces…' }
 ];
 
 function initSearch() {
@@ -1304,11 +1305,20 @@ function initSearch() {
     });
   }
 
+  // "valores" tem centenas de itens — ali é preciso digitar para não despejar
+  // a tabela inteira (já foi pedido explicitamente para não fazer isso).
+  const BROWSABLE_SCOPES = ['cancelamento', 'data', 'outros', 'links'];
+
   function runSearch() {
     const q = input.value;
     if (!q.trim()) {
-      resultsArea.innerHTML = '';
-      resultsArea.classList.remove('show');
+      if (activeScope && BROWSABLE_SCOPES.includes(activeScope)) {
+        resultsArea.classList.add('show');
+        renderResults(SEARCH_INDEX.filter(e => e.scope === activeScope));
+      } else {
+        resultsArea.innerHTML = '';
+        resultsArea.classList.remove('show');
+      }
       return;
     }
     resultsArea.classList.add('show');
@@ -1326,6 +1336,7 @@ function initSearch() {
         document.querySelectorAll('.scope-chip').forEach(c => c.classList.remove('active'));
         if (!turningOff) btn.classList.add('active');
         input.placeholder = activeScope ? s.placeholder : defaultPlaceholder;
+        input.value = '';
         input.focus();
         runSearch();
       });
