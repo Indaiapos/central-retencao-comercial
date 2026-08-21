@@ -1,5 +1,5 @@
 {
-  "atualizadoEm": "2026-08-20",
+  "atualizadoEm": "2026-08-21",
   "categorias": [
     {
       "id": "alteracao-de-data",
@@ -366,10 +366,24 @@
           ]
         },
         {
+          "nome": "Bolo Personalizado",
+          "valores": [
+            "R$ 0,00",
+            "R$ 0,00"
+          ]
+        },
+        {
           "nome": "Brownie Bliss",
           "valores": [
             "R$ 18,00",
             "R$ 16,20"
+          ]
+        },
+        {
+          "nome": "Cake Bar",
+          "valores": [
+            "R$ 49,90",
+            "R$ 34,93"
           ]
         },
         {
@@ -487,36 +501,36 @@
         {
           "nome": "Menu Doces Excellence",
           "valores": [
-            "R$ 159,90",
-            "R$ 119,93"
+            "R$ 209,90",
+            "R$ 159,90"
           ]
         },
         {
           "nome": "Menu Doces Premium",
           "valores": [
-            "R$ 99,90",
-            "R$ 59,94"
+            "R$ 139,90",
+            "R$ 79,90"
           ]
         },
         {
           "nome": "Menu Doces Privilege",
           "valores": [
-            "R$ 129,90",
-            "R$ 90,93"
+            "R$ 179,90",
+            "R$ 119,90"
           ]
         },
         {
           "nome": "Menu Doces Superior",
           "valores": [
-            "R$ 79,90",
-            "R$ 39,90"
+            "R$ 99,90",
+            "R$ 54,90"
           ]
         },
         {
           "nome": "Menu Doces Superior II",
           "valores": [
-            "R$ 89,90",
-            "R$ 49,45"
+            "R$ 119,90",
+            "R$ 64,90"
           ]
         },
         {
@@ -3263,15 +3277,15 @@
         {
           "nome": "Vallet",
           "valores": [
-            "R$ 1.500,00",
-            "R$ 1.500,00"
+            "R$ 3.000,00",
+            "R$ 3.000,00"
           ]
         },
         {
           "nome": "Vallet",
           "valores": [
-            "R$ 3.000,00",
-            "R$ 3.000,00"
+            "R$ 1.500,00",
+            "R$ 1.500,00"
           ]
         },
         {
@@ -3320,6 +3334,20 @@
         "Mínimo"
       ],
       "itens": [
+        {
+          "nome": "Boat Bar - Cervejas",
+          "valores": [
+            "R$ 45,90",
+            "R$ 41,31"
+          ]
+        },
+        {
+          "nome": "Boat Bar - Espumantes",
+          "valores": [
+            "R$ 49,90",
+            "R$ 44,91"
+          ]
+        },
         {
           "nome": "Cascata de Negroni - Classic",
           "valores": [
@@ -3449,10 +3477,24 @@
       ],
       "itens": [
         {
+          "nome": "Boat Bar - Softs",
+          "valores": [
+            "R$ 39,90",
+            "R$ 35,91"
+          ]
+        },
+        {
           "nome": "Gelo (kg)",
           "valores": [
             "R$ 15,00",
             "R$ 13,50"
+          ]
+        },
+        {
+          "nome": "Gelo Personalizado",
+          "valores": [
+            "R$ 0,00",
+            "R$ 0,00"
           ]
         },
         {
