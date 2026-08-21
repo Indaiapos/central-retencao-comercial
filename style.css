@@ -183,6 +183,25 @@ button { font-family: inherit; cursor: pointer; }
 .pill-real { background: var(--success-soft); color: var(--success); }
 .pill-alert { background: var(--danger-soft); color: var(--danger); }
 
+/* ---------- Materiais de apresentação (links externos) ---------- */
+.material-links { display: flex; flex-wrap: wrap; gap: 10px; }
+.material-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--ink);
+  font-size: .86rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+.material-link:hover { border-color: var(--gold); color: var(--gold-strong); background: var(--gold-soft); }
+.material-link::after { content: '↗'; font-size: .8rem; color: var(--ink-faint); }
+.material-link:hover::after { color: var(--gold-strong); }
+
 /* ---------- Callouts ---------- */
 .callout {
   background: var(--surface);

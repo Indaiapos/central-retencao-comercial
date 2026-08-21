@@ -497,6 +497,42 @@ const SCRIPTS = [
 ];
 
 /* -------------------------------------------------------------------------
+   6b. MATERIAIS DE APRESENTAÇÃO (cardápios digitais)
+   Links externos (Vercel) que o consultor manda pro cliente ver os
+   cardápios/materiais de cada tipo de evento. Só links de verdade — não
+   inventar nem tentar prever conteúdo, é a equipe que mantém essas páginas.
+   ------------------------------------------------------------------------- */
+const MATERIAIS = [
+  {
+    titulo: 'Material de Casamento',
+    icone: '👰🏼‍♀️🤵🏼',
+    links: [
+      { label: 'Gastronomia', url: 'https://cardapio-buffet-lime.vercel.app/' },
+      { label: 'Doces', url: 'https://cardapio-doces-lemon.vercel.app' },
+      { label: 'Open Bar', url: 'https://cardapio-buffet-lime.vercel.app/open-bar.html' },
+      { label: 'Open Bar de Drinks', url: 'https://open-drinks.vercel.app/' }
+    ]
+  },
+  {
+    titulo: 'Material de 15 Anos',
+    icone: '👸🏼',
+    links: [
+      { label: 'Gastronomia', url: 'https://cardapio-15anos.vercel.app/gastronomia.html' },
+      { label: 'Doces', url: 'https://doces-15anos.vercel.app/' },
+      { label: 'Open Bar', url: 'https://cardapio-15anos.vercel.app/open-bar.html' },
+      { label: 'Open Bar de Drinks (sem álcool)', url: 'https://open-drinks-15anos.vercel.app/' }
+    ]
+  },
+  {
+    titulo: 'Confeitaria Indaiá',
+    icone: '🍰',
+    links: [
+      { label: 'Doces', url: 'https://confeitaria-indaia.vercel.app/' }
+    ]
+  }
+];
+
+/* -------------------------------------------------------------------------
    7. ÁRVORE DE DECISÃO
    ------------------------------------------------------------------------- */
 const ARVORE = {
@@ -923,6 +959,29 @@ function buildMatrizBlock() {
   return wrap;
 }
 
+function buildMateriaisBlock() {
+  const wrap = el('div', { class: 'card bundle-card' });
+  wrap.appendChild(el('h3', { text: 'Materiais de Apresentação (cardápios digitais)' }));
+  wrap.appendChild(el('p', { text: 'Links para mandar ao cliente ver os cardápios e materiais de cada tipo de evento.' }));
+
+  MATERIAIS.forEach(grupo => {
+    const grupoWrap = el('div', { attrs: { style: 'margin-top:18px' } });
+    grupoWrap.appendChild(el('h4', { text: grupo.icone + ' ' + grupo.titulo }));
+    const linksWrap = el('div', { class: 'material-links' });
+    grupo.links.forEach(link => {
+      linksWrap.appendChild(el('a', {
+        class: 'material-link',
+        text: link.label,
+        attrs: { href: link.url, target: '_blank', rel: 'noopener noreferrer' }
+      }));
+    });
+    grupoWrap.appendChild(linksWrap);
+    wrap.appendChild(grupoWrap);
+  });
+
+  return wrap;
+}
+
 function buildDiagnosticoBlock() {
   const wrap = el('div', { class: 'card bundle-card' });
   wrap.appendChild(el('h3', { text: 'Diagnóstico do Cliente' }));
@@ -1130,6 +1189,12 @@ SCRIPTS.forEach(s => {
   });
 });
 
+SEARCH_INDEX.push({
+  id: 'bundle-materiais', type: 'Materiais de Apresentação', scope: 'outros', title: 'Materiais de Apresentação (cardápios digitais)',
+  keywords: normalize('materiais cardapio cardapios digital link links apresentacao gastronomia doces open bar drinks casamento 15 anos quinze confeitaria ' +
+    MATERIAIS.map(g => g.titulo + ' ' + g.links.map(l => l.label).join(' ')).join(' ')),
+  render: buildMateriaisBlock
+});
 SEARCH_INDEX.push({
   id: 'bundle-escada', type: 'Escada completa', scope: 'outros', title: 'Escada de Liberações (R-01 → R-09)',
   keywords: normalize('escada liberacoes fluxo completo r-01 r-02 r-03 r-04 r-05 r-06 r-07 r-08 r-09 fase concessao'),
