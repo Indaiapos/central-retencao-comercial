@@ -202,6 +202,22 @@ button { font-family: inherit; cursor: pointer; }
 .material-link::after { content: '↗'; font-size: .8rem; color: var(--ink-faint); }
 .material-link:hover::after { color: var(--gold-strong); }
 
+/* ---------- Tabela de Valores: navegação por categoria ---------- */
+.categoria-browse-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+.categoria-browse-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--ink);
+  font-size: .86rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.categoria-browse-chip:hover { border-color: var(--gold); color: var(--gold-strong); background: var(--gold-soft); }
+
 /* ---------- Callouts ---------- */
 .callout {
   background: var(--surface);

@@ -1305,14 +1305,39 @@ function initSearch() {
     });
   }
 
-  // "valores" tem centenas de itens — ali é preciso digitar para não despejar
-  // a tabela inteira (já foi pedido explicitamente para não fazer isso).
+  // "valores" tem centenas de itens — ali é preciso digitar (ou escolher uma
+  // categoria) para não despejar a tabela inteira de uma vez.
   const BROWSABLE_SCOPES = ['cancelamento', 'data', 'outros', 'links'];
+
+  function renderCategoriaBrowse() {
+    resultsArea.innerHTML = '';
+    resultsArea.classList.add('show');
+    const wrap = el('div', { class: 'card bundle-card' });
+    wrap.appendChild(el('h3', { text: 'Escolha uma categoria' }));
+    wrap.appendChild(el('p', { text: 'Ou digite o nome de um item específico na busca acima.' }));
+    const chipsWrap = el('div', { class: 'categoria-browse-chips' });
+    PRECOS
+      .slice()
+      .sort((a, b) => a.titulo.localeCompare(b.titulo, 'pt-BR'))
+      .forEach(cat => {
+        const chip = el('button', { class: 'categoria-browse-chip', text: (cat.icone ? cat.icone + ' ' : '') + cat.titulo, attrs: { type: 'button' } });
+        chip.addEventListener('click', () => {
+          input.value = cat.titulo;
+          input.focus();
+          runSearch();
+        });
+        chipsWrap.appendChild(chip);
+      });
+    wrap.appendChild(chipsWrap);
+    resultsArea.appendChild(wrap);
+  }
 
   function runSearch() {
     const q = input.value;
     if (!q.trim()) {
-      if (activeScope && BROWSABLE_SCOPES.includes(activeScope)) {
+      if (activeScope === 'valores') {
+        renderCategoriaBrowse();
+      } else if (activeScope && BROWSABLE_SCOPES.includes(activeScope)) {
         resultsArea.classList.add('show');
         renderResults(SEARCH_INDEX.filter(e => e.scope === activeScope));
       } else {
