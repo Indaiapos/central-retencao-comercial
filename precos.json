@@ -2600,9 +2600,35 @@
           ]
         },
         {
-          "nome": "Pacote Sense",
+          "nome": "Sem Decoração Contratada",
           "valores": [
             "R$ 0,00",
+            "R$ 0,00",
+            "R$ 0,00"
+          ]
+        }
+      ],
+      "observacao": null
+    },
+    {
+      "id": "erp-decoracoes-pacote-sense",
+      "titulo": "Decorações - Pacote (Sense)",
+      "grupo": "Produtos (ERP)",
+      "erpCategoriaNome": "Decorações - Pacote (Sense)",
+      "icone": "📦",
+      "desc": "",
+      "sinonimos": [
+        "sense",
+        "pacote sense"
+      ],
+      "colunas": [
+        "Valor Cheio",
+        "Mínimo"
+      ],
+      "itens": [
+        {
+          "nome": "Pacote Sense",
+          "valores": [
             "R$ 0,00",
             "R$ 0,00"
           ]
@@ -2611,142 +2637,117 @@
           "nome": "Pacote Sense - Adicional do quadro a um dos pacotes",
           "valores": [
             "R$ 1.500,00",
-            "R$ 975,00",
-            "R$ 600,00"
+            "R$ 1.500,00"
           ]
         },
         {
           "nome": "Pacote Sense - Convite",
           "valores": [
             "R$ 950,00",
-            "R$ 617,50",
-            "R$ 380,00"
+            "R$ 950,00"
           ]
         },
         {
           "nome": "Pacote Sense - Convites para despedida/chá",
           "valores": [
             "R$ 550,00",
-            "R$ 357,50",
-            "R$ 220,00"
+            "R$ 550,00"
           ]
         },
         {
           "nome": "Pacote Sense - Decoração personalizada",
           "valores": [
             "R$ 1.500,00",
-            "R$ 975,00",
-            "R$ 600,00"
+            "R$ 1.500,00"
           ]
         },
         {
           "nome": "Pacote Sense - Enfeites de Mesa",
           "valores": [
             "R$ 550,00",
-            "R$ 357,50",
-            "R$ 220,00"
+            "R$ 550,00"
           ]
         },
         {
           "nome": "Pacote Sense - Extra Premim",
           "valores": [
             "R$ 7.500,00",
-            "R$ 4.875,00",
-            "R$ 3.000,00"
+            "R$ 7.500,00"
           ]
         },
         {
           "nome": "Pacote Sense - Extra Superior",
           "valores": [
             "R$ 3.000,00",
-            "R$ 1.950,00",
-            "R$ 1.200,00"
+            "R$ 3.000,00"
           ]
         },
         {
           "nome": "Pacote Sense - Guia de Trajes para convidados",
           "valores": [
             "R$ 950,00",
-            "R$ 617,50",
-            "R$ 380,00"
+            "R$ 950,00"
           ]
         },
         {
           "nome": "Pacote Sense - Kit para Padrinhos",
           "valores": [
             "R$ 950,00",
-            "R$ 617,50",
-            "R$ 380,00"
+            "R$ 950,00"
           ]
         },
         {
           "nome": "Pacote Sense - Lembranças personalizadas",
           "valores": [
             "R$ 1.500,00",
-            "R$ 975,00",
-            "R$ 600,00"
+            "R$ 1.500,00"
           ]
         },
         {
           "nome": "Pacote Sense - Linha do Tempo",
           "valores": [
             "R$ 1.500,00",
-            "R$ 975,00",
-            "R$ 600,00"
+            "R$ 1.500,00"
           ]
         },
         {
           "nome": "Pacote Sense - Premium",
           "valores": [
             "R$ 4.500,00",
-            "R$ 2.925,00",
-            "R$ 1.800,00"
+            "R$ 4.500,00"
           ]
         },
         {
           "nome": "Pacote Sense - Quadro de destaque",
           "valores": [
             "R$ 3.000,00",
-            "R$ 1.950,00",
-            "R$ 1.200,00"
+            "R$ 3.000,00"
           ]
         },
         {
           "nome": "Pacote Sense - Quadro para pintura",
           "valores": [
             "R$ 3.000,00",
-            "R$ 1.950,00",
-            "R$ 1.200,00"
+            "R$ 3.000,00"
           ]
         },
         {
           "nome": "Pacote Sense - Save The Date",
           "valores": [
             "R$ 450,00",
-            "R$ 292,50",
-            "R$ 180,00"
+            "R$ 450,00"
           ]
         },
         {
           "nome": "Pacote Sense - Superior",
           "valores": [
             "R$ 1.500,00",
-            "R$ 975,00",
-            "R$ 600,00"
+            "R$ 1.500,00"
           ]
         },
         {
           "nome": "Quadro Sense",
           "valores": [
-            "R$ 0,00",
-            "R$ 0,00",
-            "R$ 0,00"
-          ]
-        },
-        {
-          "nome": "Sem Decoração Contratada",
-          "valores": [
-            "R$ 0,00",
             "R$ 0,00",
             "R$ 0,00"
           ]

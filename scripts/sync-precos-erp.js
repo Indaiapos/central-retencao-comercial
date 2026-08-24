@@ -29,6 +29,14 @@ const CARDAPIO_CATEGORIAS = new Set([
   'Coffee Break', 'Coquetel', 'Finger Foods', 'Fondue / Especial', 'Menu Completo',
 ]);
 
+// Os pacotes "Sense" (dentro de Decorações - Pacote) têm preço fechado no ERP
+// (valor_minimo = valor, sem faixa de negociação) — não entram na política de
+// desconto de decoração. Ficam numa categoria própria, com Valor Cheio/Mínimo
+// direto do ERP, sem cálculo.
+const SENSE_PATTERN = /^(Pacote Sense|Quadro Sense)/i;
+const SENSE_CATEGORIA_ORIGEM = 'Decorações - Pacote';
+const SENSE_CATEGORIA_NOME = 'Decorações - Pacote (Sense)';
+
 function fmtMoney(v) {
   const n = typeof v === 'string' ? parseFloat(v) : v;
   if (!isFinite(n)) return 'R$ 0,00';
@@ -85,8 +93,11 @@ function main() {
   const porCategoria = {};
   let ignoradosSemCategoria = 0;
   rows.forEach(r => {
-    const catNome = (r.categoria_nome || '').trim();
+    let catNome = (r.categoria_nome || '').trim();
     if (!catNome) { ignoradosSemCategoria++; return; }
+    if (catNome === SENSE_CATEGORIA_ORIGEM && SENSE_PATTERN.test((r.nome || '').trim())) {
+      catNome = SENSE_CATEGORIA_NOME;
+    }
     if (!porCategoria[catNome]) porCategoria[catNome] = [];
     porCategoria[catNome].push(r);
   });
