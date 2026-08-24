@@ -21,10 +21,34 @@ const path = require('path');
 const PRECOS_PATH = path.join(__dirname, '..', 'precos.json');
 const GROUP_ERP = 'Produtos (ERP)';
 
+// Categorias com política de desconto padrão (fora isso, mostra Valor Cheio +
+// Mínimo do ERP como sempre). Faixas definidas pelo comercial.
+const DECOR_CATEGORIAS = new Set(['Decorações - Item Adic.', 'Decorações - Pacote']);
+const CARDAPIO_CATEGORIAS = new Set([
+  'Cardápios', 'Cardápios - Item Adic.', 'Buffet', 'Empratado', 'Brunch',
+  'Coffee Break', 'Coquetel', 'Finger Foods', 'Fondue / Especial', 'Menu Completo',
+]);
+
 function fmtMoney(v) {
   const n = typeof v === 'string' ? parseFloat(v) : v;
   if (!isFinite(n)) return 'R$ 0,00';
   return 'R$ ' + n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+function colunasEValores(catNome, valorCheio) {
+  if (DECOR_CATEGORIAS.has(catNome)) {
+    return {
+      colunas: ['Valor Cheio', 'Com 35% off', 'Com 60% off (máx.)'],
+      valores: [fmtMoney(valorCheio), fmtMoney(valorCheio * 0.65), fmtMoney(valorCheio * 0.40)],
+    };
+  }
+  if (CARDAPIO_CATEGORIAS.has(catNome)) {
+    return {
+      colunas: ['Valor Cheio', 'Com 10% off', 'Com 20% off'],
+      valores: [fmtMoney(valorCheio), fmtMoney(valorCheio * 0.90), fmtMoney(valorCheio * 0.80)],
+    };
+  }
+  return null;
 }
 
 function slugify(s) {
@@ -71,9 +95,14 @@ function main() {
   const idsUsados = new Set(precos.categorias.filter(c => c.grupo !== GROUP_ERP).map(c => c.id));
 
   Object.keys(porCategoria).sort().forEach(catNome => {
+    const descontoPadrao = colunasEValores(catNome, 0); // só pra saber se a categoria tem regra (colunas fixas, valores recalculados abaixo)
     const itens = porCategoria[catNome]
       .filter(r => r.nome && r.nome.trim())
-      .map(r => ({ nome: r.nome.trim(), valores: [fmtMoney(r.valor), fmtMoney(r.valor_minimo)] }));
+      .map(r => {
+        const comDesconto = colunasEValores(catNome, parseFloat(r.valor) || 0);
+        const valores = comDesconto ? comDesconto.valores : [fmtMoney(r.valor), fmtMoney(r.valor_minimo)];
+        return { nome: r.nome.trim(), valores };
+      });
     if (!itens.length) return;
 
     const prev = existingByErpNome[catNome];
@@ -90,7 +119,7 @@ function main() {
       icone: prev ? prev.icone : '📦',
       desc: prev ? prev.desc : '',
       sinonimos: prev ? prev.sinonimos : [],
-      colunas: ['Valor Cheio', 'Mínimo'],
+      colunas: descontoPadrao ? descontoPadrao.colunas : ['Valor Cheio', 'Mínimo'],
       itens,
       observacao: prev ? prev.observacao : null,
     });

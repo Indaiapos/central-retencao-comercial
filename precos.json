@@ -932,35 +932,40 @@
       "sinonimos": [],
       "colunas": [
         "Valor Cheio",
-        "Mínimo"
+        "Com 10% off",
+        "Com 20% off"
       ],
       "itens": [
         {
           "nome": "Brunch Clássico",
           "valores": [
             "R$ 109,90",
-            "R$ 98,91"
+            "R$ 98,91",
+            "R$ 87,92"
           ]
         },
         {
           "nome": "Brunch Essencial",
           "valores": [
             "R$ 89,90",
-            "R$ 80,91"
+            "R$ 80,91",
+            "R$ 71,92"
           ]
         },
         {
           "nome": "Brunch Indaiá",
           "valores": [
             "R$ 129,90",
-            "R$ 116,91"
+            "R$ 116,91",
+            "R$ 103,92"
           ]
         },
         {
           "nome": "Brunch Individual",
           "valores": [
             "R$ 89,90",
-            "R$ 76,42"
+            "R$ 80,91",
+            "R$ 71,92"
           ]
         }
       ],
@@ -976,14 +981,16 @@
       "sinonimos": [],
       "colunas": [
         "Valor Cheio",
-        "Mínimo"
+        "Com 10% off",
+        "Com 20% off"
       ],
       "itens": [
         {
           "nome": "Buffet Executivo Premium",
           "valores": [
             "R$ 99,90",
-            "R$ 89,91"
+            "R$ 89,91",
+            "R$ 79,92"
           ]
         }
       ],
@@ -999,12 +1006,14 @@
       "sinonimos": [],
       "colunas": [
         "Valor Cheio",
-        "Mínimo"
+        "Com 10% off",
+        "Com 20% off"
       ],
       "itens": [
         {
           "nome": "Não Contratado (Cardápios)",
           "valores": [
+            "R$ 0,00",
             "R$ 0,00",
             "R$ 0,00"
           ]
@@ -1022,56 +1031,64 @@
       "sinonimos": [],
       "colunas": [
         "Valor Cheio",
-        "Mínimo"
+        "Com 10% off",
+        "Com 20% off"
       ],
       "itens": [
         {
           "nome": "Coffee Extra Premium (Item)",
           "valores": [
             "R$ 129,90",
-            "R$ 116,91"
+            "R$ 116,91",
+            "R$ 103,92"
           ]
         },
         {
           "nome": "Coffee Extra Superior (Item)",
           "valores": [
             "R$ 109,90",
-            "R$ 98,91"
+            "R$ 98,91",
+            "R$ 87,92"
           ]
         },
         {
           "nome": "Coffee Standard (Item)",
           "valores": [
             "R$ 49,90",
-            "R$ 44,91"
+            "R$ 44,91",
+            "R$ 39,92"
           ]
         },
         {
           "nome": "Coffee Standard (Item)",
           "valores": [
             "R$ 49,90",
-            "R$ 44,91"
+            "R$ 44,91",
+            "R$ 39,92"
           ]
         },
         {
           "nome": "Coffee Superior (Item)",
           "valores": [
             "R$ 69,90",
-            "R$ 62,91"
+            "R$ 62,91",
+            "R$ 55,92"
           ]
         },
         {
           "nome": "Entrada Executivo Extra Premium",
           "valores": [
             "R$ 10,00",
-            "R$ 9,00"
+            "R$ 9,00",
+            "R$ 8,00"
           ]
         },
         {
           "nome": "Fit Coffee (Item)",
           "valores": [
             "R$ 69,90",
-            "R$ 62,91"
+            "R$ 62,91",
+            "R$ 55,92"
           ]
         }
       ],
@@ -1087,105 +1104,120 @@
       "sinonimos": [],
       "colunas": [
         "Valor Cheio",
-        "Mínimo"
+        "Com 10% off",
+        "Com 20% off"
       ],
       "itens": [
         {
           "nome": "Coffee Extra Premium",
           "valores": [
             "R$ 129,90",
-            "R$ 129,90"
+            "R$ 116,91",
+            "R$ 103,92"
           ]
         },
         {
           "nome": "Coffee Extra Superior",
           "valores": [
             "R$ 109,90",
-            "R$ 109,90"
+            "R$ 98,91",
+            "R$ 87,92"
           ]
         },
         {
           "nome": "Coffee Open e Close Networking (100 pax)",
           "valores": [
             "R$ 24,00",
-            "R$ 24,00"
+            "R$ 21,60",
+            "R$ 19,20"
           ]
         },
         {
           "nome": "Coffee Open e Close Networking (150 pax)",
           "valores": [
             "R$ 22,00",
-            "R$ 22,00"
+            "R$ 19,80",
+            "R$ 17,60"
           ]
         },
         {
           "nome": "Coffee Open e Close Networking (200 pax)",
           "valores": [
             "R$ 20,00",
-            "R$ 20,00"
+            "R$ 18,00",
+            "R$ 16,00"
           ]
         },
         {
           "nome": "Coffee Open e Close Networking (30 pax)",
           "valores": [
             "R$ 30,00",
-            "R$ 30,00"
+            "R$ 27,00",
+            "R$ 24,00"
           ]
         },
         {
           "nome": "Coffee Open e Close Networking (45 pax)",
           "valores": [
             "R$ 45,00",
-            "R$ 45,00"
+            "R$ 40,50",
+            "R$ 36,00"
           ]
         },
         {
           "nome": "Coffee Open e Close Networking (50 pax)",
           "valores": [
             "R$ 28,00",
-            "R$ 28,00"
+            "R$ 25,20",
+            "R$ 22,40"
           ]
         },
         {
           "nome": "Coffee Open e Close Networking (80 pax)",
           "valores": [
             "R$ 26,00",
-            "R$ 26,00"
+            "R$ 23,40",
+            "R$ 20,80"
           ]
         },
         {
           "nome": "Coffee Standard",
           "valores": [
             "R$ 49,90",
-            "R$ 49,90"
+            "R$ 44,91",
+            "R$ 39,92"
           ]
         },
         {
           "nome": "Coffee Superior",
           "valores": [
             "R$ 69,90",
-            "R$ 62,91"
+            "R$ 62,91",
+            "R$ 55,92"
           ]
         },
         {
           "nome": "Fit Coffee",
           "valores": [
             "R$ 69,90",
-            "R$ 69,90"
+            "R$ 62,91",
+            "R$ 55,92"
           ]
         },
         {
           "nome": "TESTE VMC CORTESIA",
           "valores": [
             "R$ 100,00",
-            "R$ 75,00"
+            "R$ 90,00",
+            "R$ 80,00"
           ]
         },
         {
           "nome": "Welcome Coffee",
           "valores": [
             "R$ 39,90",
-            "R$ 39,90"
+            "R$ 35,91",
+            "R$ 31,92"
           ]
         }
       ],
@@ -1201,63 +1233,72 @@
       "sinonimos": [],
       "colunas": [
         "Valor Cheio",
-        "Mínimo"
+        "Com 10% off",
+        "Com 20% off"
       ],
       "itens": [
         {
           "nome": "Coquetel Extra Premium",
           "valores": [
             "R$ 149,90",
-            "R$ 134,91"
+            "R$ 134,91",
+            "R$ 119,92"
           ]
         },
         {
           "nome": "Coquetel Extra Superior",
           "valores": [
             "R$ 119,90",
-            "R$ 107,91"
+            "R$ 107,91",
+            "R$ 95,92"
           ]
         },
         {
           "nome": "Coquetel Pacote 1",
           "valores": [
             "R$ 139,00",
-            "R$ 125,10"
+            "R$ 125,10",
+            "R$ 111,20"
           ]
         },
         {
           "nome": "Coquetel Pacote 2",
           "valores": [
             "R$ 159,00",
-            "R$ 143,10"
+            "R$ 143,10",
+            "R$ 127,20"
           ]
         },
         {
           "nome": "Coquetel Pacote 3",
           "valores": [
             "R$ 179,00",
-            "R$ 161,10"
+            "R$ 161,10",
+            "R$ 143,20"
           ]
         },
         {
           "nome": "Coquetel Pacote 4",
           "valores": [
             "R$ 199,00",
-            "R$ 179,10"
+            "R$ 179,10",
+            "R$ 159,20"
           ]
         },
         {
           "nome": "Coquetel Premium",
           "valores": [
             "R$ 139,90",
-            "R$ 125,91"
+            "R$ 125,91",
+            "R$ 111,92"
           ]
         },
         {
           "nome": "Coquetel Superior",
           "valores": [
             "R$ 109,90",
-            "R$ 99,90"
+            "R$ 98,91",
+            "R$ 87,92"
           ]
         }
       ],
@@ -1273,12 +1314,14 @@
       "sinonimos": [],
       "colunas": [
         "Valor Cheio",
-        "Mínimo"
+        "Com 35% off",
+        "Com 60% off (máx.)"
       ],
       "itens": [
         {
           "nome": "Aparador Branco",
           "valores": [
+            "R$ 0,00",
             "R$ 0,00",
             "R$ 0,00"
           ]
@@ -1287,40 +1330,46 @@
           "nome": "Aparador Dourado",
           "valores": [
             "R$ 390,00",
-            "R$ 273,00"
+            "R$ 253,50",
+            "R$ 156,00"
           ]
         },
         {
           "nome": "Arco em Espiral - Cor Branca",
           "valores": [
             "R$ 2.500,00",
-            "R$ 2.500,00"
+            "R$ 1.625,00",
+            "R$ 1.000,00"
           ]
         },
         {
           "nome": "Arco Meia Lua - Floral",
           "valores": [
             "R$ 1.300,00",
-            "R$ 1.300,00"
+            "R$ 845,00",
+            "R$ 520,00"
           ]
         },
         {
           "nome": "Arco Padrão - Floral",
           "valores": [
             "R$ 1.500,00",
-            "R$ 1.500,00"
+            "R$ 975,00",
+            "R$ 600,00"
           ]
         },
         {
           "nome": "Armário de Lembrancinhas",
           "valores": [
             "R$ 550,00",
-            "R$ 450,01"
+            "R$ 357,50",
+            "R$ 220,00"
           ]
         },
         {
           "nome": "Arranjo (Floral)",
           "valores": [
+            "R$ 0,00",
             "R$ 0,00",
             "R$ 0,00"
           ]
@@ -1329,12 +1378,14 @@
           "nome": "Arranjo Grande - Mesa de Doces (Permanente)",
           "valores": [
             "R$ 500,00",
-            "R$ 500,00"
+            "R$ 325,00",
+            "R$ 200,00"
           ]
         },
         {
           "nome": "Arranjo Médio - Mesa de Doces (Permanente)",
           "valores": [
+            "R$ 0,00",
             "R$ 0,00",
             "R$ 0,00"
           ]
@@ -1343,26 +1394,30 @@
           "nome": "Arranjo Pequeno - Mesa de Doces (Permanente)",
           "valores": [
             "R$ 200,00",
-            "R$ 200,00"
+            "R$ 130,00",
+            "R$ 80,00"
           ]
         },
         {
           "nome": "Arranjo Suspenso",
           "valores": [
             "R$ 1.300,00",
-            "R$ 1.300,00"
+            "R$ 845,00",
+            "R$ 520,00"
           ]
         },
         {
           "nome": "Arranjos Alto - Mesa Convidados",
           "valores": [
             "R$ 350,00",
-            "R$ 350,00"
+            "R$ 227,50",
+            "R$ 140,00"
           ]
         },
         {
           "nome": "Arranjos Altos",
           "valores": [
+            "R$ 0,00",
             "R$ 0,00",
             "R$ 0,00"
           ]
@@ -1371,12 +1426,14 @@
           "nome": "Arranjos Altos - Mesa dos convidados (Natural)",
           "valores": [
             "R$ 0,00",
+            "R$ 0,00",
             "R$ 0,00"
           ]
         },
         {
           "nome": "Arranjos Baixos",
           "valores": [
+            "R$ 0,00",
             "R$ 0,00",
             "R$ 0,00"
           ]
@@ -1385,26 +1442,30 @@
           "nome": "Arranjos Baixos - Mesa Convidados",
           "valores": [
             "R$ 150,00",
-            "R$ 150,00"
+            "R$ 97,50",
+            "R$ 60,00"
           ]
         },
         {
           "nome": "Arranjos Baixos - Mesa dos Convidados (Natural)",
           "valores": [
             "R$ 450,00",
-            "R$ 450,00"
+            "R$ 292,50",
+            "R$ 180,00"
           ]
         },
         {
           "nome": "Árvore Francesa",
           "valores": [
             "R$ 1.500,00",
-            "R$ 1.500,00"
+            "R$ 975,00",
+            "R$ 600,00"
           ]
         },
         {
           "nome": "Arvore Francesa (Azul Claro)",
           "valores": [
+            "R$ 0,00",
             "R$ 0,00",
             "R$ 0,00"
           ]
@@ -1413,12 +1474,14 @@
           "nome": "Arvore Francesa (Branca)",
           "valores": [
             "R$ 0,00",
+            "R$ 0,00",
             "R$ 0,00"
           ]
         },
         {
           "nome": "Arvore Francesa (Rosa Pink)",
           "valores": [
+            "R$ 0,00",
             "R$ 0,00",
             "R$ 0,00"
           ]
@@ -1427,12 +1490,14 @@
           "nome": "Arvore Francesa (Vermelha)",
           "valores": [
             "R$ 0,00",
+            "R$ 0,00",
             "R$ 0,00"
           ]
         },
         {
           "nome": "Balcão Rustico",
           "valores": [
+            "R$ 0,00",
             "R$ 0,00",
             "R$ 0,00"
           ]
@@ -1441,68 +1506,78 @@
           "nome": "Balões - Sob o Túnel de Led",
           "valores": [
             "R$ 850,00",
-            "R$ 850,00"
+            "R$ 552,50",
+            "R$ 340,00"
           ]
         },
         {
           "nome": "Banqueta",
           "valores": [
             "R$ 50,00",
-            "R$ 45,00"
+            "R$ 32,50",
+            "R$ 20,00"
           ]
         },
         {
           "nome": "Bar de LED",
           "valores": [
             "R$ 950,00",
-            "R$ 950,00"
+            "R$ 617,50",
+            "R$ 380,00"
           ]
         },
         {
           "nome": "Bar Ripado",
           "valores": [
             "R$ 1.000,00",
-            "R$ 1.000,00"
+            "R$ 650,00",
+            "R$ 400,00"
           ]
         },
         {
           "nome": "Bar Simples",
           "valores": [
             "R$ 600,00",
-            "R$ 100,02"
+            "R$ 390,00",
+            "R$ 240,00"
           ]
         },
         {
           "nome": "Bastão de LED",
           "valores": [
             "R$ 35,00",
-            "R$ 28,00"
+            "R$ 22,75",
+            "R$ 14,00"
           ]
         },
         {
           "nome": "Borboleta de led - Bate as Asas (Und)",
           "valores": [
             "R$ 1.000,00",
-            "R$ 1.000,00"
+            "R$ 650,00",
+            "R$ 400,00"
           ]
         },
         {
           "nome": "Borboleta de Led (Und)",
           "valores": [
             "R$ 800,00",
-            "R$ 800,00"
+            "R$ 520,00",
+            "R$ 320,00"
           ]
         },
         {
           "nome": "Buquê da Noiva",
           "valores": [
             "R$ 1.200,00",
-            "R$ 1.200,00"
+            "R$ 780,00",
+            "R$ 480,00"
           ]
         },
         {
           "nome": "Cad. Madeira",
           "valores": [
+            "R$ 0,00",
             "R$ 0,00",
             "R$ 0,00"
           ]
@@ -1511,40 +1586,46 @@
           "nome": "Cadeira de Madeira",
           "valores": [
             "R$ 15,00",
-            "R$ 10,00"
+            "R$ 9,75",
+            "R$ 6,00"
           ]
         },
         {
           "nome": "Cadeira Medalhão",
           "valores": [
             "R$ 80,00",
-            "R$ 56,00"
+            "R$ 52,00",
+            "R$ 32,00"
           ]
         },
         {
           "nome": "Cadeira Tiffany",
           "valores": [
             "R$ 40,00",
-            "R$ 40,00"
+            "R$ 26,00",
+            "R$ 16,00"
           ]
         },
         {
           "nome": "Candelabro",
           "valores": [
             "R$ 220,00",
-            "R$ 220,00"
+            "R$ 143,00",
+            "R$ 88,00"
           ]
         },
         {
           "nome": "Cenário Better Together",
           "valores": [
             "R$ 1.700,00",
-            "R$ 1.190,00"
+            "R$ 1.105,00",
+            "R$ 680,00"
           ]
         },
         {
           "nome": "Cenário Instagramável",
           "valores": [
+            "R$ 0,00",
             "R$ 0,00",
             "R$ 0,00"
           ]
@@ -1553,33 +1634,38 @@
           "nome": "Cenário Jardim Preservado",
           "valores": [
             "R$ 1.700,00",
-            "R$ 1.700,00"
+            "R$ 1.105,00",
+            "R$ 680,00"
           ]
         },
         {
           "nome": "Cenário Latânias",
           "valores": [
             "R$ 1.700,00",
-            "R$ 0,00"
+            "R$ 1.105,00",
+            "R$ 680,00"
           ]
         },
         {
           "nome": "Centro de mesa imperial",
           "valores": [
             "R$ 80,00",
-            "R$ 70,00"
+            "R$ 52,00",
+            "R$ 32,00"
           ]
         },
         {
           "nome": "Céu de Balões - 120 unidades",
           "valores": [
             "R$ 4.000,00",
-            "R$ 3.000,00"
+            "R$ 2.600,00",
+            "R$ 1.600,00"
           ]
         },
         {
           "nome": "Cilindros de vaso de vidro com vela",
           "valores": [
+            "R$ 0,00",
             "R$ 0,00",
             "R$ 0,00"
           ]
@@ -1588,82 +1674,94 @@
           "nome": "Cilindros de vaso de vidro com vela - (UND)",
           "valores": [
             "R$ 150,00",
-            "R$ 150,00"
+            "R$ 97,50",
+            "R$ 60,00"
           ]
         },
         {
           "nome": "Cilindros de vaso de vidro com vela (10 Unds)",
           "valores": [
             "R$ 1.200,00",
-            "R$ 1.200,00"
+            "R$ 780,00",
+            "R$ 480,00"
           ]
         },
         {
           "nome": "Cilindros de vaso de vidro com vela (20 Unds)",
           "valores": [
             "R$ 2.000,00",
-            "R$ 2.000,00"
+            "R$ 1.300,00",
+            "R$ 800,00"
           ]
         },
         {
           "nome": "Cilindros de vaso de vidro com vela (30 Unds)",
           "valores": [
             "R$ 2.600,00",
-            "R$ 2.600,00"
+            "R$ 1.690,00",
+            "R$ 1.040,00"
           ]
         },
         {
           "nome": "Cordão de Luzes",
           "valores": [
             "R$ 800,00",
-            "R$ 550,00"
+            "R$ 520,00",
+            "R$ 320,00"
           ]
         },
         {
           "nome": "Corrimão Floral",
           "valores": [
             "R$ 1.500,00",
-            "R$ 1.500,00"
+            "R$ 975,00",
+            "R$ 600,00"
           ]
         },
         {
           "nome": "Cortina de LED",
           "valores": [
             "R$ 400,00",
-            "R$ 280,00"
+            "R$ 260,00",
+            "R$ 160,00"
           ]
         },
         {
           "nome": "Cortinado Frances com Flores Permanentes",
           "valores": [
             "R$ 400,00",
-            "R$ 400,00"
+            "R$ 260,00",
+            "R$ 160,00"
           ]
         },
         {
           "nome": "Crédito - Decoração",
           "valores": [
             "R$ 500,00",
-            "R$ 500,00"
+            "R$ 325,00",
+            "R$ 200,00"
           ]
         },
         {
           "nome": "Decor Elegance",
           "valores": [
             "R$ 930,00",
-            "R$ 649,98"
+            "R$ 604,50",
+            "R$ 372,00"
           ]
         },
         {
           "nome": "Decoração dia Anterior",
           "valores": [
             "R$ 800,00",
-            "R$ 800,00"
+            "R$ 520,00",
+            "R$ 320,00"
           ]
         },
         {
           "nome": "Decoração Floral",
           "valores": [
+            "R$ 0,00",
             "R$ 0,00",
             "R$ 0,00"
           ]
@@ -1672,12 +1770,14 @@
           "nome": "Degustação",
           "valores": [
             "R$ 300,00",
-            "R$ 300,00"
+            "R$ 195,00",
+            "R$ 120,00"
           ]
         },
         {
           "nome": "Escada decorada",
           "valores": [
+            "R$ 0,00",
             "R$ 0,00",
             "R$ 0,00"
           ]
@@ -1686,12 +1786,14 @@
           "nome": "Espelho Imperial",
           "valores": [
             "R$ 250,00",
-            "R$ 175,00"
+            "R$ 162,50",
+            "R$ 100,00"
           ]
         },
         {
           "nome": "Espelho Instagramável",
           "valores": [
+            "R$ 0,00",
             "R$ 0,00",
             "R$ 0,00"
           ]
@@ -1700,26 +1802,30 @@
           "nome": "Estante de Velas ( Com Decoração Floral)",
           "valores": [
             "R$ 4.000,00",
-            "R$ 4.000,00"
+            "R$ 2.600,00",
+            "R$ 1.600,00"
           ]
         },
         {
           "nome": "Estante Rústica",
           "valores": [
             "R$ 1.700,00",
-            "R$ 1.700,00"
+            "R$ 1.105,00",
+            "R$ 680,00"
           ]
         },
         {
           "nome": "Floreiras para Corredor da Cerimonia (Floral)",
           "valores": [
             "R$ 150,00",
-            "R$ 150,00"
+            "R$ 97,50",
+            "R$ 60,00"
           ]
         },
         {
           "nome": "Flores Natural",
           "valores": [
+            "R$ 0,00",
             "R$ 0,00",
             "R$ 0,00"
           ]
@@ -1728,166 +1834,190 @@
           "nome": "Guardanapo de linho",
           "valores": [
             "R$ 5,00",
-            "R$ 5,00"
+            "R$ 3,25",
+            "R$ 2,00"
           ]
         },
         {
           "nome": "Jardim de Led",
           "valores": [
             "R$ 7.000,00",
-            "R$ 7.000,00"
+            "R$ 4.550,00",
+            "R$ 2.800,00"
           ]
         },
         {
           "nome": "Kit Imperial (Indisponível no Canto da lagoa)",
           "valores": [
             "R$ 2.000,00",
-            "R$ 1.400,00"
+            "R$ 1.300,00",
+            "R$ 800,00"
           ]
         },
         {
           "nome": "Kit Lounge",
           "valores": [
             "R$ 2.500,00",
-            "R$ 2.500,00"
+            "R$ 1.625,00",
+            "R$ 1.000,00"
           ]
         },
         {
           "nome": "Kit Lounge Corporativo",
           "valores": [
             "R$ 1.250,00",
-            "R$ 1.125,00"
+            "R$ 812,50",
+            "R$ 500,00"
           ]
         },
         {
           "nome": "Kit Poltronas + Namoradeira",
           "valores": [
             "R$ 800,00",
-            "R$ 800,00"
+            "R$ 520,00",
+            "R$ 320,00"
           ]
         },
         {
           "nome": "Kit Suporte de Doces (10und)",
           "valores": [
             "R$ 380,00",
-            "R$ 300,01"
+            "R$ 247,00",
+            "R$ 152,00"
           ]
         },
         {
           "nome": "Kit Suporte de Doces (10und) - Boho",
           "valores": [
             "R$ 700,00",
-            "R$ 700,00"
+            "R$ 455,00",
+            "R$ 280,00"
           ]
         },
         {
           "nome": "Lágrimas de Led (SE e BLU)",
           "valores": [
             "R$ 800,00",
-            "R$ 550,00"
+            "R$ 520,00",
+            "R$ 320,00"
           ]
         },
         {
           "nome": "Letreiro 15 Anos Luminoso",
           "valores": [
             "R$ 1.000,00",
-            "R$ 750,00"
+            "R$ 650,00",
+            "R$ 400,00"
           ]
         },
         {
           "nome": "Letreiro Let's Party Branco",
           "valores": [
             "R$ 800,00",
-            "R$ 800,00"
+            "R$ 520,00",
+            "R$ 320,00"
           ]
         },
         {
           "nome": "Letreiro Let's Party Rosa",
           "valores": [
             "R$ 800,00",
-            "R$ 800,00"
+            "R$ 520,00",
+            "R$ 320,00"
           ]
         },
         {
           "nome": "Love Luminoso",
           "valores": [
             "R$ 700,00",
-            "R$ 490,00"
+            "R$ 455,00",
+            "R$ 280,00"
           ]
         },
         {
           "nome": "Love Luminoso ( Com Flores )",
           "valores": [
             "R$ 1.000,00",
-            "R$ 1.000,00"
+            "R$ 650,00",
+            "R$ 400,00"
           ]
         },
         {
           "nome": "Love Luminoso (branco)",
           "valores": [
             "R$ 600,00",
-            "R$ 600,00"
+            "R$ 390,00",
+            "R$ 240,00"
           ]
         },
         {
           "nome": "Lustre Paris ( ME / SE )",
           "valores": [
             "R$ 3.500,00",
-            "R$ 1.750,00"
+            "R$ 2.275,00",
+            "R$ 1.400,00"
           ]
         },
         {
           "nome": "Lustre Paris (JO)",
           "valores": [
             "R$ 3.500,00",
-            "R$ 1.750,00"
+            "R$ 2.275,00",
+            "R$ 1.400,00"
           ]
         },
         {
           "nome": "Luz Cênica",
           "valores": [
             "R$ 80,00",
-            "R$ 80,00"
+            "R$ 52,00",
+            "R$ 32,00"
           ]
         },
         {
           "nome": "Luzes Star Heaven (ME)",
           "valores": [
             "R$ 600,00",
-            "R$ 600,00"
+            "R$ 390,00",
+            "R$ 240,00"
           ]
         },
         {
           "nome": "Mesa Bistrô",
           "valores": [
             "R$ 250,00",
-            "R$ 175,00"
+            "R$ 162,50",
+            "R$ 100,00"
           ]
         },
         {
           "nome": "Mesa Bistrô c/ 2 Banqueta",
           "valores": [
             "R$ 350,00",
-            "R$ 175,00"
+            "R$ 227,50",
+            "R$ 140,00"
           ]
         },
         {
           "nome": "Mesa de Bolo Dourada",
           "valores": [
             "R$ 400,00",
-            "R$ 280,00"
+            "R$ 260,00",
+            "R$ 160,00"
           ]
         },
         {
           "nome": "Mesa de Bolo Espelhada",
           "valores": [
             "R$ 450,00",
-            "R$ 315,00"
+            "R$ 292,50",
+            "R$ 180,00"
           ]
         },
         {
           "nome": "Mesa de Buffet com Pé Vazado",
           "valores": [
+            "R$ 0,00",
             "R$ 0,00",
             "R$ 0,00"
           ]
@@ -1896,12 +2026,14 @@
           "nome": "Mesa de Centro",
           "valores": [
             "R$ 150,00",
-            "R$ 150,00"
+            "R$ 97,50",
+            "R$ 60,00"
           ]
         },
         {
           "nome": "Mesa de Vidro",
           "valores": [
+            "R$ 0,00",
             "R$ 0,00",
             "R$ 0,00"
           ]
@@ -1910,89 +2042,102 @@
           "nome": "Mesa Demolição Doces",
           "valores": [
             "R$ 350,00",
-            "R$ 280,00"
+            "R$ 227,50",
+            "R$ 140,00"
           ]
         },
         {
           "nome": "Mesa Demolição Noivos",
           "valores": [
             "R$ 200,00",
-            "R$ 140,00"
+            "R$ 130,00",
+            "R$ 80,00"
           ]
         },
         {
           "nome": "Mesa Doces Espelhada com Vidros de Agua e Vela ( Com Decoração Floral )",
           "valores": [
             "R$ 6.000,00",
-            "R$ 6.000,00"
+            "R$ 3.900,00",
+            "R$ 2.400,00"
           ]
         },
         {
           "nome": "Mesa Espelhada Doces",
           "valores": [
             "R$ 500,00",
-            "R$ 420,00"
+            "R$ 325,00",
+            "R$ 200,00"
           ]
         },
         {
           "nome": "Mesa Espelhada Noivos",
           "valores": [
             "R$ 450,00",
-            "R$ 450,00"
+            "R$ 292,50",
+            "R$ 180,00"
           ]
         },
         {
           "nome": "Mesa Italiana",
           "valores": [
             "R$ 800,00",
-            "R$ 800,00"
+            "R$ 520,00",
+            "R$ 320,00"
           ]
         },
         {
           "nome": "Mesa orgânica de doces",
           "valores": [
             "R$ 6.000,00",
-            "R$ 6.000,00"
+            "R$ 3.900,00",
+            "R$ 2.400,00"
           ]
         },
         {
           "nome": "Mesa Quadrada",
           "valores": [
             "R$ 250,00",
-            "R$ 250,00"
+            "R$ 162,50",
+            "R$ 100,00"
           ]
         },
         {
           "nome": "Mesa Quadrada 1",
           "valores": [
             "R$ 100,00",
-            "R$ 100,00"
+            "R$ 65,00",
+            "R$ 40,00"
           ]
         },
         {
           "nome": "Mesa Quadrada 2",
           "valores": [
             "R$ 50,00",
-            "R$ 50,00"
+            "R$ 32,50",
+            "R$ 20,00"
           ]
         },
         {
           "nome": "Mesa Redonda Dourada",
           "valores": [
             "R$ 350,00",
-            "R$ 350,00"
+            "R$ 227,50",
+            "R$ 140,00"
           ]
         },
         {
           "nome": "Mesa Redonda Espelhada",
           "valores": [
             "R$ 400,00",
-            "R$ 400,00"
+            "R$ 260,00",
+            "R$ 160,00"
           ]
         },
         {
           "nome": "Mini lounge",
           "valores": [
+            "R$ 0,00",
             "R$ 0,00",
             "R$ 0,00"
           ]
@@ -2001,6 +2146,7 @@
           "nome": "Montagem do espaço kids no espaço extra atrás do DJ",
           "valores": [
             "R$ 0,00",
+            "R$ 0,00",
             "R$ 0,00"
           ]
         },
@@ -2008,19 +2154,22 @@
           "nome": "Painel de Led - 4x2",
           "valores": [
             "R$ 2.500,00",
-            "R$ 2.500,00"
+            "R$ 1.625,00",
+            "R$ 1.000,00"
           ]
         },
         {
           "nome": "Painel Floral Instagramavel",
           "valores": [
             "R$ 1.500,00",
-            "R$ 1.500,00"
+            "R$ 975,00",
+            "R$ 600,00"
           ]
         },
         {
           "nome": "Painel Jardim",
           "valores": [
+            "R$ 0,00",
             "R$ 0,00",
             "R$ 0,00"
           ]
@@ -2029,6 +2178,7 @@
           "nome": "Painel Latânias",
           "valores": [
             "R$ 0,00",
+            "R$ 0,00",
             "R$ 0,00"
           ]
         },
@@ -2036,12 +2186,14 @@
           "nome": "Pedestal em Cuba",
           "valores": [
             "R$ 90,00",
-            "R$ 63,00"
+            "R$ 58,50",
+            "R$ 36,00"
           ]
         },
         {
           "nome": "Pétalas para Cerimonia",
           "valores": [
+            "R$ 0,00",
             "R$ 0,00",
             "R$ 0,00"
           ]
@@ -2050,12 +2202,14 @@
           "nome": "Pista de LED",
           "valores": [
             "R$ 2.700,00",
-            "R$ 2.249,91"
+            "R$ 1.755,00",
+            "R$ 1.080,00"
           ]
         },
         {
           "nome": "Plantas de ambiente artificiais + Oliveiras",
           "valores": [
+            "R$ 0,00",
             "R$ 0,00",
             "R$ 0,00"
           ]
@@ -2064,26 +2218,30 @@
           "nome": "Poltrona",
           "valores": [
             "R$ 550,00",
-            "R$ 495,00"
+            "R$ 357,50",
+            "R$ 220,00"
           ]
         },
         {
           "nome": "Porta de Madeira com Flores",
           "valores": [
             "R$ 800,00",
-            "R$ 800,00"
+            "R$ 520,00",
+            "R$ 320,00"
           ]
         },
         {
           "nome": "Sofá Bege",
           "valores": [
             "R$ 375,00",
-            "R$ 262,50"
+            "R$ 243,75",
+            "R$ 150,00"
           ]
         },
         {
           "nome": "Sofá com arvore francesa",
           "valores": [
+            "R$ 0,00",
             "R$ 0,00",
             "R$ 0,00"
           ]
@@ -2092,26 +2250,30 @@
           "nome": "Sofá Organico",
           "valores": [
             "R$ 3.000,00",
-            "R$ 3.000,00"
+            "R$ 1.950,00",
+            "R$ 1.200,00"
           ]
         },
         {
           "nome": "Sofá Terracota",
           "valores": [
             "R$ 400,00",
-            "R$ 400,00"
+            "R$ 260,00",
+            "R$ 160,00"
           ]
         },
         {
           "nome": "Sousplat",
           "valores": [
             "R$ 10,00",
-            "R$ 7,00"
+            "R$ 6,50",
+            "R$ 4,00"
           ]
         },
         {
           "nome": "Suporte de Bolo",
           "valores": [
+            "R$ 0,00",
             "R$ 0,00",
             "R$ 0,00"
           ]
@@ -2120,12 +2282,14 @@
           "nome": "Suporte de Doces Espelhados",
           "valores": [
             "R$ 0,00",
+            "R$ 0,00",
             "R$ 0,00"
           ]
         },
         {
           "nome": "Tablado Deck",
           "valores": [
+            "R$ 0,00",
             "R$ 0,00",
             "R$ 0,00"
           ]
@@ -2134,26 +2298,30 @@
           "nome": "Taças Especiais (und)",
           "valores": [
             "R$ 7,00",
-            "R$ 4,90"
+            "R$ 4,55",
+            "R$ 2,80"
           ]
         },
         {
           "nome": "Tapete de Espelho",
           "valores": [
             "R$ 1.600,00",
-            "R$ 1.250,08"
+            "R$ 1.040,00",
+            "R$ 640,00"
           ]
         },
         {
           "nome": "Tapete Decorativo (Bege)",
           "valores": [
             "R$ 250,00",
-            "R$ 250,00"
+            "R$ 162,50",
+            "R$ 100,00"
           ]
         },
         {
           "nome": "Tapete Persa",
           "valores": [
+            "R$ 0,00",
             "R$ 0,00",
             "R$ 0,00"
           ]
@@ -2162,105 +2330,120 @@
           "nome": "Tecido Orgânico Suspenso no teto",
           "valores": [
             "R$ 15.000,00",
-            "R$ 15.000,00"
+            "R$ 9.750,00",
+            "R$ 6.000,00"
           ]
         },
         {
           "nome": "Toalha para Mesa (und)",
           "valores": [
             "R$ 35,00",
-            "R$ 35,00"
+            "R$ 22,75",
+            "R$ 14,00"
           ]
         },
         {
           "nome": "Toalha para Mesa Quadrada",
           "valores": [
             "R$ 50,00",
-            "R$ 50,00"
+            "R$ 32,50",
+            "R$ 20,00"
           ]
         },
         {
           "nome": "Toalha para Mesa Quadrada Restaur.",
           "valores": [
             "R$ 10,00",
-            "R$ 10,00"
+            "R$ 6,50",
+            "R$ 4,00"
           ]
         },
         {
           "nome": "Trilho Floral",
           "valores": [
             "R$ 600,00",
-            "R$ 600,00"
+            "R$ 390,00",
+            "R$ 240,00"
           ]
         },
         {
           "nome": "Trilho para Cerimônia",
           "valores": [
             "R$ 150,00",
-            "R$ 105,00"
+            "R$ 97,50",
+            "R$ 60,00"
           ]
         },
         {
           "nome": "Túnel de LED",
           "valores": [
             "R$ 1.800,00",
-            "R$ 1.000,08"
+            "R$ 1.170,00",
+            "R$ 720,00"
           ]
         },
         {
           "nome": "Túnel de Led (Com Decoração Floral)",
           "valores": [
             "R$ 2.500,00",
-            "R$ 2.500,00"
+            "R$ 1.625,00",
+            "R$ 1.000,00"
           ]
         },
         {
           "nome": "Tunel de Led (Floral)",
           "valores": [
             "R$ 2.500,00",
-            "R$ 2.500,00"
+            "R$ 1.625,00",
+            "R$ 1.000,00"
           ]
         },
         {
           "nome": "Tunel de Led (Mezanino e Esp. Joinville)",
           "valores": [
             "R$ 550,00",
-            "R$ 550,00"
+            "R$ 357,50",
+            "R$ 220,00"
           ]
         },
         {
           "nome": "Vaso Abóbora",
           "valores": [
             "R$ 90,00",
-            "R$ 75,00"
+            "R$ 58,50",
+            "R$ 36,00"
           ]
         },
         {
           "nome": "Vaso Firenze",
           "valores": [
             "R$ 130,00",
-            "R$ 110,01"
+            "R$ 84,50",
+            "R$ 52,00"
           ]
         },
         {
           "nome": "Vaso para Ambiente",
           "valores": [
             "R$ 120,00",
-            "R$ 84,00"
+            "R$ 78,00",
+            "R$ 48,00"
           ]
         },
         {
           "nome": "Vela Decorativa",
           "valores": [
             "R$ 60,00",
-            "R$ 42,00"
+            "R$ 39,00",
+            "R$ 24,00"
           ]
         },
         {
           "nome": "Velas Sparkles",
           "valores": [
             "R$ 15,00",
-            "R$ 10,50"
+            "R$ 9,75",
+            "R$ 6,00"
           ]
         }
       ],
@@ -2276,103 +2459,118 @@
       "sinonimos": [],
       "colunas": [
         "Valor Cheio",
-        "Mínimo"
+        "Com 35% off",
+        "Com 60% off (máx.)"
       ],
       "itens": [
         {
           "nome": "Pacote Decoração Aniversário Adulto",
           "valores": [
             "R$ 6.000,00",
-            "R$ 6.000,00"
+            "R$ 3.900,00",
+            "R$ 2.400,00"
           ]
         },
         {
           "nome": "Pacote Decoração Aniversário Infantil",
           "valores": [
             "R$ 6.000,00",
-            "R$ 6.000,00"
+            "R$ 3.900,00",
+            "R$ 2.400,00"
           ]
         },
         {
           "nome": "Pacote Decoração Beauty Wedding",
           "valores": [
             "R$ 14.000,00",
-            "R$ 10.000,20"
+            "R$ 9.100,00",
+            "R$ 5.600,00"
           ]
         },
         {
           "nome": "Pacote Decoração Boho",
           "valores": [
             "R$ 16.000,00",
-            "R$ 12.000,00"
+            "R$ 10.400,00",
+            "R$ 6.400,00"
           ]
         },
         {
           "nome": "Pacote Decoração Chá de Bebê",
           "valores": [
             "R$ 6.000,00",
-            "R$ 6.000,00"
+            "R$ 3.900,00",
+            "R$ 2.400,00"
           ]
         },
         {
           "nome": "Pacote Decoração Chá Revelação",
           "valores": [
             "R$ 6.000,00",
-            "R$ 6.000,00"
+            "R$ 3.900,00",
+            "R$ 2.400,00"
           ]
         },
         {
           "nome": "Pacote Decoração Classic Wedding",
           "valores": [
             "R$ 7.000,00",
-            "R$ 5.999,70"
+            "R$ 4.550,00",
+            "R$ 2.800,00"
           ]
         },
         {
           "nome": "Pacote Decoração Colors Party",
           "valores": [
             "R$ 14.000,00",
-            "R$ 10.000,20"
+            "R$ 9.100,00",
+            "R$ 5.600,00"
           ]
         },
         {
           "nome": "Pacote Decoração Cristal",
           "valores": [
             "R$ 30.000,00",
-            "R$ 24.999,00"
+            "R$ 19.500,00",
+            "R$ 12.000,00"
           ]
         },
         {
           "nome": "Pacote Decoração Formatura",
           "valores": [
             "R$ 6.000,00",
-            "R$ 6.000,00"
+            "R$ 3.900,00",
+            "R$ 2.400,00"
           ]
         },
         {
           "nome": "Pacote Decoração Mini Wedding",
           "valores": [
             "R$ 7.000,00",
-            "R$ 5.999,70"
+            "R$ 4.550,00",
+            "R$ 2.800,00"
           ]
         },
         {
           "nome": "Pacote Decoração Renovação de Votos",
           "valores": [
             "R$ 6.000,00",
-            "R$ 4.800,00"
+            "R$ 3.900,00",
+            "R$ 2.400,00"
           ]
         },
         {
           "nome": "Pacote Decoração Tiny Fifteen",
           "valores": [
             "R$ 7.000,00",
-            "R$ 5.999,70"
+            "R$ 4.550,00",
+            "R$ 2.800,00"
           ]
         },
         {
           "nome": "Pacote Essencial - Decoração Floral Permanente",
           "valores": [
+            "R$ 0,00",
             "R$ 0,00",
             "R$ 0,00"
           ]
@@ -2381,26 +2579,30 @@
           "nome": "Pacote Formatura Celebração",
           "valores": [
             "R$ 18.000,00",
-            "R$ 16.200,00"
+            "R$ 11.700,00",
+            "R$ 7.200,00"
           ]
         },
         {
           "nome": "Pacote Formatura íntima",
           "valores": [
             "R$ 9.000,00",
-            "R$ 6.499,80"
+            "R$ 5.850,00",
+            "R$ 3.600,00"
           ]
         },
         {
           "nome": "Pacote Formatura Premium",
           "valores": [
             "R$ 25.000,00",
-            "R$ 22.000,00"
+            "R$ 16.250,00",
+            "R$ 10.000,00"
           ]
         },
         {
           "nome": "Pacote Sense",
           "valores": [
+            "R$ 0,00",
             "R$ 0,00",
             "R$ 0,00"
           ]
@@ -2409,117 +2611,134 @@
           "nome": "Pacote Sense - Adicional do quadro a um dos pacotes",
           "valores": [
             "R$ 1.500,00",
-            "R$ 1.500,00"
+            "R$ 975,00",
+            "R$ 600,00"
           ]
         },
         {
           "nome": "Pacote Sense - Convite",
           "valores": [
             "R$ 950,00",
-            "R$ 950,00"
+            "R$ 617,50",
+            "R$ 380,00"
           ]
         },
         {
           "nome": "Pacote Sense - Convites para despedida/chá",
           "valores": [
             "R$ 550,00",
-            "R$ 550,00"
+            "R$ 357,50",
+            "R$ 220,00"
           ]
         },
         {
           "nome": "Pacote Sense - Decoração personalizada",
           "valores": [
             "R$ 1.500,00",
-            "R$ 1.500,00"
+            "R$ 975,00",
+            "R$ 600,00"
           ]
         },
         {
           "nome": "Pacote Sense - Enfeites de Mesa",
           "valores": [
             "R$ 550,00",
-            "R$ 550,00"
+            "R$ 357,50",
+            "R$ 220,00"
           ]
         },
         {
           "nome": "Pacote Sense - Extra Premim",
           "valores": [
             "R$ 7.500,00",
-            "R$ 7.500,00"
+            "R$ 4.875,00",
+            "R$ 3.000,00"
           ]
         },
         {
           "nome": "Pacote Sense - Extra Superior",
           "valores": [
             "R$ 3.000,00",
-            "R$ 3.000,00"
+            "R$ 1.950,00",
+            "R$ 1.200,00"
           ]
         },
         {
           "nome": "Pacote Sense - Guia de Trajes para convidados",
           "valores": [
             "R$ 950,00",
-            "R$ 950,00"
+            "R$ 617,50",
+            "R$ 380,00"
           ]
         },
         {
           "nome": "Pacote Sense - Kit para Padrinhos",
           "valores": [
             "R$ 950,00",
-            "R$ 950,00"
+            "R$ 617,50",
+            "R$ 380,00"
           ]
         },
         {
           "nome": "Pacote Sense - Lembranças personalizadas",
           "valores": [
             "R$ 1.500,00",
-            "R$ 1.500,00"
+            "R$ 975,00",
+            "R$ 600,00"
           ]
         },
         {
           "nome": "Pacote Sense - Linha do Tempo",
           "valores": [
             "R$ 1.500,00",
-            "R$ 1.500,00"
+            "R$ 975,00",
+            "R$ 600,00"
           ]
         },
         {
           "nome": "Pacote Sense - Premium",
           "valores": [
             "R$ 4.500,00",
-            "R$ 4.500,00"
+            "R$ 2.925,00",
+            "R$ 1.800,00"
           ]
         },
         {
           "nome": "Pacote Sense - Quadro de destaque",
           "valores": [
             "R$ 3.000,00",
-            "R$ 3.000,00"
+            "R$ 1.950,00",
+            "R$ 1.200,00"
           ]
         },
         {
           "nome": "Pacote Sense - Quadro para pintura",
           "valores": [
             "R$ 3.000,00",
-            "R$ 3.000,00"
+            "R$ 1.950,00",
+            "R$ 1.200,00"
           ]
         },
         {
           "nome": "Pacote Sense - Save The Date",
           "valores": [
             "R$ 450,00",
-            "R$ 450,00"
+            "R$ 292,50",
+            "R$ 180,00"
           ]
         },
         {
           "nome": "Pacote Sense - Superior",
           "valores": [
             "R$ 1.500,00",
-            "R$ 1.500,00"
+            "R$ 975,00",
+            "R$ 600,00"
           ]
         },
         {
           "nome": "Quadro Sense",
           "valores": [
+            "R$ 0,00",
             "R$ 0,00",
             "R$ 0,00"
           ]
@@ -2527,6 +2746,7 @@
         {
           "nome": "Sem Decoração Contratada",
           "valores": [
+            "R$ 0,00",
             "R$ 0,00",
             "R$ 0,00"
           ]
@@ -2544,49 +2764,56 @@
       "sinonimos": [],
       "colunas": [
         "Valor Cheio",
-        "Mínimo"
+        "Com 10% off",
+        "Com 20% off"
       ],
       "itens": [
         {
           "nome": "Empratado Delicias Vegetarianas",
           "valores": [
             "R$ 199,90",
-            "R$ 179,91"
+            "R$ 179,91",
+            "R$ 159,92"
           ]
         },
         {
           "nome": "Empratado Elegância Clássica",
           "valores": [
             "R$ 259,90",
-            "R$ 233,91"
+            "R$ 233,91",
+            "R$ 207,92"
           ]
         },
         {
           "nome": "Empratado Extra Superior (Elopement)",
           "valores": [
             "R$ 159,90",
-            "R$ 143,91"
+            "R$ 143,91",
+            "R$ 127,92"
           ]
         },
         {
           "nome": "Empratado Opção Leve",
           "valores": [
             "R$ 219,90",
-            "R$ 197,91"
+            "R$ 197,91",
+            "R$ 175,92"
           ]
         },
         {
           "nome": "Empratado Sabores Brasileiros",
           "valores": [
             "R$ 229,90",
-            "R$ 206,91"
+            "R$ 206,91",
+            "R$ 183,92"
           ]
         },
         {
           "nome": "Empratado Sabores Mediterrâneos",
           "valores": [
             "R$ 239,90",
-            "R$ 215,91"
+            "R$ 215,91",
+            "R$ 191,92"
           ]
         }
       ],
@@ -2602,56 +2829,64 @@
       "sinonimos": [],
       "colunas": [
         "Valor Cheio",
-        "Mínimo"
+        "Com 10% off",
+        "Com 20% off"
       ],
       "itens": [
         {
           "nome": "Adicional de uma Opção de Finger Foods",
           "valores": [
             "R$ 15,00",
-            "R$ 15,00"
+            "R$ 13,50",
+            "R$ 12,00"
           ]
         },
         {
           "nome": "Finger Foods 1",
           "valores": [
             "R$ 99,90",
-            "R$ 89,90"
+            "R$ 89,91",
+            "R$ 79,92"
           ]
         },
         {
           "nome": "Finger Foods 2",
           "valores": [
             "R$ 129,90",
-            "R$ 119,90"
+            "R$ 116,91",
+            "R$ 103,92"
           ]
         },
         {
           "nome": "Finger Foods 3",
           "valores": [
             "R$ 159,90",
-            "R$ 139,90"
+            "R$ 143,91",
+            "R$ 127,92"
           ]
         },
         {
           "nome": "Finger Foods Infantil 1",
           "valores": [
             "R$ 79,90",
-            "R$ 71,91"
+            "R$ 71,91",
+            "R$ 63,92"
           ]
         },
         {
           "nome": "Finger Foods Infantil 2",
           "valores": [
             "R$ 89,90",
-            "R$ 80,91"
+            "R$ 80,91",
+            "R$ 71,92"
           ]
         },
         {
           "nome": "Finger Foods Infantil 3",
           "valores": [
             "R$ 119,90",
-            "R$ 107,91"
+            "R$ 107,91",
+            "R$ 95,92"
           ]
         }
       ],
@@ -2667,34 +2902,39 @@
       "sinonimos": [],
       "colunas": [
         "Valor Cheio",
-        "Mínimo"
+        "Com 10% off",
+        "Com 20% off"
       ],
       "itens": [
         {
           "nome": "Churrasco (Entrada, principal e guarnições)",
           "valores": [
             "R$ 200,00",
-            "R$ 180,00"
+            "R$ 180,00",
+            "R$ 160,00"
           ]
         },
         {
           "nome": "Feijoada",
           "valores": [
             "R$ 149,90",
-            "R$ 134,91"
+            "R$ 134,91",
+            "R$ 119,92"
           ]
         },
         {
           "nome": "Fondue Soft",
           "valores": [
             "R$ 19,90",
-            "R$ 17,91"
+            "R$ 17,91",
+            "R$ 15,92"
           ]
         },
         {
           "nome": "Sequência Fondue Prime (Itapema)",
           "valores": [
             "R$ 239,90",
+            "R$ 215,91",
             "R$ 191,92"
           ]
         },
@@ -2702,7 +2942,8 @@
           "nome": "Sequência Fondue Tradicional (Itapema)",
           "valores": [
             "R$ 189,90",
-            "R$ 170,91"
+            "R$ 170,91",
+            "R$ 151,92"
           ]
         }
       ],
@@ -3538,84 +3779,96 @@
       "sinonimos": [],
       "colunas": [
         "Valor Cheio",
-        "Mínimo"
+        "Com 10% off",
+        "Com 20% off"
       ],
       "itens": [
         {
           "nome": "Menu Excellence",
           "valores": [
             "R$ 279,90",
-            "R$ 251,91"
+            "R$ 251,91",
+            "R$ 223,92"
           ]
         },
         {
           "nome": "Menu Excellence 2026",
           "valores": [
             "R$ 299,90",
-            "R$ 299,90"
+            "R$ 269,91",
+            "R$ 239,92"
           ]
         },
         {
           "nome": "Menu Premium",
           "valores": [
             "R$ 179,90",
-            "R$ 161,91"
+            "R$ 161,91",
+            "R$ 143,92"
           ]
         },
         {
           "nome": "Menu Premium 2026",
           "valores": [
             "R$ 199,90",
-            "R$ 199,90"
+            "R$ 179,91",
+            "R$ 159,92"
           ]
         },
         {
           "nome": "Menu Privilege",
           "valores": [
             "R$ 249,90",
-            "R$ 224,91"
+            "R$ 224,91",
+            "R$ 199,92"
           ]
         },
         {
           "nome": "Menu Privilege 2026",
           "valores": [
             "R$ 269,90",
-            "R$ 269,90"
+            "R$ 242,91",
+            "R$ 215,92"
           ]
         },
         {
           "nome": "Menu Superior I",
           "valores": [
             "R$ 149,90",
-            "R$ 134,91"
+            "R$ 134,91",
+            "R$ 119,92"
           ]
         },
         {
           "nome": "Menu Superior I 2026",
           "valores": [
             "R$ 169,90",
-            "R$ 169,90"
+            "R$ 152,91",
+            "R$ 135,92"
           ]
         },
         {
           "nome": "Menu Superior II",
           "valores": [
             "R$ 169,90",
-            "R$ 152,91"
+            "R$ 152,91",
+            "R$ 135,92"
           ]
         },
         {
           "nome": "Menu Superior II 2026",
           "valores": [
             "R$ 189,90",
-            "R$ 189,90"
+            "R$ 170,91",
+            "R$ 151,92"
           ]
         },
         {
           "nome": "Menu Vegetariano",
           "valores": [
             "R$ 179,90",
-            "R$ 161,91"
+            "R$ 161,91",
+            "R$ 143,92"
           ]
         }
       ],
