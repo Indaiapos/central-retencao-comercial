@@ -531,6 +531,21 @@ const MATERIAIS = [
     links: [
       { label: 'Doces', url: 'https://confeitaria-indaia.vercel.app/' }
     ]
+  },
+  {
+    titulo: 'Decoração',
+    icone: '🎀',
+    links: [
+      { label: 'Boho', url: 'https://boho.eventosindaia.com.br' },
+      { label: 'Mini Wedding', url: 'https://mini.eventosindaia.com.br' },
+      { label: 'Beauty Wedding', url: 'https://beauty.eventosindaia.com.br' },
+      { label: 'Cristal', url: 'https://cristal.eventosindaia.com.br' },
+      { label: 'Cristal Só Floral', url: 'https://cristal-floral.eventosindaia.com.br' },
+      { label: 'Cristal Só Itens', url: 'https://cristal-itens.eventosindaia.com.br' },
+      { label: 'Floral Essencial', url: 'https://floral-essencial.eventosindaia.com.br' },
+      { label: 'Colors Party', url: 'https://colors.eventosindaia.com.br' },
+      { label: 'Pacote 15 Anos', url: 'https://pacote-15-anos.vercel.app' }
+    ]
   }
 ];
 
@@ -963,8 +978,8 @@ function buildMatrizBlock() {
 
 function buildMateriaisBlock() {
   const wrap = el('div', { class: 'card bundle-card' });
-  wrap.appendChild(el('h3', { text: 'Materiais de Apresentação (cardápios digitais)' }));
-  wrap.appendChild(el('p', { text: 'Links para mandar ao cliente ver os cardápios e materiais de cada tipo de evento.' }));
+  wrap.appendChild(el('h3', { text: 'Materiais de Apresentação' }));
+  wrap.appendChild(el('p', { text: 'Links para mandar ao cliente ver os cardápios, decorações e materiais de cada tipo de evento.' }));
 
   MATERIAIS.forEach(grupo => {
     const grupoWrap = el('div', { attrs: { style: 'margin-top:18px' } });
@@ -1192,8 +1207,8 @@ SCRIPTS.forEach(s => {
 });
 
 SEARCH_INDEX.push({
-  id: 'bundle-materiais', type: 'Materiais de Apresentação', scope: 'links', title: 'Materiais de Apresentação (cardápios digitais)',
-  keywords: normalize('materiais cardapio cardapios digital link links apresentacao gastronomia doces open bar drinks casamento 15 anos quinze confeitaria ' +
+  id: 'bundle-materiais', type: 'Materiais de Apresentação', scope: 'links', title: 'Materiais de Apresentação',
+  keywords: normalize('materiais cardapio cardapios digital link links apresentacao gastronomia doces open bar drinks casamento 15 anos quinze confeitaria decoracao decoracoes ' +
     MATERIAIS.map(g => g.titulo + ' ' + g.links.map(l => l.label).join(' ')).join(' ')),
   render: buildMateriaisBlock
 });
